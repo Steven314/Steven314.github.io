@@ -1,1 +1,8 @@
 /* css styles */
+@media(max-width: 991.98px) {
+  div.quarto-about-solana .about-entity {
+    flex-direction:column-reverse;
+    align-items:left;
+    text-align:left;
+  }
+}

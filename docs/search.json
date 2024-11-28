@@ -2,15 +2,29 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Home",
+    "title": "S. L. Carter",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "University of Toledo | Toledo, Ohio\nMA in Economics | August 2023 - May 2024\nCertificate of Data Analytics in Economics | August 2023 - May 2024\nBS in Data Science | August 2020 - May 2023"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "S. L. Carter",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "University of Toledo | Toledo, Ohio\nMA in Economics | August 2023 - May 2024\nCertificate of Data Analytics in Economics | August 2023 - May 2024\nBS in Data Science | August 2020 - May 2023"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "S. L. Carter",
+    "section": "Experience",
+    "text": "Experience\nUniversity of Toledo | Toledo, Ohio\nBusiness Insights Analyst | May 2024 - Present\nGraduate Assistant | August 2023 - May 2024\nUndergraduate Research Assistant | October 2022 - August 2023"
+  },
+  {
+    "objectID": "index.html#publications",
+    "href": "index.html#publications",
+    "title": "S. L. Carter",
+    "section": "Publications",
+    "text": "Publications\n\n2024\n\nAbudulimu, Abasi, Adam Phillips, Steven Carter, Sabin Neupane, Deng-Bing Li, Tyler Brau, Jared Friedl, Yanfa Yan, Michael Heben, and Randy Ellingson. 2024. “Transient Photovoltage as a Tool for Probing Carrier Dynamics in CdTe-Based Solar Cells.” In 2024 IEEE 52nd Photovoltaic Specialist Conference (PVSC), 1220–20. IEEE. https://doi.org/10.1109/pvsc57443.2024.10749335.\nAbudulimu, Abasi, Steven Carter, Adam B. Phillips, Deng‐Bing Li, Sabin Neupane, Tyler Brau, Jared Friedl, et al. 2024. “Comprehensive Study of Carrier Recombination in High‐efficiency CdTe Solar Cells Using Transient Photovoltage.” Solar RRL 8 (10). https://doi.org/10.1002/solr.202400131.\n\n\n\n2023\n\nPhillips, Adam B., Jared D. Friedl, Philip Ottinger, Steven L. Carter, Zhaoning Song, Abasi Abudulimu, Ebin Bastola, et al. 2023. “Understanding and Advancing Bifacial Thin Film Solar Cells Under Dual Illumination.” Solar RRL 7 (21). https://doi.org/10.1002/solr.202300545."
   }
 ]

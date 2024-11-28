@@ -1,11 +1,48 @@
 ---
-title: "Home"
+title: "S. L. Carter"
+image: www/hex-logo.png
+toc: false
+about: 
+  template: solana
+  image-shape: rounded
+  image-width: 12em
+  links: 
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/steven-carter-77b391271/
+    - text: GitHub
+      href: https://github.com/Steven314
+    - text: Email
+      href: mailto:steven.carter4@utoledo.edu
 ---
 
-This is a Quarto website.
+## Education
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+**University of Toledo** | Toledo, Ohio
 
-```{r}
-1 + 1
-```
+MA in Economics | August 2023 - May 2024
+
+Certificate of Data Analytics in Economics | August 2023 - May 2024
+
+BS in Data Science | August 2020 - May 2023
+
+## Experience
+
+**University of Toledo** | Toledo, Ohio
+
+Business Insights Analyst | May 2024 - Present
+
+Graduate Assistant | August 2023 - May 2024
+
+Undergraduate Research Assistant | October 2022 - August 2023
+
+## Publications
+
+### 2024
+
+- Abudulimu, Abasi, Adam Phillips, **Steven Carter**, Sabin Neupane, Deng-Bing Li, Tyler Brau, Jared Friedl, Yanfa Yan, Michael Heben, and Randy Ellingson. 2024. “Transient Photovoltage as a Tool for Probing Carrier Dynamics in CdTe-Based Solar Cells.” In *2024 IEEE 52nd Photovoltaic Specialist Conference (PVSC)*, 1220–20. IEEE. <https://doi.org/10.1109/pvsc57443.2024.10749335>.
+
+- Abudulimu, Abasi, **Steven Carter**, Adam B. Phillips, Deng‐Bing Li, Sabin Neupane, Tyler Brau, Jared Friedl, et al. 2024. “Comprehensive Study of Carrier Recombination in High‐efficiency CdTe Solar Cells Using Transient Photovoltage.” *Solar RRL* 8 (10). <https://doi.org/10.1002/solr.202400131>.
+
+### 2023
+
+- Phillips, Adam B., Jared D. Friedl, Philip Ottinger, **Steven L. Carter**, Zhaoning Song, Abasi Abudulimu, Ebin Bastola, et al. 2023. “Understanding and Advancing Bifacial Thin Film Solar Cells Under Dual Illumination.” *Solar RRL* 7 (21). <https://doi.org/10.1002/solr.202300545>.

@@ -3,18 +3,19 @@ project:
   output-dir: docs
 
 website:
-  title: "S.L. Carter"
+  title: "S. L. Carter"
   favicon: www/hex-logo.png
   navbar:
     logo: www/hex-logo.png 
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
     right:
       - href: https://github.com/Steven314
         icon: github
-        text: Steven314
+        target: _blank
+      - href: https://www.linkedin.com/in/steven-carter-77b391271/
+        icon: linkedin
         target: _blank
     tools:
       - icon: code-slash
@@ -23,6 +24,12 @@ website:
             href:  https://github.com/Steven314/Steven314.github.io
           - text: Report a Bug
             href:  https://github.com/Steven314/Steven314.github.io/issues
+  page-footer:
+    background: light
+    right: |
+      Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/).<br>
+      View the source at [{{< fa brands github >}} GitHub]({{<https://github.com/Steven314/Steven314.github.io>}}).
+
 format:
   html:
     theme: 
