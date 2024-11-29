@@ -26,5 +26,61 @@
     "title": "S. L. Carter",
     "section": "Publications",
     "text": "Publications\n\n2024\n\nAbudulimu, Abasi, Adam Phillips, Steven Carter, Sabin Neupane, Deng-Bing Li, Tyler Brau, Jared Friedl, Yanfa Yan, Michael Heben, and Randy Ellingson. 2024. “Transient Photovoltage as a Tool for Probing Carrier Dynamics in CdTe-Based Solar Cells.” In 2024 IEEE 52nd Photovoltaic Specialist Conference (PVSC), 1220–20. IEEE. https://doi.org/10.1109/pvsc57443.2024.10749335.\nAbudulimu, Abasi, Steven Carter, Adam B. Phillips, Deng‐Bing Li, Sabin Neupane, Tyler Brau, Jared Friedl, et al. 2024. “Comprehensive Study of Carrier Recombination in High‐efficiency CdTe Solar Cells Using Transient Photovoltage.” Solar RRL 8 (10). https://doi.org/10.1002/solr.202400131.\n\n\n\n2023\n\nPhillips, Adam B., Jared D. Friedl, Philip Ottinger, Steven L. Carter, Zhaoning Song, Abasi Abudulimu, Ebin Bastola, et al. 2023. “Understanding and Advancing Bifacial Thin Film Solar Cells Under Dual Illumination.” Solar RRL 7 (21). https://doi.org/10.1002/solr.202300545."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Balancing Classification Errors for Aggregate Consistency\n\n\n\n\n\n\nClassification\n\n\nR\n\n\nLogistic Regression\n\n\n\n\n\n\n\n\n\nNov 29, 2024\n\n\nSteven Carter\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2024-11-28-test/index.html",
+    "href": "posts/2024-11-28-test/index.html",
+    "title": "Balancing Classification Errors for Aggregate Consistency",
+    "section": "",
+    "text": "Recently, I was developing a model to predict a binary outcome. I settled on a logistic regression model since that was something I was somewhat familiar with from my Econometrics class. From a logistic regression model you estimate the probability of the observation belonging to the positive class. As one would guess, a probability greater than 50% would indicate the positive class, and below 50%, the negative class. This is the threshold value; the threshold where the classification changes from one outcome to the other.\n\\[\n\\hat{y_i} = \\begin{cases}\np(x_i) \\geq t, &\\text{then } 1 \\\\\np(x_i) &lt; t, &\\text{then } 0\n\\end{cases}\n\\tag{1}\\] where \\(t\\) is the threshold value and \\(t\\in[0,1]\\)."
+  },
+  {
+    "objectID": "posts/2024-11-28-test/index.html#packages",
+    "href": "posts/2024-11-28-test/index.html#packages",
+    "title": "Balancing Classification Errors for Aggregate Consistency",
+    "section": "",
+    "text": "We will make use of a few packages in the discussion and example to follow.\n\n\nCode\nlibrary(yardstick)"
+  },
+  {
+    "objectID": "posts/2024-11-28-test/index.html#precision-and-recall",
+    "href": "posts/2024-11-28-test/index.html#precision-and-recall",
+    "title": "Balancing Classification Errors for Aggregate Consistency",
+    "section": "Precision and Recall",
+    "text": "Precision and Recall\nThere are many different websites that provide a definition for these metrics. You can easily find several detailed explanations with a quick search.\n\\[\n\\begin{split}\n\\text{Precision}&= \\frac{\\text{True Positive}}{\\text{True Positive}+ \\text{False Positive}} = \\frac{TP}{TP+FP} \\\\\n\\text{Recall} &= \\frac{\\text{True Positive}}{\\text{True Positive} + \\text{False Negative}} = \\frac{TP}{TP+FN}\n\\end{split}\n\\tag{2}\\]\nIf we rearrange these definitions to solve for \\(FP\\) and \\(FN\\), we can make some progress.\n\\[\n\\begin{aligned}\n\\text{Precision}\\cdot(TP+FP) &= TP \\\\\n(TP + FP) &= \\frac{TP}{\\text{Precision}} \\\\\nFP &= \\frac{TP}{\\text{Precision}} - TP \\\\\nFP &= TP \\cdot \\left(\\frac{1}{\\text{Precision}}\\right)\n\\end{aligned}\n\\tag{3}\\]\nThe same algebraic process can be done for recall which gives,\n\\[\nFN = TP \\cdot \\left(\\frac{1}{\\text{Recall}}\\right)\n\\tag{4}\\]\nNow looking back to our objective, to make the quantities of Type I and Type II errors equal, we should set \\(FP\\) and \\(FN\\) equal to each other.\n\\[\n\\begin{aligned}\nFN &= FP \\\\\nTP \\cdot \\left(\\frac{1}{\\text{Recall}}\\right) &= TP \\cdot \\left(\\frac{1}{\\text{Precision}}\\right) \\\\\n\\frac{1}{\\text{Recall}} &= \\frac{1}{\\text{Precision}} \\\\\n\\text{Precision} &= \\text{Recall}\n\\end{aligned}\n\\tag{5}\\]\nSo we see that our error type will be equal in quantity when our precision and recall are equal."
+  },
+  {
+    "objectID": "posts/2024-11-28-classification-errors/index.html",
+    "href": "posts/2024-11-28-classification-errors/index.html",
+    "title": "Balancing Classification Errors for Aggregate Consistency",
+    "section": "",
+    "text": "Recently, I was developing a model to predict a binary outcome. I settled on a logistic regression model since that was something I was somewhat familiar with from my Econometrics class. From a logistic regression model you estimate the probability of the observation belonging to the positive class. As one would guess, a probability greater than 50% would indicate the positive class, and below 50%, the negative class. This is the threshold value; the threshold where the classification changes from one outcome to the other.\n\\[\n\\hat{y_i} = \\begin{cases}\np(x_i) \\geq t, &\\text{then } 1 \\\\\np(x_i) &lt; t, &\\text{then } 0\n\\end{cases}\n\\tag{1}\\] where \\(t\\) is the threshold value and \\(t\\in[0,1]\\)."
+  },
+  {
+    "objectID": "posts/2024-11-28-classification-errors/index.html#precision-and-recall",
+    "href": "posts/2024-11-28-classification-errors/index.html#precision-and-recall",
+    "title": "Balancing Classification Errors for Aggregate Consistency",
+    "section": "Precision and Recall",
+    "text": "Precision and Recall\nThere are many different websites that provide a definition for these metrics. You can easily find several detailed explanations with a quick search.\n\\[\n\\begin{split}\n\\text{Precision}&= \\frac{\\text{True Positive}}{\\text{True Positive}+ \\text{False Positive}} = \\frac{TP}{TP+FP} \\\\\n\\text{Recall} &= \\frac{\\text{True Positive}}{\\text{True Positive} + \\text{False Negative}} = \\frac{TP}{TP+FN}\n\\end{split}\n\\tag{2}\\]\nIf we rearrange these definitions to solve for \\(FP\\) and \\(FN\\), we can make some progress.\n\\[\n\\begin{aligned}\n\\text{Precision}\\cdot(TP+FP) &= TP \\\\\n(TP + FP) &= \\frac{TP}{\\text{Precision}} \\\\\nFP &= \\frac{TP}{\\text{Precision}} - TP \\\\\nFP &= TP \\cdot \\left(\\frac{1}{\\text{Precision}}\\right)\n\\end{aligned}\n\\tag{3}\\]\nThe same algebraic process can be done for recall which gives,\n\\[\nFN = TP \\cdot \\left(\\frac{1}{\\text{Recall}}\\right)\n\\tag{4}\\]\nNow looking back to our objective, to make the quantities of Type I and Type II errors equal, we should set \\(FP\\) and \\(FN\\) equal to each other.\n\\[\n\\begin{aligned}\nFN &= FP \\\\\nTP \\cdot \\left(\\frac{1}{\\text{Recall}}\\right) &= TP \\cdot \\left(\\frac{1}{\\text{Precision}}\\right) \\\\\n\\frac{1}{\\text{Recall}} &= \\frac{1}{\\text{Precision}} \\\\\n\\text{Precision} &= \\text{Recall}\n\\end{aligned}\n\\tag{5}\\]\nSo we see that our error types will be equal in quantity when our precision and recall are equal."
+  },
+  {
+    "objectID": "posts/2024-11-28-classification-errors/index.html#pr-curve",
+    "href": "posts/2024-11-28-classification-errors/index.html#pr-curve",
+    "title": "Balancing Classification Errors for Aggregate Consistency",
+    "section": "PR Curve",
+    "text": "PR Curve\nNow that we know what we want to achieve, we have to write the code to do it.\nUsing pr_curve, we will shortcut a search of the possible threshold values ranging from zero to one.\n\nlibrary(dplyr)\n\npr &lt;- two_class_example |&gt; \n  as_tibble() |&gt; \n  pr_curve(truth, Class1)\n\nhead(pr)\n#&gt; # A tibble: 6 × 3\n#&gt;   .threshold  recall precision\n#&gt;        &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1     Inf    0               1\n#&gt; 2       1.00 0.00388         1\n#&gt; 3       1.00 0.00775         1\n#&gt; 4       1.00 0.0116          1\n#&gt; 5       1.00 0.0155          1\n#&gt; 6       1.00 0.0194          1\n\nWe can plot the curve to find the point where precision and recall are equal.\n\nautoplot(pr) +\n  geom_abline(slope = 1, intercept = 0, color = \"grey\", linetype = \"dashed\")\n\n\n\n\n\n\nFigure 2: A PR curve for the two_class_example dataset.\n\n\n\n\nWe see that precision and recall are equal along the dashed line and this meets the PR curve at about (0.85, 0.85). The exact point would be available in pr.\n\npr_diff &lt;- pr |&gt; \n  mutate(diff = abs(precision - recall)) |&gt; \n  arrange(diff)\n\nhead(pr_diff)\n#&gt; # A tibble: 6 × 4\n#&gt;   .threshold recall precision    diff\n#&gt;        &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n#&gt; 1      0.610  0.864     0.864 0      \n#&gt; 2      0.618  0.860     0.864 0.00335\n#&gt; 3      0.602  0.868     0.865 0.00335\n#&gt; 4      0.601  0.868     0.862 0.00668\n#&gt; 5      0.618  0.857     0.863 0.00669\n#&gt; 6      0.590  0.868     0.858 0.00998\n\nthreshold &lt;- pr_diff |&gt; \n  slice(1) |&gt; \n  pull(.threshold)\n\nThis tells us that a threshold of 0.61 will provide us with a balanced number of positive cases. We can check this my looking at the confusion matrix when we use 0.61 as the threshold.\n\ntwo_class_adjusted &lt;- two_class_example |&gt; \n  mutate(\n    predicted_threshold = factor(\n      if_else(Class1 &gt;= threshold, \"Class1\", \"Class2\"),\n      levels = levels(two_class_example$truth)\n    )\n  )\n\ntwo_class_adjusted |&gt; \n  conf_mat(truth, predicted_threshold) |&gt; \n  autoplot(type = \"heatmap\") +\n  scale_fill_gradient(low = \"white\", high = \"lightblue\") +\n  coord_equal()\n\n\n\n\n\n\nFigure 3: The confusion matrix with the adjusted threshold value.\n\n\n\n\nNotice how now the lower-left and upper-right quadrants have equal values. This means that the number of observations classified as Class 1 matches the amount in the training data.\nHowever, this can come at the cost of reduced accuracy. Funnily enough this is not the case for this particular dataset, but it was for the dataset I was using.\n\nlibrary(tidyr)\n\ntwo_class_adjusted |&gt; \n  select(truth, predicted, predicted_threshold) |&gt; \n  pivot_longer(\n    cols            = c(predicted, predicted_threshold),\n    names_to        = \"threshold\",\n    values_to       = \"predicted\",\n    names_transform = \\(x) ifelse(x == \"predicted\", 0.5, threshold)\n  ) |&gt; \n  group_by(threshold) |&gt; \n  accuracy(truth, predicted) |&gt; \n  select(threshold, accuracy = .estimate)\n#&gt; # A tibble: 2 × 2\n#&gt;   threshold accuracy\n#&gt;       &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1     0.5      0.838\n#&gt; 2     0.610    0.86\n\nOf course, in reality you would want to find the best threshold for each training set and average them to apply to the test set."
+  },
+  {
+    "objectID": "posts/2024-11-28-classification-errors/index.html#footnotes",
+    "href": "posts/2024-11-28-classification-errors/index.html#footnotes",
+    "title": "Balancing Classification Errors for Aggregate Consistency",
+    "section": "Footnotes",
+    "text": "Footnotes\n\nThe example data I’ll be using is slightly imbalanced, 51.6%.↩︎"
   }
 ]

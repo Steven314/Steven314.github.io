@@ -1,0 +1,218 @@
+---
+title: "Balancing Classification Errors for Aggregate Consistency"
+categories: [Classification, R, Logistic Regression]
+draft: false
+echo: true
+code-link: true
+lightbox: true
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+reference-location: margin
+author:
+  - name: Steven Carter
+    email: steven.carter4@utoledo.edu
+    affiliation:
+      - name: The University of Toledo
+        city: Toledo
+        state: OH
+        url: https://www.utoledo.edu/
+date: 11/29/2024
+date-modified: 11/29/2024
+---
+
+# Introduction
+
+Recently, I was developing a model to predict a binary outcome.
+I settled on a logistic regression model since that was something I was somewhat familiar with from my Econometrics class.
+From a logistic regression model you estimate the probability of the observation belonging to the positive class.
+As one would guess, a probability greater than 50% would indicate the positive class, and below 50%, the negative class.
+This is the threshold value; the threshold where the classification changes from one outcome to the other.
+
+$$
+\hat{y_i} = \begin{cases} 
+p(x_i) \geq t, &\text{then } 1 \\
+p(x_i) < t, &\text{then } 0
+\end{cases}
+$$ {#eq-threshold}
+where $t$ is the threshold value and $t\in[0,1]$.
+
+# Problem
+
+However, the response variable was quite imbalanced; about 75% of one class and 25% of the other.^[The example data I'll be using is slightly imbalanced, `r mean(yardstick::two_class_example$truth == "Class1") |> scales::label_percent(accuracy = 0.1)()`.]
+In checking the fit I noticed the model was overestimating the majority class.
+This was problematic as the objective was to build a model that would form an accurate estimate of the total number (or proportion) of positive cases while looking at each individual in the sample.
+The individuals estimated to be in the positive class would then be used for further estimation, but that is not the point of this exercise.
+
+When I had come across this situation in the past I tried varying the threshold value manually to manipulate the quantity of positive classifications.
+This worked okay, but was cumbersome and annoying.
+I thought that there must be a better way to determine the threshold.
+
+My second attempt to solve this issue came in the form of weights
+By manually adjusting the weight for misclassification along with the resulting confusion matrix, I would attempt to balance the quantities of errors so that the overall prediction prevalence of the positive class was similar to the training data.
+This again worked okay for my purposes, but I knew there still had to be a better way.
+
+# Solution
+
+I messed around with adjusting a few methods for handling imbalanced classes, but none of them seemed to help.
+
+The objective was to neither over- or underestimate the number of positive cases.
+Another way of saying that is that I need to have the same number of Type I (false positive) and Type II (false negative) errors.
+
+Looking at a confusion matrix (@fig-conf-mat), taking Class 1 as our positive class, we have the number of Type I errors in the top-right and the number of Type II errors in the bottom-left.
+
+```{r}
+#| warning: false
+#| label: fig-conf-mat
+#| fig-cap: |
+#|   A confusion matrix displaying the results from the `two_class_example` dataset.
+#| fig-width: 5
+library(yardstick) # two_class_example is from yardstick
+library(ggplot2)
+
+two_class_example |> 
+  conf_mat(truth, predicted) |> 
+  autoplot(type = "heatmap") +
+  scale_fill_gradient(low = "white", high = "lightblue") +
+  coord_equal()
+```
+
+While reading through the documentation for [`{yardstick}`](https://yardstick.tidymodels.org/), I came across Precision-Recall (PR) Curves ([`pr_curve`](https://yardstick.tidymodels.org/reference/pr_curve.html)).
+What is convenient about this curve is that it checks the precision and recall for each unique probability found in your dataset.
+This ends up being very useful for us.
+To see how we have to look at the definitions of precision and recall.
+
+## Precision and Recall
+
+There are many different websites that provide a definition for these metrics.
+You can easily find several detailed explanations with a quick search.
+
+$$
+\begin{split}
+\text{Precision}&= \frac{\text{True Positive}}{\text{True Positive}+ \text{False Positive}} = \frac{TP}{TP+FP} \\
+\text{Recall} &= \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}} = \frac{TP}{TP+FN}
+\end{split}
+$$ {#eq-precision-recall}
+
+If we rearrange these definitions to solve for $FP$ and $FN$, we can make some progress.
+
+$$
+\begin{aligned}
+\text{Precision}\cdot(TP+FP) &= TP \\
+(TP + FP) &= \frac{TP}{\text{Precision}} \\
+FP &= \frac{TP}{\text{Precision}} - TP \\
+FP &= TP \cdot \left(\frac{1}{\text{Precision}}\right)
+\end{aligned}
+$$ {#eq-precision}
+
+The same algebraic process can be done for recall which gives,
+
+$$
+FN = TP \cdot \left(\frac{1}{\text{Recall}}\right)
+$$ {#eq-recall}
+
+Now looking back to our objective, to make the quantities of Type I and Type II errors equal, we should set $FP$ and $FN$ equal to each other.
+
+$$
+\begin{aligned}
+FN &= FP \\
+TP \cdot \left(\frac{1}{\text{Recall}}\right) &= TP \cdot \left(\frac{1}{\text{Precision}}\right) \\
+\frac{1}{\text{Recall}} &= \frac{1}{\text{Precision}} \\
+ \text{Precision} &= \text{Recall}
+\end{aligned}
+$$ {#eq-recall-precision-equal}
+
+So we see that our error types will be equal in quantity when our precision and recall are equal.
+
+## PR Curve
+
+Now that we know what we want to achieve, we have to write the code to do it.
+
+Using [`pr_curve`](https://yardstick.tidymodels.org/reference/pr_curve.html), we will shortcut a search of the possible threshold values ranging from zero to one.
+
+```{r}
+#| warning: false
+
+library(dplyr)
+
+pr <- two_class_example |> 
+  as_tibble() |> 
+  pr_curve(truth, Class1)
+
+head(pr)
+```
+
+We can plot the curve to find the point where precision and recall are equal.
+
+```{r}
+#| label: fig-pr-curve
+#| fig-cap: |
+#|   A PR curve for the `two_class_example` dataset.
+#| fig-width: 5
+autoplot(pr) +
+  geom_abline(slope = 1, intercept = 0, color = "grey", linetype = "dashed")
+```
+
+We see that precision and recall are equal along the dashed line and this meets the PR curve at about (0.85, 0.85).
+The exact point would be available in `pr`.
+
+```{r}
+pr_diff <- pr |> 
+  mutate(diff = abs(precision - recall)) |> 
+  arrange(diff)
+
+head(pr_diff)
+
+threshold <- pr_diff |> 
+  slice(1) |> 
+  pull(.threshold)
+```
+
+This tells us that a threshold of `r format(threshold, digits = 3)` will provide us with a balanced number of positive cases.
+We can check this my looking at the confusion matrix when we use `r format(threshold, digits = 3)` as the threshold.
+
+```{r}
+#| label: fig-adjusted-conf-mat
+#| fig-cap: |
+#|   The confusion matrix with the adjusted threshold value.
+#| fig-width: 5
+#| warning: false
+two_class_adjusted <- two_class_example |> 
+  mutate(
+    predicted_threshold = factor(
+      if_else(Class1 >= threshold, "Class1", "Class2"),
+      levels = levels(two_class_example$truth)
+    )
+  )
+
+two_class_adjusted |> 
+  conf_mat(truth, predicted_threshold) |> 
+  autoplot(type = "heatmap") +
+  scale_fill_gradient(low = "white", high = "lightblue") +
+  coord_equal()
+```
+
+Notice how now the lower-left and upper-right quadrants have equal values.
+This means that the number of observations classified as Class 1 matches the amount in the training data.
+
+However, this can come at the cost of reduced accuracy.
+Funnily enough this is not the case for this particular dataset, but it was for the dataset I was using.
+
+```{r}
+library(tidyr)
+
+two_class_adjusted |> 
+  select(truth, predicted, predicted_threshold) |> 
+  pivot_longer(
+    cols            = c(predicted, predicted_threshold),
+    names_to        = "threshold",
+    values_to       = "predicted",
+    names_transform = \(x) ifelse(x == "predicted", 0.5, threshold)
+  ) |> 
+  group_by(threshold) |> 
+  accuracy(truth, predicted) |> 
+  select(threshold, accuracy = .estimate)
+```
+
+Of course, in reality you would want to find the best threshold for each training set and average them to apply to the test set.
