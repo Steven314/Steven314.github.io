@@ -6,3 +6,6 @@
 *.sql linguist-detectable
 
 docs/** linguist-generated
+
+_extensions/** linguist-vendored
+_freeze/** linguist_vendored
