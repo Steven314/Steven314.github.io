@@ -2,11 +2,11 @@
 title: "S. L. Carter"
 image: www/hex-logo.png
 toc: false
-about: 
+about:
   template: solana
   image-shape: rounded
   image-width: 12em
-  links: 
+  links:
     - text: LinkedIn
       href: https://www.linkedin.com/in/steven-carter-77b391271/
     - text: GitHub

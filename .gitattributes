@@ -1,3 +1,8 @@
 *.qmd linguist-language=RMarkdown
+*.md linguist-documentation
+*.Rmd linguist-detectable
+*.rmd linguist-detectable
+*.qmd linguist-detectable
+*.sql linguist-detectable
 
 docs/** linguist-generated

@@ -1,0 +1,26 @@
+---
+title: "Reading Log"
+subtitle: "A list of what I am currently reading, have read, and plan to read."
+date-modified: 12/6/2024
+date-format: long
+---
+
+# Currently Reading
+
+- [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
+
+- [*Awesome Encounters with God: The Miracles of Jesus*](https://www.thriftbooks.com/w/awesome-encounters-with-god---the-miracles-of-jesus_dr-russell-bone/52477651/#edition=71087318) (2003) by Dr. Russel Bone.
+
+# History
+
+## 2024
+
+- [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
+
+- [*Hillbilly Elegy*](https://en.wikipedia.org/wiki/Hillbilly_Elegy) (2016) by vice president-elect [J. D. Vance](https://en.wikipedia.org/wiki/JD_Vance).
+
+- [*The American Story: The Beginnings*](https://www.google.com/books/edition/The_American_Story/r3GVzQEACAAJ?hl=en) (2020) by David and Tim Barton.
+
+- [*R for Data Science*](https://r4ds.hadley.nz/) (2nd edition, 2017) by [Hadley Wickham](https://github.com/hadley).
+
+- [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/) (3rd edition) by Wickham, Navarro and Pedersen.

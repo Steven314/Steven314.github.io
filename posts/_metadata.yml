@@ -1,1 +1,3 @@
 title-block-banner: true
+execute:
+  freeze: auto
