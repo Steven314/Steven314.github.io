@@ -27,15 +27,64 @@ BS in Data Science | August 2020 - May 2023
 
 ## Experience
 
-**University of Toledo** | Toledo, Ohio
+### University of Toledo | Toledo, Ohio
 
-Business Insights Analyst | May 2024 - Present
+::: {.callout-note icon=false collapse=false}
 
-Graduate Assistant | August 2023 - May 2024
+## Business Insights Analyst | May 2024 - Present
 
-Undergraduate Research Assistant | October 2022 - August 2023
+### Projects
 
-## Publications
+- Analyzed enrollment and admissions data to develop a detailed simulation and forecast of university enrollment.
+- Built several Shiny applications for streamlining data analysis and visualization to better inform decision-makers in a dynamic and intuitive manner.
+- Designed a number of webscraping and data aquisition tools to ensure straightforward data sharing and analysis.
+- Developed a check to search for unusual work history and flag for review.
+
+### Specialties
+
+- R
+  - [Tidyverse](https://www.tidyverse.org/), [tidymodels](https://www.tidymodels.org/), and [fpp3](https://pkg.robjhyndman.com/fpp3/) primarily, in addition to others.
+- [Shiny for R](https://shiny.posit.co/)
+- [Quarto](https://quarto.org/) and [RMarkdown](https://rmarkdown.rstudio.com/)
+- SQL
+
+:::
+
+::: {.callout-note icon=false collapse=false}
+
+## Graduate Assistant | Aug 2023 - May 2024
+
+### Specialties
+
+- R
+- Shiny for R
+- RMarkdown
+
+:::
+
+::: {.callout-note icon=false collapse=false}
+
+## Undergraduate Research Assistant | Oct 2022 - Aug 2023
+
+### Projects
+
+- Developed software for performing high quality electrical measurements with efficiency and precision. Improved experimental speed and consistency through software improvements and advances to the physical experimentation system.
+- Developed workflows to improve quality and consistency for analyzing experimental data output.
+- Performed electrical and optical photovoltaic measurements.
+- See [below](#sec-publications) for papers in which the software I largely developed was utilized, even beyond my time of employment.
+
+### Specialties
+
+- Python
+  - [NumPy](https://numpy.org/), [scikit-learn](https://scikit-learn.org/stable/index.html), and [pandas](https://pandas.pydata.org/).
+
+:::
+
+## Publications {#sec-publications}
+
+### 2025
+
+- Coming Soon: "Enchancing Understanding of Recombination Mechanisms in High-Performance Tin-Lead Perovskite Solar Cells" in *Cell Reports Physical Science*
 
 ### 2024
 

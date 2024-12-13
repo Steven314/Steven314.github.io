@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 12/6/2024
+date-modified: 12/12/2024
 date-format: long
 ---
 
@@ -9,13 +9,17 @@ date-format: long
 
 - [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
+- [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
+
 - [*Awesome Encounters with God: The Miracles of Jesus*](https://www.thriftbooks.com/w/awesome-encounters-with-god---the-miracles-of-jesus_dr-russell-bone/52477651/#edition=71087318) (2003) by Dr. Russel Bone.
+
+- [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
 
 # History
 
 ## 2024
 
-- [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
+- [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by J. R. R. Tolkien.
 
 - [*Hillbilly Elegy*](https://en.wikipedia.org/wiki/Hillbilly_Elegy) (2016) by vice president-elect [J. D. Vance](https://en.wikipedia.org/wiki/JD_Vance).
 
