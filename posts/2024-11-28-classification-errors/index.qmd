@@ -102,14 +102,14 @@ $$
 \text{Precision}\cdot(TP+FP) &= TP \\
 (TP + FP) &= \frac{TP}{\text{Precision}} \\
 FP &= \frac{TP}{\text{Precision}} - TP \\
-FP &= TP \cdot \left(\frac{1}{\text{Precision}}\right)
+FP &= TP \cdot \left(\frac{1}{\text{Precision}} - 1\right)
 \end{aligned}
 $$ {#eq-precision}
 
 The same algebraic process can be done for recall which gives,
 
 $$
-FN = TP \cdot \left(\frac{1}{\text{Recall}}\right)
+FN = TP \cdot \left(\frac{1}{\text{Recall}} - 1\right)
 $$ {#eq-recall}
 
 Now looking back to our objective, to make the quantities of Type I and Type II errors equal, we should set $FP$ and $FN$ equal to each other.
@@ -117,7 +117,7 @@ Now looking back to our objective, to make the quantities of Type I and Type II 
 $$
 \begin{aligned}
 FN &= FP \\
-TP \cdot \left(\frac{1}{\text{Recall}}\right) &= TP \cdot \left(\frac{1}{\text{Precision}}\right) \\
+TP \cdot \left(\frac{1}{\text{Recall}} - 1\right) &= TP \cdot \left(\frac{1}{\text{Precision}} - 1\right) \\
 \frac{1}{\text{Recall}} &= \frac{1}{\text{Precision}} \\
  \text{Precision} &= \text{Recall}
 \end{aligned}

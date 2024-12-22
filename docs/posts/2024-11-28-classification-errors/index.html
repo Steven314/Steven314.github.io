@@ -311,18 +311,18 @@ Figure&nbsp;1: A confusion matrix displaying the results from the <code>two_clas
 \text{Precision}\cdot(TP+FP) &amp;= TP \\
 (TP + FP) &amp;= \frac{TP}{\text{Precision}} \\
 FP &amp;= \frac{TP}{\text{Precision}} - TP \\
-FP &amp;= TP \cdot \left(\frac{1}{\text{Precision}}\right)
+FP &amp;= TP \cdot \left(\frac{1}{\text{Precision}} - 1\right)
 \end{aligned}
 \tag{3}\]</span></span></p>
 <p>The same algebraic process can be done for recall which gives,</p>
 <p><span id="eq-recall"><span class="math display">\[
-FN = TP \cdot \left(\frac{1}{\text{Recall}}\right)
+FN = TP \cdot \left(\frac{1}{\text{Recall}} - 1\right)
 \tag{4}\]</span></span></p>
 <p>Now looking back to our objective, to make the quantities of Type I and Type II errors equal, we should set <span class="math inline">\(FP\)</span> and <span class="math inline">\(FN\)</span> equal to each other.</p>
 <p><span id="eq-recall-precision-equal"><span class="math display">\[
 \begin{aligned}
 FN &amp;= FP \\
-TP \cdot \left(\frac{1}{\text{Recall}}\right) &amp;= TP \cdot \left(\frac{1}{\text{Precision}}\right) \\
+TP \cdot \left(\frac{1}{\text{Recall}} - 1\right) &amp;= TP \cdot \left(\frac{1}{\text{Precision}} - 1\right) \\
 \frac{1}{\text{Recall}} &amp;= \frac{1}{\text{Precision}} \\
 \text{Precision} &amp;= \text{Recall}
 \end{aligned}
