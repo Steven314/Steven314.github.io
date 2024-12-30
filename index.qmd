@@ -84,7 +84,7 @@ BS in Data Science | August 2020 - May 2023
 
 ### 2025
 
-- Coming Soon: "Enchancing Understanding of Recombination Mechanisms in High-Performance Tin-Lead Perovskite Solar Cells" in *Cell Reports Physical Science*
+- Abasi Abudulimu, Sheng Fu, Nadeesha Katakumbura, Nannan Sun, **Steven Carter**, Tyler Brau, Lei Chen, Manoj Rajakaruna, Jared Friedl, Zhaoning Song, Adam B. Phillips, Michael J. Heben, Yanfa Yan and Randy J. Ellingson. 2025. "Enchancing Understanding of Recombination Mechanisms in High-Performance Tin-Lead Perovskite Solar Cells." *Cell Reports Physical Science* 6 (1). <https://doi.org/10.1016/j.xcrp.2024.102349>.
 
 ### 2024
 
@@ -95,3 +95,9 @@ BS in Data Science | August 2020 - May 2023
 ### 2023
 
 - Phillips, Adam B., Jared D. Friedl, Philip Ottinger, **Steven L. Carter**, Zhaoning Song, Abasi Abudulimu, Ebin Bastola, et al. 2023. “Understanding and Advancing Bifacial Thin Film Solar Cells Under Dual Illumination.” *Solar RRL* 7 (21). <https://doi.org/10.1002/solr.202300545>.
+
+---
+
+# About This Site
+
+Inspiration and snippets were taken from [Andrew Heiss](https://www.andrewheiss.com/).

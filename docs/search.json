@@ -39,14 +39,14 @@
     "href": "books.html",
     "title": "Reading Log",
     "section": "",
-    "text": "Hands-On Machine Learning with R (2020) by Bradley Boehmke and Brandon Greenwell.\nTidy Modeling with R (2023) by Max Kuhn and Julia Silge.\nAwesome Encounters with God: The Miracles of Jesus (2003) by Dr. Russel Bone.\nThe Fellowship of the Ring (1994 edition) by J. R. R. Tolkien."
+    "text": "I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning and data science."
   },
   {
     "objectID": "books.html#section",
     "href": "books.html#section",
     "title": "Reading Log",
-    "section": "2024",
-    "text": "2024\n\nThe Hobbit (1995 edition) by J. R. R. Tolkien.\nHillbilly Elegy (2016) by vice president-elect J. D. Vance.\nThe American Story: The Beginnings (2020) by David and Tim Barton.\nR for Data Science (2nd edition, 2017) by Hadley Wickham.\nggplot2: Elegant Graphics for Data Analysis (3rd edition) by Wickham, Navarro and Pedersen."
+    "section": "2025",
+    "text": "2025\nMy goal is 12 books."
   },
   {
     "objectID": "posts/2024-11-28-classification-errors/index.html",
@@ -96,5 +96,12 @@
     "title": "S. L. Carter",
     "section": "Specialties",
     "text": "Specialties\n\nPython\n\nNumPy, scikit-learn, and pandas."
+  },
+  {
+    "objectID": "books.html#section-1",
+    "href": "books.html#section-1",
+    "title": "Reading Log",
+    "section": "2024",
+    "text": "2024\nI started reading more deliberately in the fall.\n\nAwesome Encounters with God: The Miracles of Jesus (2003) by Dr. Russel Bone.\nggplot2: Elegant Graphics for Data Analysis (3rd edition) by Wickham, Navarro and Pedersen.\nHillbilly Elegy (2016) by vice president-elect J. D. Vance.\nR for Data Science (2nd edition, 2017) by Hadley Wickham.\nThe American Story: The Beginnings (2020) by David and Tim Barton.\nThe Hobbit (1995 edition) by J. R. R. Tolkien."
   }
 ]

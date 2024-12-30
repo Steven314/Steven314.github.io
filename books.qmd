@@ -1,30 +1,45 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 12/12/2024
+date-modified: 12/30/2024
 date-format: long
 ---
 
+I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning and data science.
+
 # Currently Reading
+
+- *The Bible* - I am tackling the Bible in one year, read chronologically. I hope to continue in future years with the same or similar reading plan.
 
 - [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
 - [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
 
-- [*Awesome Encounters with God: The Miracles of Jesus*](https://www.thriftbooks.com/w/awesome-encounters-with-god---the-miracles-of-jesus_dr-russell-bone/52477651/#edition=71087318) (2003) by Dr. Russel Bone.
-
 - [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
+
+- [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
 
 # History
 
+These are in alphabetical order.
+
+## 2025
+
+My goal is 12 books.
+
+
 ## 2024
 
-- [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by J. R. R. Tolkien.
+I started reading more deliberately in the fall.
+
+- [*Awesome Encounters with God: The Miracles of Jesus*](https://www.thriftbooks.com/w/awesome-encounters-with-god---the-miracles-of-jesus_dr-russell-bone/52477651/#edition=71087318) (2003) by Dr. Russel Bone.
+
+- [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/) (3rd edition) by Wickham, Navarro and Pedersen.
 
 - [*Hillbilly Elegy*](https://en.wikipedia.org/wiki/Hillbilly_Elegy) (2016) by vice president-elect [J. D. Vance](https://en.wikipedia.org/wiki/JD_Vance).
 
-- [*The American Story: The Beginnings*](https://www.google.com/books/edition/The_American_Story/r3GVzQEACAAJ?hl=en) (2020) by David and Tim Barton.
-
 - [*R for Data Science*](https://r4ds.hadley.nz/) (2nd edition, 2017) by [Hadley Wickham](https://github.com/hadley).
 
-- [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/) (3rd edition) by Wickham, Navarro and Pedersen.
+- [*The American Story: The Beginnings*](https://www.google.com/books/edition/The_American_Story/r3GVzQEACAAJ?hl=en) (2020) by David and Tim Barton.
+
+- [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by J. R. R. Tolkien.
