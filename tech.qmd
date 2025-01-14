@@ -1,0 +1,54 @@
+---
+title: "Technologies I Use"
+date-modified: 1/11/2025
+date-format: long
+format: html
+---
+
+# Notetaking
+
+For electronic notes I use [Obsidian](https://obsidian.md/).
+With my Bible notes I backup the Obsidian vault with git to a [Gitea](https://about.gitea.com/) instance attached to a Raspberry Pi on my local network.
+
+For physical notetaking I like to use a leatherbound notepad.
+Any notes I take from Bible studies I try to copy into the Obsidian vault.
+
+# Programming
+
+I dabbled in [Neovim](https://neovim.io/) with [NvChad](https://nvchad.com/) for a while in 2024, but keeping [my setup](https://github.com/Steven314/nvim) up-to-date was somewhat tedious for my liking.
+I also discovered that the company restrictions on my work laptop limited the use of [npm](https://www.npmjs.com/) meaning some plugins would not function properly.
+
+As a result and since the strong majority of my programming is with R and Markdown, I use [RStudio](https://posit.co/downloads/).
+If I do something in Python or SQL, I gravitate toward [VS Code](https://code.visualstudio.com/) for its better autocompletion and highlighting relative to RStudio for those languages.
+
+## Languages
+
+Currently I use R and Markdown/Quarto primarily and Python when R can't do the job.
+In association with R and Python, I use SQL both directly and through [`{dplyr}` backends](https://dplyr.tidyverse.org/index.html#backends).
+
+| Language | Proficiency | Experience |
+| --- | --- | --- |
+| R        | Strong   | 2 years       |
+| Markdown, Quarto | Strong | 2 years |
+| LaTeX    | Moderate | 1 year        |
+| Python   | Moderate | 1 year        |
+| Java     | Basic    | 2 Semesters   |
+| SQL      | Moderate | <1 year       |
+| HTML     | Basic    | Minimal       |
+| CSS      | Basic    | Minimal       |
+| DAX      | Basic    | Minimal       |
+| JavaScript | Near Zero | Next to none |
+
+## Software
+
+- **RStudio**: This is my go-to editor for writing reports and apps with Quarto and Shiny. The open-source community is really thriving and makes the R language really approachable.
+
+- **VS Code**: I use this for miscellaneous code editing and any Python work. It is a good editor, but doesn't fit into my usual workflow.
+
+- **Power BI**: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in closed-source, paid ecosystem is a big negative. The documentation is severly lacking compared to that of the R community.
+
+- **Tableau**: Similar thoughts to Power BI, but I have generally had a better experience. However, I haven't used it as much.
+
+- **ArcGIS**: I only used this for a class. It was an alright experience, but I haven't done any complex work to feel out the program yet. All of my mapping needs recently have been filled by [`{plotly}`](https://plotly.com/r/maps/) and [`{ggplot2}`](https://ggplot2.tidyverse.org/reference/ggsf.html).
+
+- **Obsidian**: This is a good and adaptable notetaking software.

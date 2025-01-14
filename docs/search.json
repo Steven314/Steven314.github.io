@@ -39,7 +39,7 @@
     "href": "books.html",
     "title": "Reading Log",
     "section": "",
-    "text": "I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning and data science."
+    "text": "I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning and data science.\nI also listen to podcasts and lectures to center my mind on the important things in life. Centering around being better disciplined and having mental fortitude alongside physical strength and intelligence."
   },
   {
     "objectID": "books.html#section",
@@ -102,6 +102,41 @@
     "href": "books.html#section-1",
     "title": "Reading Log",
     "section": "2024",
-    "text": "2024\nI started reading more deliberately in the fall.\n\nAwesome Encounters with God: The Miracles of Jesus (2003) by Dr. Russel Bone.\nggplot2: Elegant Graphics for Data Analysis (3rd edition) by Wickham, Navarro and Pedersen.\nHillbilly Elegy (2016) by vice president-elect J. D. Vance.\nR for Data Science (2nd edition, 2017) by Hadley Wickham.\nThe American Story: The Beginnings (2020) by David and Tim Barton.\nThe Hobbit (1995 edition) by J. R. R. Tolkien."
+    "text": "2024\nI started reading more deliberately in the fall.\n\nThe Bible - Most of the Old Testament I read in the NIV, but the rest I read in the ESV.\nAwesome Encounters with God: The Miracles of Jesus (2003) by Dr. Russel Bone.\nggplot2: Elegant Graphics for Data Analysis (3rd edition) by Wickham, Navarro and Pedersen.\nHillbilly Elegy (2016) by vice president-elect J. D. Vance.\nR for Data Science (2nd edition, 2017) by Hadley Wickham.\nThe American Story: The Beginnings (2020) by David and Tim Barton.\nThe Hobbit (1995 edition) by J. R. R. Tolkien."
+  },
+  {
+    "objectID": "tech.html",
+    "href": "tech.html",
+    "title": "Technologies I Use",
+    "section": "",
+    "text": "For electronic notes I use Obsidian. With my Bible notes I backup the Obsidian vault with git to a Gitea instance attached to a Raspberry Pi on my local network.\nFor physical notetaking I like to use a leatherbound notepad. Any notes I take from Bible studies I try to copy into the Obsidian vault."
+  },
+  {
+    "objectID": "tech.html#electronic",
+    "href": "tech.html#electronic",
+    "title": "Technologies I Use",
+    "section": "",
+    "text": "For electronic notes I use Obsidian. With my Bible notes I backup the Obsidian vault with git to a Gitea instance attached to a Raspberry Pi on my local network."
+  },
+  {
+    "objectID": "tech.html#physical",
+    "href": "tech.html#physical",
+    "title": "Technologies I Use",
+    "section": "",
+    "text": "For physical notetaking I like to use a leatherbound notepad. Any notes I take from Bible studies I try to copy into the Obsidian vault."
+  },
+  {
+    "objectID": "tech.html#languages",
+    "href": "tech.html#languages",
+    "title": "Technologies I Use",
+    "section": "Languages",
+    "text": "Languages\nCurrently I use R and Markdown/Quarto primarily and Python when R can’t do the job. In association with R and Python, I use SQL both directly and through {dplyr} backends.\n\n\n\nLanguage\nProficiency\nExperience\n\n\n\n\nR\nStrong\n2 years\n\n\nMarkdown, Quarto\nStrong\n2 years\n\n\nLaTeX\nModerate\n1 year\n\n\nPython\nModerate\n1 year\n\n\nJava\nBasic\n2 Semesters\n\n\nSQL\nModerate\n&lt;1 year\n\n\nHTML\nBasic\nMinimal\n\n\nCSS\nBasic\nMinimal\n\n\nDAX\nBasic\nMinimal\n\n\nJavaScript\nNear Zero\nNext to none"
+  },
+  {
+    "objectID": "tech.html#software",
+    "href": "tech.html#software",
+    "title": "Technologies I Use",
+    "section": "Software",
+    "text": "Software\n\nRStudio: This is my go-to editor for writing reports and apps with Quarto and Shiny. The open-source community is really thriving and makes the R language really approachable.\nVS Code: I use this for miscellaneous code editing and any Python work. It is a good editor, but doesn’t fit into my usual workflow.\nPower BI: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in closed-source, paid ecosystem is a big negative. The documentation is severly lacking compared to that of the R community.\nTableau: Similar thoughts to Power BI, but I have generally had a better experience. However, I haven’t used it as much.\nArcGIS: I only used this for a class. It was an alright experience, but I haven’t done any complex work to feel out the program yet. All of my mapping needs recently have been filled by {plotly} and {ggplot2}.\nObsidian: This is a good and adaptable notetaking software."
   }
 ]

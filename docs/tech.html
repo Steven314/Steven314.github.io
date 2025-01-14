@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Posts – S. L. Carter</title>
+<title>Technologies I Use – S. L. Carter</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./www/hex-logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,65 +71,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -161,7 +101,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -218,18 +158,29 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#notetaking" id="toc-notetaking" class="nav-link active" data-scroll-target="#notetaking">Notetaking</a></li>
+  <li><a href="#programming" id="toc-programming" class="nav-link" data-scroll-target="#programming">Programming</a>
+  <ul class="collapse">
+  <li><a href="#languages" id="toc-languages" class="nav-link" data-scroll-target="#languages">Languages</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2xhc3NpZmljYXRpb24=">Classification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TG9naXN0aWMlMjBSZWdyZXNzaW9u">Logistic Regression <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Posts</h1>
+<h1 class="title">Technologies I Use</h1>
 </div>
 
 
@@ -238,6 +189,12 @@ window.Quarto = {
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">January 11, 2025</p>
+    </div>
+  </div>
     
   </div>
   
@@ -246,56 +203,96 @@ window.Quarto = {
 </header>
 
 
+<section id="notetaking" class="level1">
+<h1>Notetaking</h1>
+<p>For electronic notes I use <a href="https://obsidian.md/">Obsidian</a>. With my Bible notes I backup the Obsidian vault with git to a <a href="https://about.gitea.com/">Gitea</a> instance attached to a Raspberry Pi on my local network.</p>
+<p>For physical notetaking I like to use a leatherbound notepad. Any notes I take from Bible studies I try to copy into the Obsidian vault.</p>
+</section>
+<section id="programming" class="level1">
+<h1>Programming</h1>
+<p>I dabbled in <a href="https://neovim.io/">Neovim</a> with <a href="https://nvchad.com/">NvChad</a> for a while in 2024, but keeping <a href="https://github.com/Steven314/nvim">my setup</a> up-to-date was somewhat tedious for my liking. I also discovered that the company restrictions on my work laptop limited the use of <a href="https://www.npmjs.com/">npm</a> meaning some plugins would not function properly.</p>
+<p>As a result and since the strong majority of my programming is with R and Markdown, I use <a href="https://posit.co/downloads/">RStudio</a>. If I do something in Python or SQL, I gravitate toward <a href="https://code.visualstudio.com/">VS Code</a> for its better autocompletion and highlighting relative to RStudio for those languages.</p>
+<section id="languages" class="level2">
+<h2 class="anchored" data-anchor-id="languages">Languages</h2>
+<p>Currently I use R and Markdown/Quarto primarily and Python when R can’t do the job. In association with R and Python, I use SQL both directly and through <a href="https://dplyr.tidyverse.org/index.html#backends"><code>{dplyr}</code> backends</a>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Language</th>
+<th>Proficiency</th>
+<th>Experience</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R</td>
+<td>Strong</td>
+<td>2 years</td>
+</tr>
+<tr class="even">
+<td>Markdown, Quarto</td>
+<td>Strong</td>
+<td>2 years</td>
+</tr>
+<tr class="odd">
+<td>LaTeX</td>
+<td>Moderate</td>
+<td>1 year</td>
+</tr>
+<tr class="even">
+<td>Python</td>
+<td>Moderate</td>
+<td>1 year</td>
+</tr>
+<tr class="odd">
+<td>Java</td>
+<td>Basic</td>
+<td>2 Semesters</td>
+</tr>
+<tr class="even">
+<td>SQL</td>
+<td>Moderate</td>
+<td>&lt;1 year</td>
+</tr>
+<tr class="odd">
+<td>HTML</td>
+<td>Basic</td>
+<td>Minimal</td>
+</tr>
+<tr class="even">
+<td>CSS</td>
+<td>Basic</td>
+<td>Minimal</td>
+</tr>
+<tr class="odd">
+<td>DAX</td>
+<td>Basic</td>
+<td>Minimal</td>
+</tr>
+<tr class="even">
+<td>JavaScript</td>
+<td>Near Zero</td>
+<td>Next to none</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="software" class="level2">
+<h2 class="anchored" data-anchor-id="software">Software</h2>
+<ul>
+<li><p><strong>RStudio</strong>: This is my go-to editor for writing reports and apps with Quarto and Shiny. The open-source community is really thriving and makes the R language really approachable.</p></li>
+<li><p><strong>VS Code</strong>: I use this for miscellaneous code editing and any Python work. It is a good editor, but doesn’t fit into my usual workflow.</p></li>
+<li><p><strong>Power BI</strong>: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in closed-source, paid ecosystem is a big negative. The documentation is severly lacking compared to that of the R community.</p></li>
+<li><p><strong>Tableau</strong>: Similar thoughts to Power BI, but I have generally had a better experience. However, I haven’t used it as much.</p></li>
+<li><p><strong>ArcGIS</strong>: I only used this for a class. It was an alright experience, but I haven’t done any complex work to feel out the program yet. All of my mapping needs recently have been filled by <a href="https://plotly.com/r/maps/"><code>{plotly}</code></a> and <a href="https://ggplot2.tidyverse.org/reference/ggsf.html"><code>{ggplot2}</code></a>.</p></li>
+<li><p><strong>Obsidian</strong>: This is a good and adaptable notetaking software.</p></li>
+</ul>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q2xhc3NpZmljYXRpb24lMkNSJTJDTG9naXN0aWMlMjBSZWdyZXNzaW9u" data-listing-date-sort="1732856400000" data-listing-file-modified-sort="1734867489577" data-listing-date-modified-sort="1732856400000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1083">
-<div class="thumbnail">
-<p><a href="./posts/2024-11-28-classification-errors/index.html" class="no-external"></a></p><a href="./posts/2024-11-28-classification-errors/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\2024-11-28-classification-errors\index_files\figure-html\fig-conf-mat-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/2024-11-28-classification-errors/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-11-28-classification-errors/index.html" class="no-external">Balancing Classification Errors for Aggregate Consistency</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-11-28-classification-errors/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Q2xhc3NpZmljYXRpb24='); return false;">
-Classification
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('TG9naXN0aWMlMjBSZWdyZXNzaW9u'); return false;">
-Logistic Regression
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-11-28-classification-errors/index.html" class="no-external">Recently, I was developing a model to predict a binary outcome. I settled on a logistic regression model since that was something I was somewhat familiar with from my…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-11-28-classification-errors/index.html" class="no-external">
-<div class="listing-date">
-Nov 29, 2024
-</div>
-<div class="listing-author">
-Steven Carter
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,15 +1,18 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 12/30/2024
+date-modified: 1/13/2024
 date-format: long
 ---
 
 I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning and data science.
 
+I also listen to podcasts and lectures to center my mind on the important things in life.
+Centering around being better disciplined and having mental fortitude alongside physical strength and intelligence.
+
 # Currently Reading
 
-- *The Bible* - I am tackling the Bible in one year, read chronologically. I hope to continue in future years with the same or similar reading plan.
+- *The Bible* - I am tackling the Bible in one year, read chronologically. I hope to continue in future years with the same or similar reading plan. I am also taking notes whenever my schedule permits.
 
 - [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
@@ -18,6 +21,14 @@ I have been focusing on reading important philosophical and psychological texts 
 - [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
 
 - [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
+
+# Podcasts/Lectures
+
+- [*The Jordan B. Peterson Podcast*](https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN?si=fd1d1b72d8464e06) by [Jordan Peterson](https://www.jordanbpeterson.com/).
+
+- [*The Impossible Life*](https://open.spotify.com/show/3McmSdhO7OR6GB97Nqq69I?si=344f35bad6284a28) by [Garrett Unclebach & Nick Surface](https://www.theimpossible.life/).
+
+- [*James B. Crichton Lectures*](https://open.spotify.com/show/4mgsxnDBgwKIrgn7Z4Wkya?si=5b4e31ed13b4403a) by James Crichton.
 
 # History
 
@@ -32,6 +43,8 @@ My goal is 12 books.
 
 I started reading more deliberately in the fall.
 
+- *The Bible* - Most of the Old Testament I read in the NIV, but the rest I read in the ESV.
+
 - [*Awesome Encounters with God: The Miracles of Jesus*](https://www.thriftbooks.com/w/awesome-encounters-with-god---the-miracles-of-jesus_dr-russell-bone/52477651/#edition=71087318) (2003) by Dr. Russel Bone.
 
 - [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/) (3rd edition) by Wickham, Navarro and Pedersen.
@@ -43,3 +56,7 @@ I started reading more deliberately in the fall.
 - [*The American Story: The Beginnings*](https://www.google.com/books/edition/The_American_Story/r3GVzQEACAAJ?hl=en) (2020) by David and Tim Barton.
 
 - [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by J. R. R. Tolkien.
+
+# Future Reading
+
+I aim to read many of the classic Western works as well as more recent religous books and books on academic topics.
