@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 1/13/2024
+date-modified: 1/24/2024
 date-format: long
 ---
 
@@ -12,15 +12,45 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 # Currently Reading
 
-- *The Bible* - I am tackling the Bible in one year, read chronologically. I hope to continue in future years with the same or similar reading plan. I am also taking notes whenever my schedule permits.
+*The Bible* - I am tackling the Bible in one year, read chronologically. I hope to continue in future years with the same or similar reading plan. I am also taking notes whenever my schedule permits.
 
-- [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 6.3%;" aria-valuenow="23" aria-valuemin="0" aria-valuemax="365"></div>
+</div>
 
-- [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
+---
 
-- [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
+[*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
-- [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 81.8%;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="22"></div>
+</div>
+
+---
+
+[*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 47.6%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="21"></div>
+</div>
+
+---
+
+[*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
+
+<div class="progress" style="margin-top: 1px; margin-bottom: 5px">
+  <div class="progress-bar" role="progressbar" style="width: 45.2%;" aria-valuenow="180" aria-valuemin="0" aria-valuemax="398"></div>
+</div>
+
+---
+
+[*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 92.7%;" aria-valuenow="164" aria-valuemin="0" aria-valuemax="177"></div>
+</div>
+
+---
 
 # Podcasts/Lectures
 
@@ -49,7 +79,7 @@ I started reading more deliberately in the fall.
 
 - [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/) (3rd edition) by Wickham, Navarro and Pedersen.
 
-- [*Hillbilly Elegy*](https://en.wikipedia.org/wiki/Hillbilly_Elegy) (2016) by vice president-elect [J. D. Vance](https://en.wikipedia.org/wiki/JD_Vance).
+- [*Hillbilly Elegy*](https://en.wikipedia.org/wiki/Hillbilly_Elegy) (2016) by Vice President [J. D. Vance](https://en.wikipedia.org/wiki/JD_Vance).
 
 - [*R for Data Science*](https://r4ds.hadley.nz/) (2nd edition, 2017) by [Hadley Wickham](https://github.com/hadley).
 
