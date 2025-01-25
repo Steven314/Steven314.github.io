@@ -1,0 +1,105 @@
+/*-- scss:defaults --*/
+
+$theme: "lux" !default;
+
+//
+// Color system
+//
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #f7f7f9 !default;
+$gray-300: #eceeef !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #919aa1 !default;
+$gray-700: #55595c !default;
+$gray-800: #343a40 !default;
+$gray-900: #1a1a1a !default;
+$black:    #000 !default;
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #d9534f !default;
+$orange:  #fd7e14 !default;
+$yellow:  #f0ad4e !default;
+$green:   #4bbf73 !default;
+$teal:    #20c997 !default;
+$cyan:    #1f9bcf !default;
+
+$primary:       $gray-900 !default;
+$secondary:     $white !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $white !default;
+$dark:          $gray-800 !default;
+
+$progress-bg: $gray-500;
+$progress-bar-bg: $gray-800;
+
+$sidebar-bg: $gray-900;
+$body-color: $gray-200;
+$headings-color: $gray-100;
+$code-color: $green;
+$link-color: $gray-300;
+$dropdown-link-color: $gray-900;
+
+/*-- scss:rules --*/
+
+h2, h3, h4, h5, h6 {
+  text-transform: none;
+  letter-spacing: 1px;
+}
+
+.quarto-container {
+  background-color: $primary;
+}
+
+.progress {
+  height: 0.75rem;
+  border-radius: 8px;
+}
+
+.dropdown-menu, .dropdown-item {
+  border-radius: 8px;
+}
+
+.navbar-logo {
+  max-height: 32px;
+}
+
+.nav-item {
+  margin-right: 1rem;
+}
+
+.nav-footer {
+  background-color: $gray-900;
+}
+
+div .sourceCode, pre .sourceCode {
+  border-radius: 8px;
+  background-color: $gray-800;
+  border-color: $gray-800;
+}
+
+p code:not(.sourceCode),
+li code:not(.sourceCode),
+td code:not(.sourceCode),
+a code:not(.sourceCode),
+.quarto-float-caption code:not(.sourceCode) {
+  background-color: $gray-800;
+  color: $green;
+  border-radius: 8px;
+}
+
+header {
+  background-color: $gray-900;
+}
+
+body {
+  background-color: $gray-900;
+}

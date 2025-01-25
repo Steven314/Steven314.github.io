@@ -32,8 +32,8 @@ website:
   page-footer:
     background: light
     left: |
-      <span class="faux-block">{{< fa brands creative-commons >}} 2025 Steven L. Carter<br></span>
-      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>
+      <span>{{< fa brands creative-commons >}} 2025 Steven L. Carter<br></span>
+      <span>All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>
     right: |
       Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/).<br>
       View the source at [{{< fa brands github >}} GitHub]({{<https://github.com/Steven314/Steven314.github.io>}}).
@@ -41,8 +41,8 @@ website:
 format:
   html:
     theme:
-      light: flatly
-      dark: darkly
+      light: [lux, custom_light.scss]
+      dark:  [lux, custom_dark.scss]
     css: styles.css
     toc: true
     toc-location: left

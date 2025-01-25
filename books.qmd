@@ -1,8 +1,9 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 1/24/2024
+date-modified: 1/25/2024
 date-format: long
+echo: false
 ---
 
 I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning and data science.
@@ -12,43 +13,64 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 # Currently Reading
 
+```{r}
+divs <- c(
+  bible   = 25 / 365,  # days
+  homlr   = 19 / 22,   # chapters
+  tmwr    = 10 / 21,   # chapters
+  lotr    = 184 / 398, # pages
+  cslewis = 170 / 177  # pages
+) |> 
+  scales::label_percent()() |> 
+  purrr::map(
+    ~ glue::glue(
+        '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {.x};" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
+    )
+  )
+```
+
 *The Bible* - I am tackling the Bible in one year, read chronologically. I hope to continue in future years with the same or similar reading plan. I am also taking notes whenever my schedule permits.
 
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 6.3%;" aria-valuenow="23" aria-valuemin="0" aria-valuemax="365"></div>
-</div>
+```{r}
+#| results: asis
+divs$bible
+```
 
 ---
 
 [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 81.8%;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="22"></div>
-</div>
+```{r}
+#| results: asis
+divs$homlr
+```
 
 ---
 
 [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
 
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 47.6%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="21"></div>
-</div>
+```{r}
+#| results: asis
+divs$tmwr
+```
 
 ---
 
 [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
 
-<div class="progress" style="margin-top: 1px; margin-bottom: 5px">
-  <div class="progress-bar" role="progressbar" style="width: 45.2%;" aria-valuenow="180" aria-valuemin="0" aria-valuemax="398"></div>
-</div>
+```{r}
+#| results: asis
+divs$lotr
+```
 
 ---
 
 [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
 
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 92.7%;" aria-valuenow="164" aria-valuemin="0" aria-valuemax="177"></div>
-</div>
+```{r}
+#| results: asis
+divs$cslewis
+```
 
 ---
 
@@ -67,7 +89,6 @@ These are in alphabetical order.
 ## 2025
 
 My goal is 12 books.
-
 
 ## 2024
 

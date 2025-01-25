@@ -8,4 +8,4 @@
 docs/** linguist-generated
 
 _extensions/** linguist-vendored
-_freeze/** linguist_vendored
+_freeze/** linguist-vendored
