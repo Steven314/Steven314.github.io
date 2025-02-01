@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 1/25/2024
+date-modified: 1/31/2024
 date-format: long
 echo: false
 ---
@@ -15,11 +15,9 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible   = 25 / 365,  # days
-  homlr   = 19 / 22,   # chapters
-  tmwr    = 10 / 21,   # chapters
-  lotr    = 184 / 398, # pages
-  cslewis = 170 / 177  # pages
+  bible   = 31  / 365, # days
+  tmwr    = 10  / 21,  # chapters
+  lotr    = 184 / 398  # pages
 ) |> 
   scales::label_percent()() |> 
   purrr::map(
@@ -34,15 +32,6 @@ divs <- c(
 ```{r}
 #| results: asis
 divs$bible
-```
-
----
-
-[*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
-
-```{r}
-#| results: asis
-divs$homlr
 ```
 
 ---
@@ -65,15 +54,6 @@ divs$lotr
 
 ---
 
-[*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
-
-```{r}
-#| results: asis
-divs$cslewis
-```
-
----
-
 # Podcasts/Lectures
 
 - [*The Jordan B. Peterson Podcast*](https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN?si=fd1d1b72d8464e06) by [Jordan Peterson](https://www.jordanbpeterson.com/).
@@ -84,11 +64,18 @@ divs$cslewis
 
 # History
 
-These are in alphabetical order.
-
 ## 2025
 
-My goal is 12 books.
+My goal for this year is 12 books.
+
+<div class="progress"><div class="progress-bar" role="progressbar" style="width: 16.67%; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
+
+---
+
+- [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
+
+- [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
+
 
 ## 2024
 

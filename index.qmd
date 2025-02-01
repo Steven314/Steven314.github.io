@@ -38,6 +38,7 @@ BS in Data Science | August 2020 - May 2023
 - Analyzed enrollment and admissions data to develop a detailed simulation and forecast of university enrollment.
 - Built several Shiny applications for streamlining data analysis and visualization to better inform decision-makers in a dynamic and intuitive manner.
 - Designed a number of webscraping and data aquisition tools to ensure straightforward data sharing and analysis.
+- Produced a streamlined process to download and transform public educational data into a language agnostic format.
 - Developed a check to search for unusual work history and flag for review.
 
 ### Specialties
@@ -81,6 +82,9 @@ BS in Data Science | August 2020 - May 2023
 :::
 
 ## Publications {#sec-publications}
+
+For the 2024 and 2025 articles, I was a major contributer to the software used to perform the transient photovoltage/photocurrent experiments as well as developing scripts to automate initial analysis.
+For the 2023 article, contributed a Python script to automate a basic analysis of some data; a relatively small part of the project.
 
 ### 2025
 

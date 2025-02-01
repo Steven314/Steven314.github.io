@@ -42,7 +42,7 @@ $progress-bg: $gray-700;
 $progress-bar-bg: $red;
 
 $sidebar-bg: $gray-900;
-$body-color: $gray-200;
+$body-color: $gray-300;
 $headings-color: $gray-100;
 $navbar-bg: $black;
 $code-color: $green;
@@ -111,4 +111,9 @@ body {
 
 div.callout-note.callout-style-default > .callout-header {
   background-color: $gray-700;
+}
+
+strong {
+  font-weight: 900;
+  color: $white;
 }

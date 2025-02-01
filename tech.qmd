@@ -52,3 +52,5 @@ In association with R and Python, I use SQL both directly and through [`{dplyr}`
 - **ArcGIS**: I only used this for a class. It was an alright experience, but I haven't done any complex work to feel out the program yet. All of my mapping needs recently have been filled by [`{plotly}`](https://plotly.com/r/maps/) and [`{ggplot2}`](https://ggplot2.tidyverse.org/reference/ggsf.html).
 
 - **Obsidian**: This is a good and adaptable notetaking software.
+
+- [**DuckDB**](https://duckdb.org/): This is a good database software. I used it extensively in January 2025 and had no performance issue or major problems.
