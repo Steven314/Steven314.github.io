@@ -1,17 +1,20 @@
 ---
 title: "S. L. Carter"
-image: www/hex-logo.png
+image: www/headshot.jpg
 toc: false
 about:
   template: solana
-  image-shape: rounded
-  image-width: 12em
+  image-shape: round
+  image-width: 16em
   links:
     - text: LinkedIn
+      icon: linkedin
       href: https://www.linkedin.com/in/steven-carter-77b391271/
     - text: GitHub
+      icon: github
       href: https://github.com/Steven314
     - text: Email
+      icon: envelope
       href: mailto:steven.carter4@utoledo.edu
 ---
 
