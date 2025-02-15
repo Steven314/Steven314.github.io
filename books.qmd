@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 2/8/2024
+date-modified: 2/15/2024
 date-format: long
 echo: false
 ---
@@ -15,14 +15,14 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible   = 39  / 365, # days
-  tmwr    = 12  / 21,  # chapters
-  lotr    = 238 / 398  # pages
+  bible = 46  / 365, # days
+  tmwr  = 13  / 21,  # chapters
+  lotr  = 278 / 398  # pages
 ) |> 
   scales::label_percent()() |> 
   purrr::map(
     ~ glue::glue(
-        '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {.x};" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
+      '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {.x};" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
     )
   )
 ```
