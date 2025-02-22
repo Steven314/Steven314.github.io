@@ -15,9 +15,9 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible = 46  / 365, # days
-  tmwr  = 13  / 21,  # chapters
-  lotr  = 278 / 398  # pages
+  bible = 53  / 365, # days
+  tmwr  = 14  / 21,  # chapters
+  lotr  = 344 / 398  # pages
 ) |> 
   scales::label_percent()() |> 
   purrr::map(
@@ -53,6 +53,20 @@ divs$lotr
 ```
 
 ---
+
+# Future Reading
+
+These are books that are next in line to read.
+
+1. [*We Who Wrestle With God: Perceptions of the Divine*](https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/) (2024) by Jordan Peterson.
+
+2. [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
+
+3. [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
+
+4. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
+
+Plus three more books to reach my goal for the year.
 
 # Podcasts/Lectures
 
@@ -94,7 +108,3 @@ I started reading more deliberately in the fall.
 - [*The American Story: The Beginnings*](https://www.google.com/books/edition/The_American_Story/r3GVzQEACAAJ?hl=en) (2020) by David and Tim Barton.
 
 - [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by J. R. R. Tolkien.
-
-# Future Reading
-
-I aim to read many of the classic Western works as well as more recent religous books and books on academic topics.
