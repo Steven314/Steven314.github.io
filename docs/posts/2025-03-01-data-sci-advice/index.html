@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.39">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Steven Carter">
-<meta name="dcterms.date" content="2024-11-29">
-<title>Balancing Classification Errors for Aggregate Consistency – S. L. Carter</title>
+<meta name="dcterms.date" content="2025-03-01">
+
+<title>Advice for Incoming Data Science Students – S. L. Carter</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +22,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -76,9 +46,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-dark-94a8bc3a71c2e290ed3a36340865d47a.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,7 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -129,15 +102,21 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script><link rel="stylesheet" href="../../styles.css">
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
-<body class="floating nav-fixed slimcontent">
+
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../www/hex-logo.png" alt="" class="navbar-logo"></a>
+    <img src="../../www/hex-logo.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">S. L. Carter</span>
     </a>
@@ -148,7 +127,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -160,8 +139,8 @@ window.Quarto = {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">About</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-about">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-about">    
+        <li>
     <a class="dropdown-item" href="../../books.html">
  <span class="dropdown-text">Reading Log</span></a>
   </li>  
@@ -170,10 +149,10 @@ window.Quarto = {
  <span class="dropdown-text">Technologies I Use</span></a>
   </li>  
     </ul>
-</li>
+  </li>
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/Steven314" target="_blank"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
@@ -184,12 +163,12 @@ window.Quarto = {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-code-slash"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
+          <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/Steven314/Steven314.github.io">
             Source Code
             </a>
@@ -200,17 +179,19 @@ window.Quarto = {
             </a>
           </li>
       </ul>
-</div>
+    </div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Balancing Classification Errors for Aggregate Consistency</h1>
+      <h1 class="title">Advice for Incoming Data Science Students</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Classification</div>
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">Logistic Regression</div>
+                <div class="quarto-category">Education</div>
               </div>
                   </div>
   </div>
@@ -237,14 +218,14 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 29, 2024</p>
+        <p class="date">March 1, 2025</p>
       </div>
     </div>
     
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">November 29, 2024</p>
+        <p class="date-modified">March 1, 2025</p>
       </div>
     </div>
       
@@ -253,201 +234,191 @@ window.Quarto = {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
-  <li>
-<a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a>
+  <li><a href="#class-choices" id="toc-class-choices" class="nav-link active" data-scroll-target="#class-choices">Class Choices</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a>
   <ul class="collapse">
-<li><a href="#precision-and-recall" id="toc-precision-and-recall" class="nav-link" data-scroll-target="#precision-and-recall">Precision and Recall</a></li>
-  <li><a href="#pr-curve" id="toc-pr-curve" class="nav-link" data-scroll-target="#pr-curve">PR Curve</a></li>
+  <li><a href="#markdown-and-latex" id="toc-markdown-and-latex" class="nav-link" data-scroll-target="#markdown-and-latex">Markdown and <span class="math inline">\(\LaTeX\)</span></a></li>
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a>
+  <ul class="collapse">
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><code>{tidyverse}</code></a></li>
+  <li><a href="#data.table" id="toc-data.table" class="nav-link" data-scroll-target="#data.table"><code>{data.table}</code></a></li>
+  <li><a href="#shiny" id="toc-shiny" class="nav-link" data-scroll-target="#shiny">Shiny</a></li>
+  <li><a href="#online-resources" id="toc-online-resources" class="nav-link" data-scroll-target="#online-resources">Online Resources</a></li>
+  </ul></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#other-cool-stuff" id="toc-other-cool-stuff" class="nav-link" data-scroll-target="#other-cool-stuff">Other Cool Stuff</a></li>
+  </ul></li>
+  <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#job-searching" id="toc-job-searching" class="nav-link" data-scroll-target="#job-searching">Job Searching</a></li>
+  <li><a href="#ai" id="toc-ai" class="nav-link" data-scroll-target="#ai">AI</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
-</li>
-  </ul></nav>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction</h1>
-<p>Recently, I was developing a model to predict a binary outcome. I settled on a logistic regression model since that was something I was somewhat familiar with from my Econometrics class. From a logistic regression model you estimate the probability of the observation belonging to the positive class. As one would guess, a probability greater than 50% would indicate the positive class, and below 50%, the negative class. This is the threshold value; the threshold where the classification changes from one outcome to the other.</p>
-<p><span id="eq-threshold"><span class="math display">\[
-\hat{y_i} = \begin{cases}
-p(x_i) \geq t, &amp;\text{then } 1 \\
-p(x_i) &lt; t, &amp;\text{then } 0
-\end{cases}
-\tag{1}\]</span></span> where <span class="math inline">\(t\)</span> is the threshold value and <span class="math inline">\(t\in[0,1]\)</span>.</p>
-</section><section id="problem" class="level1 page-columns page-full"><h1>Problem</h1>
-<p>However, the response variable was quite imbalanced; about 75% of one class and 25% of the other.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> In checking the fit I noticed the model was overestimating the majority class. This was problematic as the objective was to build a model that would form an accurate estimate of the total number (or proportion) of positive cases while looking at each individual in the sample. The individuals estimated to be in the positive class would then be used for further estimation, but that is not the point of this exercise.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;The example data I’ll be using is slightly imbalanced, 51.6%.</p></div></div><p>When I had come across this situation in the past I tried varying the threshold value manually to manipulate the quantity of positive classifications. This worked okay, but was cumbersome and annoying. I thought that there must be a better way to determine the threshold.</p>
-<p>My second attempt to solve this issue came in the form of weights By manually adjusting the weight for misclassification along with the resulting confusion matrix, I would attempt to balance the quantities of errors so that the overall prediction prevalence of the positive class was similar to the training data. This again worked okay for my purposes, but I knew there still had to be a better way.</p>
-</section><section id="solution" class="level1"><h1>Solution</h1>
-<p>I messed around with adjusting a few methods for handling imbalanced classes, but none of them seemed to help.</p>
-<p>The objective was to neither over- or underestimate the number of positive cases. Another way of saying that is that I need to have the same number of Type I (false positive) and Type II (false negative) errors.</p>
-<p>Looking at a confusion matrix (<a href="#fig-conf-mat" class="quarto-xref">Figure&nbsp;1</a>), taking Class 1 as our positive class, we have the number of Type I errors in the top-right and the number of Type II errors in the bottom-left.</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/yardstick">yardstick</a></span><span class="op">)</span> <span class="co"># two_class_example is from yardstick</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">two_class_example</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://yardstick.tidymodels.org/reference/conf_mat.html">conf_mat</a></span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"heatmap"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-conf-mat-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: A confusion matrix displaying the results from the two_class_example dataset."><img src="index_files/figure-html/fig-conf-mat-1.png" class="img-fluid figure-img" width="480"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: A confusion matrix displaying the results from the <code>two_class_example</code> dataset.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<p>While reading through the documentation for <a href="https://yardstick.tidymodels.org/"><code>{yardstick}</code></a>, I came across Precision-Recall (PR) Curves (<a href="https://yardstick.tidymodels.org/reference/pr_curve.html"><code>pr_curve</code></a>). What is convenient about this curve is that it checks the precision and recall for each unique probability found in your dataset. This ends up being very useful for us. To see how we have to look at the definitions of precision and recall.</p>
-<section id="precision-and-recall" class="level2"><h2 class="anchored" data-anchor-id="precision-and-recall">Precision and Recall</h2>
-<p>There are many different websites that provide a definition for these metrics. You can easily find several detailed explanations with a quick search.</p>
-<p><span id="eq-precision-recall"><span class="math display">\[
-\begin{split}
-\text{Precision}&amp;= \frac{\text{True Positive}}{\text{True Positive}+ \text{False Positive}} = \frac{TP}{TP+FP} \\
-\text{Recall} &amp;= \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}} = \frac{TP}{TP+FN}
-\end{split}
-\tag{2}\]</span></span></p>
-<p>If we rearrange these definitions to solve for <span class="math inline">\(FP\)</span> and <span class="math inline">\(FN\)</span>, we can make some progress.</p>
-<p><span id="eq-precision"><span class="math display">\[
-\begin{aligned}
-\text{Precision}\cdot(TP+FP) &amp;= TP \\
-(TP + FP) &amp;= \frac{TP}{\text{Precision}} \\
-FP &amp;= \frac{TP}{\text{Precision}} - TP \\
-FP &amp;= TP \cdot \left(\frac{1}{\text{Precision}} - 1\right)
-\end{aligned}
-\tag{3}\]</span></span></p>
-<p>The same algebraic process can be done for recall which gives,</p>
-<p><span id="eq-recall"><span class="math display">\[
-FN = TP \cdot \left(\frac{1}{\text{Recall}} - 1\right)
-\tag{4}\]</span></span></p>
-<p>Now looking back to our objective, to make the quantities of Type I and Type II errors equal, we should set <span class="math inline">\(FP\)</span> and <span class="math inline">\(FN\)</span> equal to each other.</p>
-<p><span id="eq-recall-precision-equal"><span class="math display">\[
-\begin{aligned}
-FN &amp;= FP \\
-TP \cdot \left(\frac{1}{\text{Recall}} - 1\right) &amp;= TP \cdot \left(\frac{1}{\text{Precision}} - 1\right) \\
-\frac{1}{\text{Recall}} &amp;= \frac{1}{\text{Precision}} \\
-\text{Precision} &amp;= \text{Recall}
-\end{aligned}
-\tag{5}\]</span></span></p>
-<p>So we see that our error types will be equal in quantity when our precision and recall are equal.</p>
-</section><section id="pr-curve" class="level2"><h2 class="anchored" data-anchor-id="pr-curve">PR Curve</h2>
-<p>Now that we know what we want to achieve, we have to write the code to do it.</p>
-<p>Using <a href="https://yardstick.tidymodels.org/reference/pr_curve.html"><code>pr_curve</code></a>, we will shortcut a search of the possible threshold values ranging from zero to one.</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">pr</span> <span class="op">&lt;-</span> <span class="va">two_class_example</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://yardstick.tidymodels.org/reference/pr_curve.html">pr_curve</a></span><span class="op">(</span><span class="va">truth</span>, <span class="va">Class1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pr</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
-<span><span class="co">#&gt;   .threshold  recall precision</span></span>
-<span><span class="co">#&gt;        &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1     Inf    0               1</span></span>
-<span><span class="co">#&gt; 2       1.00 0.00388         1</span></span>
-<span><span class="co">#&gt; 3       1.00 0.00775         1</span></span>
-<span><span class="co">#&gt; 4       1.00 0.0116          1</span></span>
-<span><span class="co">#&gt; 5       1.00 0.0155          1</span></span>
-<span><span class="co">#&gt; 6       1.00 0.0194          1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We can plot the curve to find the point where precision and recall are equal.</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">pr</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">1</span>, intercept <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"grey"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-pr-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pr-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-pr-curve-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: A PR curve for the two_class_example dataset."><img src="index_files/figure-html/fig-pr-curve-1.png" class="img-fluid figure-img" width="480"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pr-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: A PR curve for the <code>two_class_example</code> dataset.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<p>We see that precision and recall are equal along the dashed line and this meets the PR curve at about (0.85, 0.85). The exact point would be available in <code>pr</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pr_diff</span> <span class="op">&lt;-</span> <span class="va">pr</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>diff <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">precision</span> <span class="op">-</span> <span class="va">recall</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diff</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pr_diff</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span><span class="co">#&gt;   .threshold recall precision    diff</span></span>
-<span><span class="co">#&gt;        &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1      0.610  0.864     0.864 0      </span></span>
-<span><span class="co">#&gt; 2      0.618  0.860     0.864 0.00335</span></span>
-<span><span class="co">#&gt; 3      0.602  0.868     0.865 0.00335</span></span>
-<span><span class="co">#&gt; 4      0.601  0.868     0.862 0.00668</span></span>
-<span><span class="co">#&gt; 5      0.618  0.857     0.863 0.00669</span></span>
-<span><span class="co">#&gt; 6      0.590  0.868     0.858 0.00998</span></span>
-<span></span>
-<span><span class="va">threshold</span> <span class="op">&lt;-</span> <span class="va">pr_diff</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">.threshold</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This tells us that a threshold of 0.61 will provide us with a balanced number of positive cases. We can check this my looking at the confusion matrix when we use 0.61 as the threshold.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">two_class_adjusted</span> <span class="op">&lt;-</span> <span class="va">two_class_example</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    predicted_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">Class1</span> <span class="op">&gt;=</span> <span class="va">threshold</span>, <span class="st">"Class1"</span>, <span class="st">"Class2"</span><span class="op">)</span>,</span>
-<span>      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">two_class_example</span><span class="op">$</span><span class="va">truth</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="va">two_class_adjusted</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://yardstick.tidymodels.org/reference/conf_mat.html">conf_mat</a></span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted_threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"heatmap"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-adjusted-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-adjusted-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-adjusted-conf-mat-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: The confusion matrix with the adjusted threshold value."><img src="index_files/figure-html/fig-adjusted-conf-mat-1.png" class="img-fluid figure-img" width="480"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-adjusted-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: The confusion matrix with the adjusted threshold value.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<p>Notice how now the lower-left and upper-right quadrants have equal values. This means that the number of observations classified as Class 1 matches the amount in the training data.</p>
-<p>However, this can come at the cost of reduced accuracy. Funnily enough this is not the case for this particular dataset, but it was for the dataset I was using.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">two_class_adjusted</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted</span>, <span class="va">predicted_threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols            <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">predicted</span>, <span class="va">predicted_threshold</span><span class="op">)</span>,</span>
-<span>    names_to        <span class="op">=</span> <span class="st">"threshold"</span>,</span>
-<span>    values_to       <span class="op">=</span> <span class="st">"predicted"</span>,</span>
-<span>    names_transform <span class="op">=</span> \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="st">"predicted"</span>, <span class="fl">0.5</span>, <span class="va">threshold</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://yardstick.tidymodels.org/reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">threshold</span>, accuracy <span class="op">=</span> <span class="va">.estimate</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
-<span><span class="co">#&gt;   threshold accuracy</span></span>
-<span><span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1     0.5      0.838</span></span>
-<span><span class="co">#&gt; 2     0.610    0.86</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Of course, in reality you would want to find the best threshold for each training set and average them to apply to the test set.</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+
+
+<p>Recently I had the opportunity to speak to current Data Science, Data Analytics, Economics, and Computer Science students. I wanted to collect some of the thoughts expressed by <a href="https://www.linkedin.com/in/steven-carter-77b391271/">myself</a> and the other panelists: <a href="https://www.linkedin.com/in/jared-t-kaplan-63244918a/">Jared</a> and <a href="https://www.linkedin.com/in/ranesh-guruparan/">Ranesh</a>.</p>
+<section id="class-choices" class="level1">
+<h1>Class Choices</h1>
+<ul>
+<li><em>Econometrics</em> - If you have any interest in statistics, which I assume you do as a data science student, take Econometrics I and II. At least at UT they are based in R and teach valuable stats skills in a relavent and growing language.</li>
+<li><em>Data Visualization</em> - This class was super valuable in learning how to present information.</li>
+</ul>
+<p>I would recommend earning a minor (or even a double major) in a field that interests you. Perhaps physics, economics, geography and planning, or computer science just to name a few. This will give you a subject matter specialty. A trouble with working on personal projects is knowing what to do. Having an area of interest that you are knowledgable on will give you some ideas for projects.</p>
+</section>
+<section id="software" class="level1">
+<h1>Software</h1>
+<p>While in undergrad what software you use will somewhat be determined by what your professors choose. If you are taking an economics or statistics class you will probably be using R, but in other STEM data-related classes you might be using Python or unfortunately Java or MATLAB (for some reason UT’s Engineering department likes those languages). Outside of classes, what you use and learn is largely up to you.</p>
+<p>The primary languages I recommend are <a href="https://www.python.org/">Python</a> and <a href="https://www.r-project.org/">R</a>. On the side, it is also useful to know SQL and some web development languages (HTML, CSS, JS). As a data scientist you are going to end up learning and using SQL.</p>
+<section id="markdown-and-latex" class="level2">
+<h2 class="anchored" data-anchor-id="markdown-and-latex">Markdown and <span class="math inline">\(\LaTeX\)</span></h2>
+<p>Markdown is a must in my mind. It is used for all kinds of formats (including this article). I use it every day for taking notes, writing reports, and writing documentation.</p>
+<ul>
+<li><a href="https://www.markdownguide.org/">Markdown Guide</a></li>
+</ul>
+<p><span class="math inline">\(\LaTeX\)</span> is an older tool used to create high quality documents. It is the language that produces textbooks and academic journals. I would recommend becoming somewhat familiar with, especially the math formatting.</p>
+<ul>
+<li><a href="https://www.overleaf.com/">Overleaf</a> is a good site to help you get exposed to <span class="math inline">\(\LaTeX\)</span>.</li>
+</ul>
+<p>If you could only learn one, pick Markdown, but knowing both is beneficial.</p>
+</section>
+<section id="r" class="level2">
+<h2 class="anchored" data-anchor-id="r">R</h2>
+<p>R is great for statistics. That is its main selling point. Base R is not the best in my opinion, but the community is <strong>very</strong> active and has produced a ton of high quality packages which make R incredibly approachable.</p>
+<p>The two primary packages for handling tables are <a href="https://www.tidyverse.org/"><code>{tidyverse}</code></a> and <a href="https://rdatatable.gitlab.io/data.table/"><code>{data.table}</code></a>.</p>
+<section id="tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="tidyverse"><code>{tidyverse}</code></h3>
+<p>This is a collection of packages that are unified in their design. These are great for ease of use, but can be a little slow for large operations. This based around <a href="https://tibble.tidyverse.org/"><code>{tibble}</code></a>. All of the functions in this have a similar style and can be similar to plain English.</p>
+<p>For modeling there is the <a href="https://www.tidymodels.org/"><code>{tidymodels}</code></a> ecosystem. This collects many different models from a variety of packages under a consistent framework.</p>
+</section>
+<section id="data.table" class="level3">
+<h3 class="anchored" data-anchor-id="data.table"><code>{data.table}</code></h3>
+<p>This package is similar in purpose to main <code>{tidyverse}</code> packages of <a href="https://dplyr.tidyverse.org/"><code>{dplyr}</code></a> and <a href="https://tidyr.tidyverse.org/"><code>{tidyr}</code></a>, but is built to be more memory and time efficient. The syntax is more similar to base R and in my opinion is more difficult than the <code>{tidyverse}</code>.</p>
+<p>I only really use this when I need something to be fast, favoring the <code>{tidyverse}</code> for regular operations.</p>
+</section>
+<section id="shiny" class="level3">
+<h3 class="anchored" data-anchor-id="shiny">Shiny</h3>
+<p><a href="https://shiny.posit.co/">R Shiny</a> is an awesome tool to build interactive dashboards, reports, webpages, etc.</p>
+<p>Combining the interactive power of this with <a href="https://plotly.com/r/"><code>{plotly}</code></a>, can produce very nice dashboards with a high level of customization.</p>
+</section>
+<section id="online-resources" class="level3">
+<h3 class="anchored" data-anchor-id="online-resources">Online Resources</h3>
+<p>The R community has put together a plethora of free textbooks and guides.</p>
+<p>I have read these ones so far, I’ve ordered them by how difficult I feel the content is:</p>
+<ul>
+<li><a href="https://r4ds.hadley.nz/"><em>R for Data Science</em></a> by <a href="https://github.com/hadley">Hadley Wickham</a>.</li>
+<li><a href="https://ggplot2-book.org/"><em>ggplot2: Elegant Graphics for Data Analysis</em></a> by Wickham, Navarro and Pedersen.</li>
+<li><a href="https://www.tmwr.org/"><em>Tidy Modeling with R</em></a> by Kuhn &amp; Silge.</li>
+<li><a href="https://bradleyboehmke.github.io/HOML/"><em>Hands-On Machine Learning with R</em></a> by Boehmke &amp; Greenwell.</li>
+</ul>
+<p>Others that I have read pieces of, or I think would be good to read:</p>
+<ul>
+<li><a href="https://rc2e.com/"><em>R Cookbook</em></a> by Teetor.</li>
+<li><a href="https://otexts.com/fpp3/"><em>Forecasting: Principles and Practice</em></a> by Hyndman and Athanasopoulos.</li>
+<li><a href="https://mastering-shiny.org/"><em>Mastering Shiny</em></a> by Wickham.</li>
+<li><a href="https://adv-r.hadley.nz/"><em>Advanced R</em></a> by Wickham.</li>
+<li><a href="https://r-pkgs.org/"><em>R Packages</em></a> by Wickham &amp; Bryan.</li>
+</ul>
+<p>There are tons of other books available. The <a href="https://www.bigbookofr.com/"><em>Big Book of R</em></a> lists probably close to all of them.</p>
+</section>
+</section>
+<section id="python" class="level2">
+<h2 class="anchored" data-anchor-id="python">Python</h2>
+<p>I haven’t used Python as much recently, but it is similar to R, but not as focused on statistics. Python has more ability for general programming needs. It is, however, the go-to language for many when doing machine learning.</p>
+<p>The main libraries for Python are <a href="https://numpy.org/">NumPy</a>, <a href="https://matplotlib.org/">matplotlib</a>, and <a href="https://pandas.pydata.org/">pandas</a>. More recently a competitor to pandas has emerged: <a href="https://pola.rs/">polars</a>. For machine learning and modeling there are <a href="https://www.tensorflow.org/">tensorflow</a>, <a href="https://pytorch.org/">pytorch</a>, <a href="https://keras.io/">kerars</a>, and <a href="https://scipy.org/">SciPy</a>.</p>
+<p><a href="https://shiny.posit.co/py/">Shiny</a> and <a href="https://plotly.com/python/">plotly</a> are also available for Python.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Opinion">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Opinion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I am not really a fan of the documenation style of Python compared to R. To me to R docs are very consistent thanks to <a href="https://roxygen2.r-lib.org/"><code>{roxygen2}</code></a>, but the Python docs are more clutered.</p>
+</div>
+</div>
+<p>There are a number of tutorial websites and videos available. A few of resources mentioned during the Q&amp;A panel were <a href="https://www.kaggle.com/">Kaggle</a>, DataCamp, <a href="https://www.w3schools.com/python/default.asp">W3 Schools</a> (they have lots of languages available), and <a href="https://stackoverflow.com/">StackOverflow</a> (which has Q&amp;A content for all kinds of programming topics).</p>
+</section>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>I have used <a href="https://quarto.org/">Quarto</a> almost daily for many months. It is incredibly useful. It is similar to <a href="https://jupyter.org/">Jupyter</a>. I’m not up to date on what Jupyter can do, but Quarto can use R, Python, Julia, and ObservableJS. It is written in plain text and can take advantage of <span class="math inline">\(\LaTeX\)</span> and Markdown with some additional features. It can render to HTML, PDF, Word, and other formats including <a href="https://quarto.org/docs/presentations/revealjs/">slideshows</a>. You can even create books (such as many of the ones <a href="#online-resources">listed above</a>) and websites (like this one) using Quarto.</p>
+<p>I would recommend using this for homework assignments and projects if the professor allows.</p>
+</section>
+<section id="other-cool-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="other-cool-stuff">Other Cool Stuff</h2>
+<ul>
+<li><a href="https://duckdb.org/">DuckDB</a> - A fairly new and handy DBMS that integrates nicely with R, Python, and others.</li>
+<li><a href="https://obisidian.md">Obsidian</a> - A good notetaking software that uses Markdown formatting. I used this for my last two years in college.</li>
+<li>Linux - If you want to broaden your computer skills, learn about Linux. Buy a Raspberry Pi (or mini computer) and start tinkering. Or, if you have an old laptop, install <a href="https://www.linuxmint.com/">Mint</a> or <a href="https://pop.system76.com/">Pop!_OS</a> (I have used both). Windows 10 is reaching end of support in October 2025. It may be time to jump ship and embrace the penguin.</li>
+<li><a href="https://www.docker.com/">Docker</a> - This can help deploy apps locally or on remote servers. I use this with my Raspberry Pi and at work.</li>
+</ul>
+</section>
+</section>
+<section id="skills" class="level1">
+<h1>Skills</h1>
+<p>My number of one skill to improve is visualization and communication (I consider those one thing, but you could split it). By expressing your ideas in a clear and concise manner it will be easier for others to understand and absorb the results. For that I would recommend becoming skilled in <a href="https://ggplot2.tidyverse.org/"><code>{ggplot2}</code></a> and Plotly. Take the time to understand what type of plot is best for different situations.</p>
+<p>It is important to know your audience. When presenting to fellow analysts or developers, show a level of detail that demonstrates a sufficient understanding of the design choices and statistics. When presenting to colleauges who are not trained in more advanced statistics they don’t need to know (and probably don’t care) about the fine details about your code or the exact statistics. They care about the results and what that means for the business. They need a compact, easy-to-digest answer that gives them confidence in your ability and trust in your results.</p>
+<p>Another useful job skill is knowing how to search effectively. By using the right words you’re going to have a better chance at finding that tiny snipped you need from the daunting documentation or finding the right Q&amp;A on StackOverflow. Certain professors might tell you not to look up anything, but that’s just an unreasonable expectation in the real world.</p>
+</section>
+<section id="job-searching" class="level1">
+<h1>Job Searching</h1>
+<p>I am no expert on job searching, but here is what I recall from the panel:</p>
+<ul>
+<li>Have a good, detailed but concise resume. Check your resume against an ATS checker to make sure it gets past the automated systems. (It’s unfortunate that’s where we are, but we have to make do.)</li>
+<li>Apply to many job listings.</li>
+<li>Don’t put too much emphasis on the technical interview questions. Focus more on getting interviews. You can brush up on some technical pieces in the days prior to the interview.</li>
+<li>Use the people you know. Your professors might know the right people or have research positions open. This could also open up educational opportunities (such as a graduate degree).</li>
+<li>I suggest putting together a <a href="https://pages.github.com/">GitHub Pages site</a>. You can think of this as a portfolio. It is a good project to learn some web development as well.
+<ul>
+<li>It can also be used to showcase your packages or projects. Your public projects on GitHub are allowed a site for free.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ai" class="level1">
+<h1>AI</h1>
+<p><strong>Don’t use AI for your homework</strong>. That’s just hurting yourself in the long-run. It is better to learn things the hard way. Once you are experienced and comfortable in a language, then you can suppliment your workflow with AI helpers.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Opinion">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Opinion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I personally do not find it very useful. The only time I use AI is essentially for autocompletion of file paths and speeding up my typing when writing documentation.</p>
+</div>
+</div>
+<p>It is important to not become reliant on AI. In its current state, AI far from a perfect programmer. It makes plenty of mistakes, but you can still get pretty far with it. If you are good with the language, you will more easily be able to correct those mistakes.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Hopefully this has been beneficial. If you have questions, feel free to email me. If you have additions, you can email me or open a pull request with your additions.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1009,7 +980,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><span><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2025 Steven L. Carter<br></span> <span>All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons CC BY 4.0</a></span></p>
 </div>   
@@ -1020,38 +992,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a>.<br> View the source at <a href="{{<https://github.com/Steven314/Steven314.github.io>}}"><i class="fa-brands fa-github" aria-label="github"></i> GitHub</a>.</p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
+</footer>
+
+
 
 
 </body></html>

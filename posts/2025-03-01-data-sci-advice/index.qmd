@@ -1,0 +1,210 @@
+---
+title: "Advice for Incoming Data Science Students"
+categories: [Education]
+draft: false
+echo: true
+# code-link: true
+lightbox: true
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+reference-location: margin
+author:
+  - name: Steven Carter
+    email: steven.carter4@utoledo.edu
+    affiliation:
+      - name: The University of Toledo
+        city: Toledo
+        state: OH
+        url: https://www.utoledo.edu/
+date: 3/1/2025
+date-modified: today
+---
+
+Recently I had the opportunity to speak to current Data Science, Data Analytics, Economics, and Computer Science students.
+I wanted to collect some of the thoughts expressed by [myself](https://www.linkedin.com/in/steven-carter-77b391271/) and the other panelists: [Jared](https://www.linkedin.com/in/jared-t-kaplan-63244918a/) and [Ranesh](https://www.linkedin.com/in/ranesh-guruparan/).
+
+# Class Choices
+
+- *Econometrics* - If you have any interest in statistics, which I assume you do as a data science student, take Econometrics I and II. At least at UT they are based in R and teach valuable stats skills in a relavent and growing language.
+- *Data Visualization* - This class was super valuable in learning how to present information.
+
+I would recommend earning a minor (or even a double major) in a field that interests you.
+Perhaps physics, economics, geography and planning, or computer science just to name a few.
+This will give you a subject matter specialty.
+A trouble with working on personal projects is knowing what to do.
+Having an area of interest that you are knowledgable on will give you some ideas for projects.
+
+# Software
+
+While in undergrad what software you use will somewhat be determined by what your professors choose.
+If you are taking an economics or statistics class you will probably be using R, but in other STEM data-related classes you might be using Python or unfortunately Java or MATLAB (for some reason UT's Engineering department likes those languages).
+Outside of classes, what you use and learn is largely up to you.
+
+The primary languages I recommend are [Python](https://www.python.org/) and [R](https://www.r-project.org/).
+On the side, it is also useful to know SQL and some web development languages (HTML, CSS, JS).
+As a data scientist you are going to end up learning and using SQL.
+
+## Markdown and $\LaTeX$
+
+Markdown is a must in my mind.
+It is used for all kinds of formats (including this article).
+I use it every day for taking notes, writing reports, and writing documentation.
+
+- [Markdown Guide](https://www.markdownguide.org/)
+
+$\LaTeX$ is an older tool used to create high quality documents.
+It is the language that produces textbooks and academic journals.
+I would recommend becoming somewhat familiar with, especially the math formatting.
+
+- [Overleaf](https://www.overleaf.com/) is a good site to help you get exposed to $\LaTeX$.
+
+If you could only learn one, pick Markdown, but knowing both is beneficial.
+
+## R
+
+R is great for statistics.
+That is its main selling point.
+Base R is not the best in my opinion, but the community is **very** active and has produced a ton of high quality packages which make R incredibly approachable.
+
+The two primary packages for handling tables are [`{tidyverse}`](https://www.tidyverse.org/) and [`{data.table}`](https://rdatatable.gitlab.io/data.table/).
+
+### `{tidyverse}`
+
+This is a collection of packages that are unified in their design. 
+These are great for ease of use, but can be a little slow for large operations. 
+This based around [`{tibble}`](https://tibble.tidyverse.org/).
+All of the functions in this have a similar style and can be similar to plain English.
+
+For modeling there is the [`{tidymodels}`](https://www.tidymodels.org/) ecosystem.
+This collects many different models from a variety of packages under a consistent framework.
+
+### `{data.table}`
+
+This package is similar in purpose to main `{tidyverse}` packages of [`{dplyr}`](https://dplyr.tidyverse.org/) and [`{tidyr}`](https://tidyr.tidyverse.org/), but is built to be more memory and time efficient. The syntax is more similar to base R and in my opinion is more difficult than the `{tidyverse}`.
+
+I only really use this when I need something to be fast, favoring the `{tidyverse}` for regular operations.
+
+### Shiny
+
+[R Shiny](https://shiny.posit.co/) is an awesome tool to build interactive dashboards, reports, webpages, etc.
+
+Combining the interactive power of this with [`{plotly}`](https://plotly.com/r/), can produce very nice dashboards with a high level of customization.
+
+### Online Resources
+
+The R community has put together a plethora of free textbooks and guides.
+
+I have read these ones so far, I've ordered them by how difficult I feel the content is:
+
+- [*R for Data Science*](https://r4ds.hadley.nz/) by [Hadley Wickham](https://github.com/hadley).
+- [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/) by Wickham, Navarro and Pedersen.
+- [*Tidy Modeling with R*](https://www.tmwr.org/) by Kuhn & Silge.
+- [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) by Boehmke & Greenwell.
+
+Others that I have read pieces of, or I think would be good to read:
+
+- [*R Cookbook*](https://rc2e.com/) by Teetor.
+- [*Forecasting: Principles and Practice*](https://otexts.com/fpp3/) by Hyndman and Athanasopoulos.
+- [*Mastering Shiny*](https://mastering-shiny.org/) by Wickham.
+- [*Advanced R*](https://adv-r.hadley.nz/) by Wickham.
+- [*R Packages*](https://r-pkgs.org/) by Wickham & Bryan.
+
+There are tons of other books available.
+The [*Big Book of R*](https://www.bigbookofr.com/) lists probably close to all of them.
+
+## Python
+
+I haven't used Python as much recently, but it is similar to R, but not as focused on statistics.
+Python has more ability for general programming needs.
+It is, however, the go-to language for many when doing machine learning.
+
+The main libraries for Python are [NumPy](https://numpy.org/), [matplotlib](https://matplotlib.org/), and [pandas](https://pandas.pydata.org/).
+More recently a competitor to pandas has emerged: [polars](https://pola.rs/).
+For machine learning and modeling there are [tensorflow](https://www.tensorflow.org/), [pytorch](https://pytorch.org/), [kerars](https://keras.io/), and [SciPy](https://scipy.org/).
+
+[Shiny](https://shiny.posit.co/py/) and [plotly](https://plotly.com/python/) are also available for Python.
+
+::: {.callout-note title="Opinion"}
+
+I am not really a fan of the documenation style of Python compared to R.
+To me to R docs are very consistent thanks to [`{roxygen2}`](https://roxygen2.r-lib.org/), but the Python docs are more clutered.
+
+:::
+
+There are a number of tutorial websites and videos available.
+A few of resources mentioned during the Q&A panel were [Kaggle](https://www.kaggle.com/), DataCamp, [W3 Schools](https://www.w3schools.com/python/default.asp) (they have lots of languages available), and [StackOverflow](https://stackoverflow.com/) (which has Q&A content for all kinds of programming topics).
+
+
+## Quarto
+
+I have used [Quarto](https://quarto.org/) almost daily for many months.
+It is incredibly useful.
+It is similar to [Jupyter](https://jupyter.org/).
+I'm not up to date on what Jupyter can do, but Quarto can use R, Python, Julia, and ObservableJS.
+It is written in plain text and can take advantage of $\LaTeX$ and Markdown with some additional features.
+It can render to HTML, PDF, Word, and other formats including [slideshows](https://quarto.org/docs/presentations/revealjs/).
+You can even create books (such as many of the ones [listed above](#online-resources)) and websites (like this one) using Quarto.
+
+I would recommend using this for homework assignments and projects if the professor allows.
+
+## Other Cool Stuff
+
+- [DuckDB](https://duckdb.org/) - A fairly new and handy DBMS that integrates nicely with R, Python, and others.
+- [Obsidian](https://obisidian.md) - A good notetaking software that uses Markdown formatting. I used this for my last two years in college.
+- Linux - If you want to broaden your computer skills, learn about Linux. Buy a Raspberry Pi (or mini computer) and start tinkering. Or, if you have an old laptop, install [Mint](https://www.linuxmint.com/) or [Pop!_OS](https://pop.system76.com/) (I have used both). Windows 10 is reaching end of support in October 2025. It may be time to jump ship and embrace the penguin.
+- [Docker](https://www.docker.com/) - This can help deploy apps locally or on remote servers. I use this with my Raspberry Pi and at work.
+
+# Skills
+
+My number of one skill to improve is visualization and communication (I consider those one thing, but you could split it).
+By expressing your ideas in a clear and concise manner it will be easier for others to understand and absorb the results.
+For that I would recommend becoming skilled in [`{ggplot2}`](https://ggplot2.tidyverse.org/) and Plotly.
+Take the time to understand what type of plot is best for different situations.
+
+It is important to know your audience.
+When presenting to fellow analysts or developers, show a level of detail that demonstrates a sufficient understanding of the design choices and statistics.
+When presenting to colleauges who are not trained in more advanced statistics they don't need to know (and probably don't care) about the fine details about your code or the exact statistics.
+They care about the results and what that means for the business.
+They need a compact, easy-to-digest answer that gives them confidence in your ability and trust in your results.
+
+Another useful job skill is knowing how to search effectively.
+By using the right words you're going to have a better chance at finding that tiny snipped you need from the daunting documentation or finding the right Q&A on StackOverflow.
+Certain professors might tell you not to look up anything, but that's just an unreasonable expectation in the real world.
+
+# Job Searching
+
+I am no expert on job searching, but here is what I recall from the panel:
+
+- Have a good, detailed but concise resume. Check your resume against an ATS checker to make sure it gets past the automated systems. (It's unfortunate that's where we are, but we have to make do.)
+- Apply to many job listings.
+- Don't put too much emphasis on the technical interview questions. Focus more on getting interviews. You can brush up on some technical pieces in the days prior to the interview.
+- Use the people you know. Your professors might know the right people or have research positions open. This could also open up educational opportunities (such as a graduate degree).
+- I suggest putting together a [GitHub Pages site](https://pages.github.com/). You can think of this as a portfolio. It is a good project to learn some web development as well. 
+  - It can also be used to showcase your packages or projects. Your public projects on GitHub are allowed a site for free.
+
+# AI 
+
+**Don't use AI for your homework**.
+That's just hurting yourself in the long-run.
+It is better to learn things the hard way.
+Once you are experienced and comfortable in a language, then you can suppliment your workflow with AI helpers.
+
+::: {.callout-note title="Opinion"}
+
+I personally do not find it very useful.
+The only time I use AI is essentially for autocompletion of file paths and speeding up my typing when writing documentation.
+
+:::
+
+It is important to not become reliant on AI.
+In its current state, AI far from a perfect programmer.
+It makes plenty of mistakes, but you can still get pretty far with it.
+If you are good with the language, you will more easily be able to correct those mistakes.
+
+# Conclusion
+
+Hopefully this has been beneficial.
+If you have questions, feel free to email me.
+If you have additions, you can email me or open a pull request with your additions.

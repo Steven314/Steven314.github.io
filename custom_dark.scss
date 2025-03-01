@@ -91,6 +91,9 @@ p code:not(.sourceCode),
 li code:not(.sourceCode),
 td code:not(.sourceCode),
 a code:not(.sourceCode),
+h1 code:not(.sourceCode),
+h2 code:not(.sourceCode),
+h3 code:not(.sourceCode),
 .quarto-float-caption code:not(.sourceCode) {
   background-color: $gray-800;
   color: $green;
