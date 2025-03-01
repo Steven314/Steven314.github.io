@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 2/15/2024
+date-modified: today
 date-format: long
 echo: false
 ---
@@ -15,11 +15,12 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible = 53  / 365, # days
+  bible = 60  / 365, # days
   tmwr  = 14  / 21,  # chapters
-  lotr  = 344 / 398  # pages
+  lotr  = 374 / 398, # pages
+  wwwwg = 16  / 505  # pages
 ) |> 
-  scales::label_percent()() |> 
+  scales::label_percent(0.01)() |> 
   purrr::map(
     ~ glue::glue(
       '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {.x};" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
@@ -54,17 +55,24 @@ divs$lotr
 
 ---
 
+[*We Who Wrestle With God: Perceptions of the Divine*](https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/) (2024) by Jordan Peterson.
+
+```{r}
+#| results: asis
+divs$wwwwg
+```
+
+---
+
 # Future Reading
 
 These are books that are next in line to read.
 
-1. [*We Who Wrestle With God: Perceptions of the Divine*](https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/) (2024) by Jordan Peterson.
+1. [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
-2. [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
+2. [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
 
-3. [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
-
-4. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
+3. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
 
 Plus three more books to reach my goal for the year.
 
