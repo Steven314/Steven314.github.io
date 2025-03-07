@@ -19,7 +19,7 @@ author:
         state: OH
         url: https://www.utoledo.edu/
 date: 3/1/2025
-date-modified: today
+date-modified: 3/1/2025
 ---
 
 Recently I had the opportunity to speak to current Data Science, Data Analytics, Economics, and Computer Science students.

@@ -1,0 +1,190 @@
+---
+title: "Different Methods for Extracting JSON with R"
+categories: [R, JSON]
+draft: false
+echo: true
+code-link: true
+lightbox: true
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+reference-location: margin
+author:
+  - name: Steven Carter
+    email: steven.carter4@utoledo.edu
+    affiliation:
+      - name: The University of Toledo
+        city: Toledo
+        state: OH
+        url: https://www.utoledo.edu/
+date: 3/6/2025
+date-modified: today
+---
+
+For the past month or so I have been working with nested JSON data.
+I wanted to find the fastest strategy for data extraction.
+My initial attempt was using the `{tidyverse}`.
+I was put off by the time this took to run.
+Next, I tried using `{data.table}` which I am fairly unfamiliar with.
+
+I was reading up on other methods and came across a [post](https://mtmorgan.github.io/software/update/2024/01/25/rjsoncons-ndjson-performance.html) from [Martin Morgan](https://mtmorgan.github.io/).
+He is the author of `{rjsoncons}`.
+His post covered the use of [DuckDB for reading JSON](https://duckdb.org/docs/stable/data/json/overview.html) which was quite performant.
+
+While sick today I went through the same operation with each approach.
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(duckdb)
+library(data.table)
+library(jsonlite)
+```
+
+The JSON file I'll be using is from a NCAA basketball game and is located [here](https://data.ncaa.com/casablanca/game/6351263/boxscore.json).
+I'm not sure how the performance of these different approaches will vary depending on the structure of the JSON file.
+
+```{r}
+#| message: false
+#| warning: false
+if (!file.exists("boxscore.json")) {
+    download.file(
+        "https://data.ncaa.com/casablanca/game/6351263/boxscore.json", 
+        destfile = "boxscore.json"
+    )
+}
+```
+
+# `{tidyverse}` Approach
+
+This is the easiest to understand method in my opinion.
+It simply reads the JSON file using `{jsonlite}`, pulls out some metadata about the teams, pulls out some player statistics, and joins them together.
+It returns a `{tibble}`.
+
+```{r}
+tidyverse_style <- function() {
+    j <- fromJSON("boxscore.json")
+
+    stats <- j$teams |> 
+        tibble() |> 
+        select(teamId, playerStats) |> 
+        unnest(playerStats) |> 
+        mutate(teamId = as.character(teamId))
+  
+    full_join(
+        j$meta$teams, 
+        stats, 
+        by = join_by(id == teamId)
+    )
+}
+```
+
+# `{data.table}` Approach
+
+The process here is essentially the same as above.
+This however returns a `data.frame`.
+
+```{r}
+data.table_style <- function() {
+    j <- fromJSON("boxscore.json")
+
+    teams <- data.table(j$teams)[, .(
+        teamId = as.character(teamId),
+        rbindlist(playerStats)
+    )]
+  
+    return(
+        merge(
+            j$meta$teams,
+            teams, 
+            by.x = "id",
+            by.y = "teamId"
+        ) |> 
+            setnames("id", "teamId")
+    )
+}
+```
+
+
+# DuckDB Approach
+
+For DuckDB we need to load up an in-memory database.
+Also, we have to install and load the JSON extension for DuckDB.
+
+This also returns a `data.frame`.
+
+```{r}
+#| output: false
+con <- dbConnect(duckdb())
+
+dbExecute(con, "INSTALL json")
+dbExecute(con, "LOAD json")
+```
+
+```{r}
+duck_style <- function() {
+    dbGetQuery(
+        con, 
+        "
+        with raw as (select meta, teams from 'boxscore.json'),
+        meta as (select unnest(meta.teams, recursive := true) from raw),
+        teams_large as (select unnest(teams) as team from raw),
+        teams as (
+            select
+                team.teamId::VARCHAR as teamId,
+                unnest(team.playerStats, recursive := true)
+            from teams_large
+        )
+        select * exclude meta.id
+        from meta, teams
+        where meta.id = teams.teamId
+        "
+    )
+}
+```
+
+# Benchmark
+
+```{r}
+results <- microbenchmark::microbenchmark(
+  duck  = duck_style(),
+  tidy  = tidyverse_style(),
+  dt    = data.table_style(),
+  times = 100
+)
+```
+
+```{r}
+#| echo: false
+#| label: fig-results
+#| fig-width: 5
+#| fig-asp: 0.618
+ggplot(
+    data = results,
+    aes(y = expr, color = expr, x = time)
+) + 
+    geom_violin(aes(fill = expr), alpha = 0.5, show.legend = FALSE) + 
+    geom_boxplot(alpha = 0, width = 0.2, show.legend = FALSE) +
+    scale_x_log10(
+        labels = scales::label_number(
+            scale = 10^(-9), 
+            scale_cut = scales::cut_si(unit = "s")
+        )
+    ) +
+    labs(x = "Time", y = "Approach") + 
+    theme_bw()
+```
+
+::: {.callout-note}
+
+In my testing with a standard R script, DuckDB came out about 7ms faster than the tidy approach.
+I'm not sure what the difference is.
+
+:::
+
+We see that `{data.table}` is the clear winner here with times below 10ms.
+DuckDB looks to be the most consistent.
+
+There are probably some more optimizations that I am not seeing, but this is what I can up with in a few hours.

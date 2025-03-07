@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/2025-03-06-json-extraction/index.html",
       "/posts/2025-03-01-data-sci-advice/index.html",
       "/posts/2024-11-28-classification-errors/index.html"
     ]
