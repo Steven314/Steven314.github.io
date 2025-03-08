@@ -19,7 +19,7 @@ author:
         state: OH
         url: https://www.utoledo.edu/
 date: 3/6/2025
-date-modified: today
+date-modified: 3/6/2025
 ---
 
 For the past month or so I have been working with nested JSON data.
