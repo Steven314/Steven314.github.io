@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 3/15/2025
+date-modified: 3/22/2025
 date-format: long
 echo: false
 ---
@@ -15,10 +15,10 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible = 74  / 365, # days
-  tmwr  = 20  / 21,  # chapters
-  lotr  = (418 - 403) / (725 - 403), # pages
-  wwwwg = 39  / 505  # pages
+  bible = 81  / 365, # days
+  advr  =  3  / 25,  # chapters
+  lotr  = (432 - 403) / (725 - 403), # pages
+  wwwwg = 51  / 505  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -37,11 +37,11 @@ divs$bible
 
 ---
 
-[*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
+[*Advanced R*](https://adv-r.hadley.nz/index.html) (2nd edition, 2019) by Hadley Wickham.
 
 ```{r}
 #| results: asis
-divs$tmwr
+divs$advr
 ```
 
 ---
@@ -88,16 +88,17 @@ Plus three more books to reach my goal for the year.
 
 My goal for this year is 12 books.
 
-<div class="progress"><div class="progress-bar" role="progressbar" style="width: 25%; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
+<div class="progress"><div class="progress-bar" role="progressbar" style="width: 33.33%; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
 
 ---
+
+- [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
 
 - [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
 
 - [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
 - [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
-
 
 ## 2024
 

@@ -36,7 +36,7 @@ website:
       <span>All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>
     right: |
       Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/).<br>
-      View the source at [{{< fa brands github >}} GitHub]({{<https://github.com/Steven314/Steven314.github.io>}}).
+      View the source at [{{< fa brands github >}} GitHub](https://github.com/Steven314/Steven314.github.io).
 
 format:
   html:
