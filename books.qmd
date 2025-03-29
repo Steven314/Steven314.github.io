@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 3/22/2025
+date-modified: 3/29/2025
 date-format: long
 echo: false
 ---
@@ -15,10 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible = 81  / 365, # days
-  advr  =  3  / 25,  # chapters
-  lotr  = (432 - 403) / (725 - 403), # pages
-  wwwwg = 51  / 505  # pages
+  bible = 88  / 365, # days
+  advr  =  4  / 25,  # chapters
+  lotr  = (442 - 403) / (725 - 403), # pages
+  wwwwg = 59  / 505, # pages
+  ssog  = 4   / 159  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -60,6 +61,15 @@ divs$lotr
 ```{r}
 #| results: asis
 divs$wwwwg
+```
+
+---
+
+[*Start, Stop, or Grow?*](https://robertgrayatkins.com/book/) (2022) by [Robert Gray Atkins](https://robertgrayatkins.com/).
+
+```{r}
+#| results: asis
+divs$ssog
 ```
 
 ---
