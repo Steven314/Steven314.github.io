@@ -1,12 +1,12 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 4/5/2025
+date-modified: 4/12/2025
 date-format: long
 echo: false
 ---
 
-I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning and data science.
+I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning, and data science.
 
 I also listen to podcasts and lectures to center my mind on the important things in life.
 Centering around being better disciplined and having mental fortitude alongside physical strength and intelligence.
@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible = 95  / 365, # days
-  advr  =  6  / 25,  # chapters
-  lotr  = (452 - 403) / (725 - 403), # pages
-  wwwwg = 74  / 505, # pages
-  ssog  = 62  / 159  # pages
+  bible = 102 / 365, # days
+  advr  =   6 / 25,  # chapters
+  lotr  = (454 - 403) / (725 - 403), # pages
+  wwwwg =  82 / 505, # pages
+  ssog  =  98 / 159  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -82,7 +82,7 @@ These are books that are next in line to read.
 
 2. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
 
-Plus three more books to reach my goal for the year.
+Plus one more book to reach my goal for the year.
 
 # Podcasts/Lectures
 
