@@ -15,11 +15,10 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible = 109 / 365, # days
-  advr  =   7 / 25,  # chapters
-  lotr  = (470 - 403) / (725 - 403), # pages
-  wwwwg =  90 / 505, # pages
-  ssog  = 114 / 159  # pages
+  bible = 116 / 365, # days
+  advr  =   8 / 25,  # chapters
+  lotr  = (495 - 403) / (725 - 403), # pages
+  wwwwg =  98 / 505  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -65,15 +64,6 @@ divs$wwwwg
 
 ---
 
-[*Start, Stop, or Grow?*](https://robertgrayatkins.com/book/) (2022) by [Robert Gray Atkins](https://robertgrayatkins.com/).
-
-```{r}
-#| results: asis
-divs$ssog
-```
-
----
-
 # Future Reading
 
 These are books that are next in line to read.
@@ -98,9 +88,11 @@ Plus one more book to reach my goal for the year.
 
 My goal for this year is 12 books.
 
-<div class="progress"><div class="progress-bar" role="progressbar" style="width: 33.33%; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
+<div class="progress"><div class="progress-bar" role="progressbar" style="width: 41.67%; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
 
 ---
+
+- [*Start, Stop, or Grow?*](https://robertgrayatkins.com/book/) (2022) by [Robert Gray Atkins](https://robertgrayatkins.com/).
 
 - [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
 
