@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 4/19/2025
+date-modified: 5/3/2025
 date-format: long
 echo: false
 ---
@@ -15,10 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible = 116 / 365, # days
-  advr  =   8 / 25,  # chapters
-  lotr  = (495 - 403) / (725 - 403), # pages
-  wwwwg =  98 / 505  # pages
+  bible = 123 / 365, # days
+  advr  =   9 / 25,  # chapters
+  lotr  = (502 - 403) / (725 - 403), # pages
+  wwwwg =  104 / 505, # pages
+  econ  =   13 / 634
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -64,6 +65,15 @@ divs$wwwwg
 
 ---
 
+[*Basic Economics*](https://en.wikipedia.org/wiki/Basic_Economics) (2000) by [Thomas Sowell](https://en.wikipedia.org/wiki/Thomas_Sowell).
+
+```{r}
+#| results: asis
+divs$econ
+```
+
+---
+
 # Future Reading
 
 These are books that are next in line to read.
@@ -71,8 +81,6 @@ These are books that are next in line to read.
 1. [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
 2. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
-
-Plus one more book to reach my goal for the year.
 
 # Podcasts/Lectures
 
