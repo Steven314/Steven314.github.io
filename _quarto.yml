@@ -11,6 +11,14 @@ website:
       - href: index.qmd
         text: Home
       - posts.qmd
+      - text: Software
+        menu:
+         - text: Personal Utilities for R
+           href: https://steven314.github.io/rpersonalutils/
+           target: _blank
+         - text: Academic Dates
+           href: https://steven314.github.io/academiadates/
+           target: _blank
       - text: About
         menu:
           - books.qmd

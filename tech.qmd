@@ -1,6 +1,6 @@
 ---
 title: "Technologies I Use"
-date-modified: 4/19/2025
+date-modified: 5/17/2025
 date-format: long
 format: html
 ---
@@ -15,10 +15,7 @@ Any notes I take from Bible studies I try to copy into the Obsidian vault.
 
 # Programming
 
-I dabbled in [Neovim](https://neovim.io/) with [NvChad](https://nvchad.com/) for a while in 2024, but keeping [my setup](https://github.com/Steven314/nvim) up-to-date was too tedious for my liking.
-I also couldn't make all the Neovim functionality on my work laptop which led to me ditching Neovim.
-
-As a result and since the strong majority of my programming is with R and Markdown, I use [RStudio](https://posit.co/downloads/).
+The strong majority of my programming is with R and Markdown, I use [RStudio](https://posit.co/downloads/).
 If I do something in Python or SQL, I gravitate toward [VS Code](https://code.visualstudio.com/) for its better autocompletion and highlighting relative to RStudio for those languages.
 
 ## Languages
@@ -28,15 +25,15 @@ In association with R and Python, I use SQL both directly and through [`{dplyr}`
 
 | Language | Proficiency | Experience |
 | -------- | ----------- | ---------- |
-| R        | Strong      | 2 years    |
-| Markdown, Quarto | Strong | 2 years |
+| R        | Strong      | 2.5 years  |
+| Markdown, Quarto | Strong | 2.5 years |
 | SQL      | Moderate    | 1 year     |
 | Python   | Moderate    | 1.5 years  |
 | LaTeX    | Moderate    | 1 year     |
-| Java     | Basic       | 2 Semesters |
-| HTML     | Basic       | Minimal    |
-| CSS      | Basic       | Minimal    |
-| DAX      | Basic       | Minimal    |
+| Java     | Basic       | 2 semesters |
+| HTML     | Basic       | Some       |
+| CSS      | Basic       | Some       |
+| DAX      | Basic       | Some       |
 | JavaScript | Near Zero | Next to none |
 
 ## Software
@@ -45,22 +42,37 @@ In association with R and Python, I use SQL both directly and through [`{dplyr}`
 
 - **VS Code**: I use this for miscellaneous code editing and any Python work. It is a good editor, but doesn't fit into my usual workflow.
     - **Positron**: It's a weird cross between RStudio and VS Code.
-    - **Windsurf**: Basically VS Code with AI. The AI portion is kind of in the way. It is useful for file paths and tedious repitive edits, but I don't find it at all helpful for real analysis.
+    - **Windsurf**: Basically VS Code with AI. The AI portion is kind of in the way. It is useful for file paths and tedious repetitive edits, but I don't find it at all helpful for real analysis.
 
-- **Power BI**: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in closed-source, paid ecosystem is a big negative. The documentation is severly lacking compared to that of the R community.
+- **Power BI**: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in a closed-source, paid ecosystem is a big negative. The documentation is severly lacking compared to that of the R community.
     - **DAX**: This is terrible. Just terrible.
     - **SQL Server Analysis Server**: It uses DAX. It's okay.
 
-- **Tableau**: Similar thoughts to Power BI, but I have generally had a better experience. However, I haven't used it as much.
+- **Tableau**: Similar thoughts to Power BI, but I have generally had a better experience. However, I have used it very little.
 
 - **ArcGIS**: I only used this for a class. It was an alright experience, but I haven't done any complex work to feel out the program yet. All of my mapping needs recently have been filled by [`{plotly}`](https://plotly.com/r/maps/) and [`{ggplot2}`](https://ggplot2.tidyverse.org/reference/ggsf.html).
 
-- **Obsidian**: This is a good and adaptable notetaking software.
+- **Obsidian**: This is a good and adaptable notetaking software. I use it often on all my devices.
 
-- [**DuckDB**](https://duckdb.org/): This is a good database software. I used it extensively in January 2025 and had no performance issue or major problems.
+- [**DuckDB**](https://duckdb.org/): This is a good database software. I use it mainly for ETL into local data marts which are then used in Shiny applications or reporting with Quarto. For me this is superior to having a server-based warehouse as the data are fairly small in size and can be programmatically refreshed with an R script.
 
 # Keyboard
 
 I use a [ZSA Moonlander](https://www.zsa.io/moonlander) with [Cherry MX Silent Reds](https://www.cherry.de/en-us/product/mx2a-silent-red).
 I also use a [Colemak](https://colemak.com/) layout with some macros and layers.
 My full layout is available on [Oryx](https://configure.zsa.io/moonlander/layouts/jYavJ/latest/0).
+
+During my undergraduate degree I was developing a cyst in my right wrist which was possibly the result of using a small laptop keyboard for many hours each day.
+Since switching to the split, columnar layout of the Moonlander, my wrist pain has subsided but the cyst remains.
+
+# Operating System
+
+Currently on my home system I have a dual boot Windows 10 and Linux Mint setup although I only use the Window installation.
+For what I do at home, Linux did not offer a signifcantly better experience.
+
+On a laptop I have [Kubuntu](https://kubuntu.org/) (25.04) installed with [bspwm](https://github.com/baskerville/bspwm) as the window manager.
+This is mainly to learn how that ecosystem works.
+I want to eventually back up my configuration to GitHub.
+
+At work I use Windows 11.
+I recently upgraded from Windows 10 to take advantage of the NPU in my work laptop (only compatible with Windows 11), but I have yet to try it out.
