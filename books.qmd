@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 5/10/2025
+date-modified: 5/17/2025
 date-format: long
 echo: false
 ---
@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  130 / 365, # days
-  advr  =    9 / 25,  # chapters
-  lotr  = (514 - 403) / (725 - 403), # pages
-  wwwwg =  113 / 505, # pages
-  econ  =   33 / 634
+  bible =  137 / 365, # days
+  advr  =   10 / 25,  # chapters
+  lotr  = (518 - 403) / (725 - 403), # pages
+  wwwwg =  117 / 505, # pages
+  econ  =   64 / 634
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -76,7 +76,7 @@ divs$econ
 
 # Future Reading
 
-These are books that are next in line to read.
+These are books which are next in line to read.
 
 1. [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
@@ -87,8 +87,6 @@ These are books that are next in line to read.
 - [*The Jordan B. Peterson Podcast*](https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN?si=fd1d1b72d8464e06) by [Jordan Peterson](https://www.jordanbpeterson.com/).
 
 - [*The Impossible Life*](https://open.spotify.com/show/3McmSdhO7OR6GB97Nqq69I?si=344f35bad6284a28) by [Garrett Unclebach & Nick Surface](https://www.theimpossible.life/).
-
-- [*James B. Crichton Lectures*](https://open.spotify.com/show/4mgsxnDBgwKIrgn7Z4Wkya?si=5b4e31ed13b4403a) by James Crichton.
 
 # History
 
