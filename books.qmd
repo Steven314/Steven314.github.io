@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 5/17/2025
+date-modified: 5/24/2025
 date-format: long
 echo: false
 ---
@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  137 / 365, # days
-  advr  =   10 / 25,  # chapters
-  lotr  = (518 - 403) / (725 - 403), # pages
-  wwwwg =  117 / 505, # pages
-  econ  =   64 / 634
+  bible =  144 / 365, # days
+  advr  =   11 / 25,  # chapters
+  lotr  = (534 - 403) / (725 - 403), # pages
+  wwwwg =  130 / 505, # pages
+  econ  =   89 / 634
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
