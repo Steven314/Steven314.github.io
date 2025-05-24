@@ -3,6 +3,7 @@ project:
   output-dir: docs
 
 website:
+  site-url: "https://steven314.github.io"
   title: "S. L. Carter"
   favicon: www/hex-logo.png
   navbar:
@@ -34,9 +35,9 @@ website:
       - icon: code-slash
         menu:
           - text: Source Code
-            href:  https://github.com/Steven314/Steven314.github.io
+            href: https://github.com/Steven314/Steven314.github.io
           - text: Report a Bug
-            href:  https://github.com/Steven314/Steven314.github.io/issues
+            href: https://github.com/Steven314/Steven314.github.io/issues
   page-footer:
     background: light
     left: |

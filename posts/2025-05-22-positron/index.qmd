@@ -1,0 +1,42 @@
+---
+title: "Carl David Anderson and the Discovery of the Positron"
+categories: [Physics]
+draft: true
+lightbox: true
+reference-location: margin
+author:
+  - name: Steven Carter
+    email: steven.carter4@utoledo.edu
+date: 11/14/2022
+date-modified: 5/22/2025
+abstract: |
+    Carl David Anderson led a very academically focused life. He spend his
+    lengthy academic career at the California Institute of Tecnology and is
+    credited with the discovery of both the positron and the muon. The existence
+    of the positraon was predicted by Paul Dirac shortly before the discovery.
+    Making use of a cloud chamber with a very powerful magnetic field, Anderson 
+    was able to photograph particles within the chamber and study their 
+    characteristics. The discovery of the positron was a breakthrough in 
+    particle physics, earning Anderson a Nobel Prize. It was the first evidence
+    of antimatter, which changed the face of 20th century physics. This sparked
+    the search for other atomic particles, one of which was the muon, discovered
+    in 1936. The positron has found use primarily in the medical field, where it
+    is used to search for and monitor various diseases including cancer.
+---
+
+::: {.callout-note}
+This was a writing assignment from the Modern Physics class during my final year of undergrad.
+I unfortunately lost the original digital copy, so this is re-typed with very minor revisions and some adaptations to this format.
+:::
+
+# Introduction
+
+
+# Scientific Contributions
+
+
+# Impact
+
+
+# Conclusion
+

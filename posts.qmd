@@ -2,7 +2,9 @@
 title: "Posts"
 listing:
   contents: posts
-  type: default
+  type: grid
+  grid-columns: 2
   sort: "date desc"
   categories: true
+  feed: true
 ---
