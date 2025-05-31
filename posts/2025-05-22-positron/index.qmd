@@ -22,6 +22,7 @@ abstract: |
     the search for other atomic particles, one of which was the muon, discovered
     in 1936. The positron has found use primarily in the medical field, where it
     is used to search for and monitor various diseases including cancer.
+bibliography: references.bib
 ---
 
 ::: {.callout-note}
@@ -31,6 +32,15 @@ I unfortunately lost the original digital copy, so this is re-typed with very mi
 
 # Introduction
 
+Laid to rest in Forest Lawn Memorial Park in California in 1991, Carl David Anderson was one of the great physicists of the 20th century [@findagrave].
+Dr. Anderson published discoveries that have revolutionized our view of matter and atomic physics.
+His most notable discovery was positron.
+Born on September 3, 1905, in New York City, Anderson earned his Bachelor of Science from the California Institute of Technology in Pasadena, California.
+Following his undergraduate degree in 1927, he continued at Caltech to earn a Ph.D. in Physics in 1930.
+While working on his Ph.D., Anderson was under the direction of Robert Milikan.
+Milikan is best known for his discovery of the precise charge of an electron in 1910.
+Anderson spent his entire professional career at Caltech.
+Alongside his research, he married Lorraine Bergman in 1946, and raised two children.
 
 # Scientific Contributions
 
@@ -40,3 +50,5 @@ I unfortunately lost the original digital copy, so this is re-typed with very mi
 
 # Conclusion
 
+:::{#refs}
+:::

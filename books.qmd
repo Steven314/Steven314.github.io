@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  144 / 365, # days
-  advr  =   11 / 25,  # chapters
+  bible =  151 / 365, # days
+  advr  =   12 / 25,  # chapters
   lotr  = (534 - 403) / (725 - 403), # pages
-  wwwwg =  130 / 505, # pages
-  econ  =   89 / 634
+  wwwwg =  132 / 505, # pages
+  econ  =  101 / 634
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
