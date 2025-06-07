@@ -58,6 +58,11 @@ h2, h3, h4, h5, h6 {
   border-radius: 8px;
 }
 
+.dropdown-menu[data-bs-popper] {
+    right: 0;
+    left: auto;
+}
+
 .navbar-logo {
   max-height: 32px;
 }

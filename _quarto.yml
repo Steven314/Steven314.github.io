@@ -24,14 +24,13 @@ website:
         menu:
           - books.qmd
           - tech.qmd
-    right:
+    tools:
       - href: https://github.com/Steven314
         icon: github
         target: _blank
       - href: https://www.linkedin.com/in/steven-carter-77b391271/
         icon: linkedin
         target: _blank
-    tools:
       - icon: code-slash
         menu:
           - text: Source Code
@@ -46,6 +45,7 @@ website:
     right: |
       Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/).<br>
       View the source at [{{< fa brands github >}} GitHub](https://github.com/Steven314/Steven314.github.io).
+  back-to-top-navigation: true
 
 format:
   html:

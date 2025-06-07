@@ -9,7 +9,7 @@
 <link>https://steven314.github.io/posts.html</link>
 <atom:link href="https://steven314.github.io/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.6.39</generator>
+<generator>quarto-1.7.31</generator>
 <lastBuildDate>Thu, 06 Mar 2025 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Different Methods for Extracting JSON with R</title>
@@ -575,7 +575,7 @@ Note
 <p>There are probably some more optimizations that I am not seeing, but this is what I can up with in a few hours.</p>
 
 
-</section> ]]></description>
+</section><a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>R</category>
   <category>JSON</category>
   <guid>https://steven314.github.io/posts/2025-03-06-json-extraction/</guid>
@@ -586,6 +586,7 @@ Note
   <dc:creator>Steven Carter</dc:creator>
   <link>https://steven314.github.io/posts/2025-03-01-data-sci-advice/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -736,7 +737,7 @@ Opinion
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Education</category>
   <guid>https://steven314.github.io/posts/2025-03-01-data-sci-advice/</guid>
   <pubDate>Sat, 01 Mar 2025 05:00:00 GMT</pubDate>
@@ -1373,7 +1374,7 @@ font-style: inherit;">#&gt; 2     0.610    0.86</span></span></code></pre></div>
 <p>Of course, in reality you would want to find the best threshold for each training set and average them to apply to the test set.</p>
 
 
-</section></section> ]]></description>
+</section></section><a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Classification</category>
   <category>R</category>
   <category>Logistic Regression</category>
