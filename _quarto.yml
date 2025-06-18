@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  site-url: "https://steven314.github.io"
+  site-url: "https://slcarter.com"
   title: "S. L. Carter"
   favicon: www/hex-logo.png
   navbar:
@@ -15,10 +15,10 @@ website:
       - text: Software
         menu:
          - text: Personal Utilities for R
-           href: https://steven314.github.io/rpersonalutils/
+           href: https://slcarter.com/rpersonalutils/
            target: _blank
          - text: Academic Dates
-           href: https://steven314.github.io/academiadates/
+           href: https://slcarter.com/academiadates/
            target: _blank
       - text: About
         menu:

@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>S. L. Carter</title>
-<link>https://steven314.github.io/posts.html</link>
-<atom:link href="https://steven314.github.io/posts.xml" rel="self" type="application/rss+xml"/>
+<link>https://slcarter.com/posts.html</link>
+<atom:link href="https://slcarter.com/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
 <lastBuildDate>Thu, 06 Mar 2025 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Different Methods for Extracting JSON with R</title>
   <dc:creator>Steven Carter</dc:creator>
-  <link>https://steven314.github.io/posts/2025-03-06-json-extraction/</link>
+  <link>https://slcarter.com/posts/2025-03-06-json-extraction/</link>
   <description><![CDATA[ <p>For the past month or so I have been working with nested JSON data. I wanted to find the fastest strategy for data extraction. My initial attempt was using the <a href="https://tidyverse.tidyverse.org">tidyverse</a>. I was put off by the time this took to run. Next, I tried using <a href="https://r-datatable.com">data.table</a> which I am fairly unfamiliar with.</p>
 <p>I was reading up on other methods and came across a <a href="https://mtmorgan.github.io/software/update/2024/01/25/rjsoncons-ndjson-performance.html">post</a> from <a href="https://mtmorgan.github.io/">Martin Morgan</a>. He is the author of <a href="https://mtmorgan.github.io/rjsoncons/">rjsoncons</a>. His post covered the use of <a href="https://duckdb.org/docs/stable/data/json/overview.html">DuckDB for reading JSON</a> which was quite performant.</p>
 <p>While sick today I went through the same operation with each approach.</p>
@@ -550,7 +550,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-results" class="quarto-float quarto-figure quarto-figure-center anchored" width="480">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-results-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: "><img src="https://steven314.github.io/posts/2025-03-06-json-extraction/index_files/figure-html/fig-results-1.png" id="fig-results" class="img-fluid figure-img" width="480"></a>
+<a href="index_files/figure-html/fig-results-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: "><img src="https://slcarter.com/posts/2025-03-06-json-extraction/index_files/figure-html/fig-results-1.png" id="fig-results" class="img-fluid figure-img" width="480"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1
@@ -578,13 +578,13 @@ Note
 </section><a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>R</category>
   <category>JSON</category>
-  <guid>https://steven314.github.io/posts/2025-03-06-json-extraction/</guid>
+  <guid>https://slcarter.com/posts/2025-03-06-json-extraction/</guid>
   <pubDate>Thu, 06 Mar 2025 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Advice for Incoming Data Science Students</title>
   <dc:creator>Steven Carter</dc:creator>
-  <link>https://steven314.github.io/posts/2025-03-01-data-sci-advice/</link>
+  <link>https://slcarter.com/posts/2025-03-01-data-sci-advice/</link>
   <description><![CDATA[ 
 
 
@@ -739,13 +739,13 @@ Opinion
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Education</category>
-  <guid>https://steven314.github.io/posts/2025-03-01-data-sci-advice/</guid>
+  <guid>https://slcarter.com/posts/2025-03-01-data-sci-advice/</guid>
   <pubDate>Sat, 01 Mar 2025 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Balancing Classification Errors for Aggregate Consistency</title>
   <dc:creator>Steven Carter</dc:creator>
-  <link>https://steven314.github.io/posts/2024-11-28-classification-errors/</link>
+  <link>https://slcarter.com/posts/2024-11-28-classification-errors/</link>
   <description><![CDATA[ <section id="introduction" class="level1"><h1>Introduction</h1>
 <p>Recently, I was developing a model to predict a binary outcome. I settled on a logistic regression model since that was something I was somewhat familiar with from my Econometrics class. From a logistic regression model you estimate the probability of the observation belonging to the positive class. As one would guess, a probability greater than 50% would indicate the positive class, and below 50%, the negative class. This is the threshold value; the threshold where the classification changes from one outcome to the other.</p>
 <p><span id="eq-threshold"><img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7By_i%7D%20=%20%5Cbegin%7Bcases%7D%0Ap(x_i)%20%5Cgeq%20t,%20&amp;%5Ctext%7Bthen%20%7D%201%20%5C%5C%0Ap(x_i)%20%3C%20t,%20&amp;%5Ctext%7Bthen%20%7D%200%0A%5Cend%7Bcases%7D%0A%5Ctag%7B1%7D"></span> where <img src="https://latex.codecogs.com/png.latex?t"> is the threshold value and <img src="https://latex.codecogs.com/png.latex?t%5Cin%5B0,1%5D">.</p>
@@ -839,7 +839,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-conf-mat-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: A confusion matrix displaying the results from the two_class_example dataset."><img src="https://steven314.github.io/posts/2024-11-28-classification-errors/index_files/figure-html/fig-conf-mat-1.png" class="img-fluid figure-img" width="480"></a>
+<a href="index_files/figure-html/fig-conf-mat-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: A confusion matrix displaying the results from the two_class_example dataset."><img src="https://slcarter.com/posts/2024-11-28-classification-errors/index_files/figure-html/fig-conf-mat-1.png" class="img-fluid figure-img" width="480"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: A confusion matrix displaying the results from the <code>two_class_example</code> dataset.
@@ -979,7 +979,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-pr-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pr-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-pr-curve-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: A PR curve for the two_class_example dataset."><img src="https://steven314.github.io/posts/2024-11-28-classification-errors/index_files/figure-html/fig-pr-curve-1.png" class="img-fluid figure-img" width="480"></a>
+<a href="index_files/figure-html/fig-pr-curve-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: A PR curve for the two_class_example dataset."><img src="https://slcarter.com/posts/2024-11-28-classification-errors/index_files/figure-html/fig-pr-curve-1.png" class="img-fluid figure-img" width="480"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pr-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: A PR curve for the <code>two_class_example</code> dataset.
@@ -1218,7 +1218,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-adjusted-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-adjusted-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-adjusted-conf-mat-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: The confusion matrix with the adjusted threshold value."><img src="https://steven314.github.io/posts/2024-11-28-classification-errors/index_files/figure-html/fig-adjusted-conf-mat-1.png" class="img-fluid figure-img" width="480"></a>
+<a href="index_files/figure-html/fig-adjusted-conf-mat-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: The confusion matrix with the adjusted threshold value."><img src="https://slcarter.com/posts/2024-11-28-classification-errors/index_files/figure-html/fig-adjusted-conf-mat-1.png" class="img-fluid figure-img" width="480"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-adjusted-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: The confusion matrix with the adjusted threshold value.
@@ -1378,7 +1378,7 @@ font-style: inherit;">#&gt; 2     0.610    0.86</span></span></code></pre></div>
   <category>Classification</category>
   <category>R</category>
   <category>Logistic Regression</category>
-  <guid>https://steven314.github.io/posts/2024-11-28-classification-errors/</guid>
+  <guid>https://slcarter.com/posts/2024-11-28-classification-errors/</guid>
   <pubDate>Fri, 29 Nov 2024 05:00:00 GMT</pubDate>
 </item>
 </channel>
