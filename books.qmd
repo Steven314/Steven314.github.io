@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 7/12/2025
+date-modified: 7/19/2025
 date-format: long
 echo: false
 ---
@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  193 / 365, # days
-  advr  =   18 / 25,  # chapters
-  lotr  = (617 - 403) / (725 - 403), # pages
-  wwwwg =  159 / 505, # pages
-  econ  =  145 / 634  # pages
+  bible =  200 / 365, # days
+  advr  =   19 / 25,  # chapters
+  lotr  = (634 - 403) / (725 - 403), # pages
+  wwwwg =  166 / 505, # pages
+  econ  =  161 / 634  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -87,6 +87,8 @@ These are books which are next in line to read.
 - [*The Jordan B. Peterson Podcast*](https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN?si=fd1d1b72d8464e06) by [Jordan Peterson](https://www.jordanbpeterson.com/).
 
 - [*The Impossible Life*](https://open.spotify.com/show/3McmSdhO7OR6GB97Nqq69I?si=344f35bad6284a28) by [Garrett Unclebach & Nick Surface](https://www.theimpossible.life/).
+
+- [*Huberman Lab*](https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P?si=ba510b7eac074442) by Andrew Huberman.
 
 # History
 
