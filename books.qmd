@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 7/19/2025
+date-modified: 7/26/2025
 date-format: long
 echo: false
 ---
@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  200 / 365, # days
+  bible =  207 / 365, # days
   advr  =   19 / 25,  # chapters
-  lotr  = (634 - 403) / (725 - 403), # pages
-  wwwwg =  166 / 505, # pages
-  econ  =  161 / 634  # pages
+  lotr  = (644 - 403) / (725 - 403), # pages
+  wwwwg =  178 / 505, # pages
+  econ  =  177 / 634  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -81,6 +81,8 @@ These are books which are next in line to read.
 1. [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
 2. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
+
+3. [*The American Story: Building the Republic*](https://www.goodreads.com/book/show/208562415-the-american-story) (2024) by David and Tim Barton.
 
 # Podcasts/Lectures
 
