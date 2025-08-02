@@ -67,21 +67,21 @@
     "href": "index.html",
     "title": "S. L. Carter",
     "section": "",
-    "text": "University of Toledo | Toledo, Ohio\nMA in Economics | August 2023 - May 2024\nCertificate of Data Analytics in Economics | August 2023 - May 2024\nBS in Data Science | August 2020 - May 2023"
+    "text": "University of Toledo | Toledo, Ohio\nPhD in Spatially Integrated Social Science | August 2025 - Present (expected graduation: 2030)\nMA in Economics | May 2024\nCertificate of Data Analytics in Economics | May 2024\nBS in Data Science | May 2023"
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
     "title": "S. L. Carter",
     "section": "",
-    "text": "University of Toledo | Toledo, Ohio\nMA in Economics | August 2023 - May 2024\nCertificate of Data Analytics in Economics | August 2023 - May 2024\nBS in Data Science | August 2020 - May 2023"
+    "text": "University of Toledo | Toledo, Ohio\nPhD in Spatially Integrated Social Science | August 2025 - Present (expected graduation: 2030)\nMA in Economics | May 2024\nCertificate of Data Analytics in Economics | May 2024\nBS in Data Science | May 2023"
   },
   {
     "objectID": "index.html#experience",
     "href": "index.html#experience",
     "title": "S. L. Carter",
     "section": "Experience",
-    "text": "Experience\n\nUniversity of Toledo | Toledo, Ohio\n\n\n\n\n\n\nBusiness Insights Analyst | May 2024 - Present\n\n\n\n\n\n\nProjects\n\nAnalyzed enrollment and admissions data to develop a detailed simulation and forecast of university enrollment.\nBuilt several Shiny applications for streamlining data analysis and visualization to better inform decision-makers in a dynamic and intuitive manner.\nDesigned a number of webscraping and data aquisition tools to ensure straightforward data sharing and analysis.\nProduced a streamlined process to download and transform public educational data into a language agnostic format.\nDeveloped a check to search for unusual work history and flag for review.\n\n\n\nSpecialties\n\nR\n\nTidyverse, tidymodels, and fpp3 primarily, in addition to others.\n\nShiny for R\nQuarto and RMarkdown\nSQL\n\n\n\n\n\n\n\n\n\n\n\nGraduate Assistant | Aug 2023 - May 2024\n\n\n\n\n\nSpecialties\n\nR\nShiny for R\nRMarkdown\n\n\n\n\n\n\n\n\n\n\nUndergraduate Research Assistant | Oct 2022 - Aug 2023\n\n\n\n\n\n\nProjects\n\nDeveloped software for performing high quality electrical measurements with efficiency and precision. Improved experimental speed and consistency through software improvements and advances to the physical experimentation system.\nDeveloped workflows to improve quality and consistency for analyzing experimental data output.\nPerformed electrical and optical photovoltaic measurements.\nSee below for papers in which the software I largely developed was utilized, even beyond my time of employment.\n\n\n\nSpecialties\n\nPython\n\nNumPy, scikit-learn, and pandas."
+    "text": "Experience\n\nUniversity of Toledo | Toledo, Ohio\n\n\n\n\n\n\nBusiness Insights Analyst | May 2024 - Present\n\n\n\n\n\n\nProjects\n\nAnalyzed enrollment and admissions data to develop a detailed simulation and forecast of university enrollment.\nBuilt several Shiny applications for streamlining data analysis and visualization to better inform decision-makers in a dynamic and intuitive manner.\nDesigned a number of webscraping and data acquisition tools to ensure straightforward data sharing and analysis.\nProduced streamlined processes to download and transform data into language agnostic formats.\nDeveloped a check to search for unusual work history and flag for review.\n\n\n\nSpecialties\n\nR\n\ntidyverse, tidymodels, and fpp3 primarily, in addition to others.\n\nShiny for R and Python\nQuarto and RMarkdown\nSQL\nPython\n\n\n\n\n\n\n\n\n\n\n\nGraduate Assistant | Aug 2023 - May 2024\n\n\n\n\n\nSpecialties\n\nR\nShiny for R\nRMarkdown\n\n\n\n\n\n\n\n\n\n\nUndergraduate Research Assistant | Oct 2022 - Aug 2023\n\n\n\n\n\n\nProjects\n\nDeveloped software for performing high quality electrical measurements with efficiency and precision. Improved experimental speed and consistency through software improvements and advances to the physical experimentation system.\nDeveloped workflows to improve quality and consistency for analyzing experimental data output.\nPerformed electrical and optical photovoltaic measurements.\nSee below for papers in which the software I largely developed was utilized, even beyond my time of employment.\n\n\n\nSpecialties\n\nPython\n\nNumPy, scikit-learn, and pandas."
   },
   {
     "objectID": "index.html#sec-publications",

@@ -1,5 +1,6 @@
 ---
 title: "S. L. Carter"
+subtitle: "Data Scientist, PhD Student"
 image: www/headshot.jpg
 toc: false
 about:
@@ -22,11 +23,13 @@ about:
 
 **University of Toledo** | Toledo, Ohio
 
-MA in Economics | August 2023 - May 2024
+PhD in [Spatially Integrated Social Science](https://www.utoledo.edu/Programs/grad/Spatially-Integrated-Social-Sciences/) | August 2025 - Present (expected graduation: 2030)
 
-Certificate of Data Analytics in Economics | August 2023 - May 2024
+MA in [Economics](https://www.utoledo.edu/Programs/grad/Economics/) | May 2024
 
-BS in Data Science | August 2020 - May 2023
+Certificate of Data Analytics in Economics | May 2024
+
+BS in [Data Science](https://www.utoledo.edu/Programs/undergrad/Data-Science/) | May 2023
 
 ## Experience
 
@@ -40,17 +43,18 @@ BS in Data Science | August 2020 - May 2023
 
 - Analyzed enrollment and admissions data to develop a detailed simulation and forecast of university enrollment.
 - Built several Shiny applications for streamlining data analysis and visualization to better inform decision-makers in a dynamic and intuitive manner.
-- Designed a number of webscraping and data aquisition tools to ensure straightforward data sharing and analysis.
-- Produced a streamlined process to download and transform public educational data into a language agnostic format.
+- Designed a number of webscraping and data acquisition tools to ensure straightforward data sharing and analysis.
+- Produced streamlined processes to download and transform data into language agnostic formats.
 - Developed a check to search for unusual work history and flag for review.
 
 ### Specialties
 
 - R
-  - [Tidyverse](https://www.tidyverse.org/), [tidymodels](https://www.tidymodels.org/), and [fpp3](https://pkg.robjhyndman.com/fpp3/) primarily, in addition to others.
-- [Shiny for R](https://shiny.posit.co/)
+  - [tidyverse](https://www.tidyverse.org/), [tidymodels](https://www.tidymodels.org/), and [fpp3](https://pkg.robjhyndman.com/fpp3/) primarily, in addition to others.
+- [Shiny](https://shiny.posit.co/) for R and Python
 - [Quarto](https://quarto.org/) and [RMarkdown](https://rmarkdown.rstudio.com/)
 - SQL
+- [Python](https://www.python.org)
 
 :::
 
@@ -96,7 +100,6 @@ For the 2023 article, contributed a Python script to automate a basic analysis o
 ### 2024
 
 - Abudulimu, Abasi, Adam Phillips, **Steven Carter**, Sabin Neupane, Deng-Bing Li, Tyler Brau, Jared Friedl, Yanfa Yan, Michael Heben, and Randy Ellingson. 2024. “Transient Photovoltage as a Tool for Probing Carrier Dynamics in CdTe-Based Solar Cells.” In *2024 IEEE 52nd Photovoltaic Specialist Conference (PVSC)*, 1220–20. IEEE. <https://doi.org/10.1109/pvsc57443.2024.10749335>.
-
 - Abudulimu, Abasi, **Steven Carter**, Adam B. Phillips, Deng‐Bing Li, Sabin Neupane, Tyler Brau, Jared Friedl, et al. 2024. “Comprehensive Study of Carrier Recombination in High‐efficiency CdTe Solar Cells Using Transient Photovoltage.” *Solar RRL* 8 (10). <https://doi.org/10.1002/solr.202400131>.
 
 ### 2023
