@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 8/2/2025
+date-modified: 8/9/2025
 date-format: long
 echo: false
 ---
@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  214 / 365, # days
-  advr  =   20 / 25,  # chapters
-  lotr  = (657 - 403) / (725 - 403), # pages
-  wwwwg =  191 / 505, # pages
-  econ  =  204 / 634  # pages
+  bible =  221 / 365, # days
+  advr  =   21 / 25,  # chapters
+  lotr  = (692 - 403) / (725 - 403), # pages
+  wwwwg =  195 / 505, # pages
+  econ  =  220 / 634  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -29,7 +29,7 @@ divs <- c(
   )
 ```
 
-*The Bible* - I am tackling the Bible in one year, read chronologically. I hope to continue in future years with the same or similar reading plan. I am also taking notes whenever my schedule permits.
+*The Bible* (ESV, 2016) - Read chronologically.
 
 ```{r}
 #| results: asis
@@ -38,7 +38,7 @@ divs$bible
 
 ---
 
-[*Advanced R*](https://adv-r.hadley.nz/index.html) (2nd edition, 2019) by Hadley Wickham.
+[*Advanced R*](https://adv-r.hadley.nz/index.html) (2019, 2nd edition) by Hadley Wickham.
 
 ```{r}
 #| results: asis
@@ -65,7 +65,7 @@ divs$wwwwg
 
 ---
 
-[*Basic Economics*](https://en.wikipedia.org/wiki/Basic_Economics) (2000) by [Thomas Sowell](https://en.wikipedia.org/wiki/Thomas_Sowell).
+[*Basic Economics*](https://en.wikipedia.org/wiki/Basic_Economics) (2000, 5th edition) by [Thomas Sowell](https://en.wikipedia.org/wiki/Thomas_Sowell).
 
 ```{r}
 #| results: asis
@@ -124,7 +124,7 @@ I started reading more deliberately in the fall.
 
 - [*Hillbilly Elegy*](https://en.wikipedia.org/wiki/Hillbilly_Elegy) (2016) by Vice President [J. D. Vance](https://en.wikipedia.org/wiki/JD_Vance).
 
-- [*R for Data Science*](https://r4ds.hadley.nz/) (2nd edition, 2017) by [Hadley Wickham](https://github.com/hadley).
+- [*R for Data Science*](https://r4ds.hadley.nz/) (2017, 2nd edition) by [Hadley Wickham](https://github.com/hadley).
 
 - [*The American Story: The Beginnings*](https://www.google.com/books/edition/The_American_Story/r3GVzQEACAAJ?hl=en) (2020) by David and Tim Barton.
 
