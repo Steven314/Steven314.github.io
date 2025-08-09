@@ -332,10 +332,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#notetaking" id="toc-notetaking" class="nav-link active" data-scroll-target="#notetaking">Notetaking</a></li>
+  <li><a href="#homelab" id="toc-homelab" class="nav-link active" data-scroll-target="#homelab">Homelab</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#programming" id="toc-programming" class="nav-link" data-scroll-target="#programming">Programming</a>
   <ul class="collapse">
-  <li><a href="#languages" id="toc-languages" class="nav-link" data-scroll-target="#languages">Languages</a></li>
+  <li><a href="#languages" id="toc-languages" class="nav-link" data-scroll-target="#languages">Languages</a>
+  <ul class="collapse">
+  <li><a href="#programming-1" id="toc-programming-1" class="nav-link" data-scroll-target="#programming-1">Programming</a></li>
+  <li><a href="#query" id="toc-query" class="nav-link" data-scroll-target="#query">Query</a></li>
+  <li><a href="#markup" id="toc-markup" class="nav-link" data-scroll-target="#markup">Markup</a></li>
+  </ul></li>
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
   </ul></li>
   <li><a href="#keyboard" id="toc-keyboard" class="nav-link" data-scroll-target="#keyboard">Keyboard</a></li>
@@ -365,7 +371,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">May 17, 2025</p>
+      <p class="date-modified">August 9, 2025</p>
     </div>
   </div>
     
@@ -376,17 +382,40 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="notetaking" class="level1">
-<h1>Notetaking</h1>
+<section id="homelab" class="level1">
+<h1>Homelab</h1>
+<p>I have a Raspberry Pi 5 which runs a handful of Docker containers. I don’t make use of them very often, but it’s a nice hobby.</p>
+<ul>
+<li><a href="https://casaos.zimaspace.com/">CasaOS</a> for general management.</li>
+<li><a href="https://jellyfin.org/">Jellyfin</a> for music.</li>
+<li><a href="https://about.gitea.com/">Gitea</a> for local version control.</li>
+<li><a href="https://gethomepage.dev/">Homepage</a> for a custom browser homepage.</li>
+<li><a href="https://www.usememos.com/">Memos</a> for the local sharing of memes.
+<ul>
+<li>Using v0.24.3 since I really don’t like the UI changes in more recent versions.</li>
+</ul></li>
+<li><a href="https://openwebui.com/">Open WebUI</a> to experiment with self-hosted AI models through <a href="https://ollama.com">Ollama</a>.
+<ul>
+<li>A Raspberry Pi 5 (8GB) is not capable of very much when it comes to AI (really only &lt;3b parameters given the other things running).</li>
+</ul></li>
+<li><a href="https://craftycontrol.com/">Crafty</a> for a highly neglected and currently broken Minecraft server.</li>
+</ul>
+<p>These are all wired up to subdomains for easy (local-only) access.</p>
+</section>
+<section id="notes" class="level1">
+<h1>Notes</h1>
 <p>For electronic notes I use <a href="https://obsidian.md/">Obsidian</a>. With my Bible notes I backup the Obsidian vault with git to a <a href="https://about.gitea.com/">Gitea</a> instance attached to a Raspberry Pi on my local network.</p>
-<p>For physical notetaking I like to use a leatherbound notepad. Any notes I take from Bible studies I try to copy into the Obsidian vault.</p>
+<p>For physical note-taking I like to use a leather bound notepad. Any notes I take from Bible studies I try to copy into the Obsidian vault.</p>
+<p>As I begin my Ph.D.&nbsp;I am developing a workflow to take notes by hand, translate them to Markdown, do assignments digitally with Typst and Quarto. This will all be backed up to Gitea and mirrored to GitHub for safety. I am going to try to write a blog post on how I did this in the near future (although it may end up waiting until December).</p>
 </section>
 <section id="programming" class="level1">
 <h1>Programming</h1>
 <p>The strong majority of my programming is with R and Markdown, I use <a href="https://posit.co/downloads/">RStudio</a>. If I do something in Python or SQL, I gravitate toward <a href="https://code.visualstudio.com/">VS Code</a> for its better autocompletion and highlighting relative to RStudio for those languages.</p>
+<p>I am looking to move toward Neovim for my classwork.</p>
 <section id="languages" class="level2">
 <h2 class="anchored" data-anchor-id="languages">Languages</h2>
-<p>Currently I use R and Markdown/Quarto primarily and Python when R can’t do the job. In association with R and Python, I use SQL both directly and through <a href="https://dplyr.tidyverse.org/index.html#backends"><code>{dplyr}</code> backends</a>.</p>
+<section id="programming-1" class="level3">
+<h3 class="anchored" data-anchor-id="programming-1">Programming</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -402,34 +431,14 @@ ul.task-list li input[type="checkbox"] {
 <td>2.5 years</td>
 </tr>
 <tr class="even">
-<td>Markdown, Quarto</td>
-<td>Strong</td>
-<td>2.5 years</td>
-</tr>
-<tr class="odd">
-<td>SQL</td>
-<td>Moderate</td>
-<td>1 year</td>
-</tr>
-<tr class="even">
 <td>Python</td>
 <td>Moderate</td>
-<td>1.5 years</td>
+<td>2 years</td>
 </tr>
 <tr class="odd">
-<td>LaTeX</td>
-<td>Moderate</td>
-<td>1 year</td>
-</tr>
-<tr class="even">
 <td>Java</td>
 <td>Basic</td>
 <td>2 semesters</td>
-</tr>
-<tr class="odd">
-<td>HTML</td>
-<td>Basic</td>
-<td>Some</td>
 </tr>
 <tr class="even">
 <td>CSS</td>
@@ -437,11 +446,6 @@ ul.task-list li input[type="checkbox"] {
 <td>Some</td>
 </tr>
 <tr class="odd">
-<td>DAX</td>
-<td>Basic</td>
-<td>Some</td>
-</tr>
-<tr class="even">
 <td>JavaScript</td>
 <td>Near Zero</td>
 <td>Next to none</td>
@@ -449,16 +453,81 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
+<section id="query" class="level3">
+<h3 class="anchored" data-anchor-id="query">Query</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Language</th>
+<th>Proficiency</th>
+<th>Experience</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SQL</td>
+<td>Moderate</td>
+<td>1.5 years</td>
+</tr>
+<tr class="even">
+<td>DAX</td>
+<td>Basic</td>
+<td>Some</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="markup" class="level3">
+<h3 class="anchored" data-anchor-id="markup">Markup</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Language</th>
+<th>Proficiency</th>
+<th>Experience</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Markdown</td>
+<td>Strong</td>
+<td>2.5 years</td>
+</tr>
+<tr class="even">
+<td>Quarto</td>
+<td>Strong</td>
+<td>2.5 years</td>
+</tr>
+<tr class="odd">
+<td>LaTeX</td>
+<td>Moderate</td>
+<td>1 year</td>
+</tr>
+<tr class="even">
+<td>HTML</td>
+<td>Basic</td>
+<td>Some</td>
+</tr>
+<tr class="odd">
+<td>Typst</td>
+<td>Basic</td>
+<td>Some</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="software" class="level2">
 <h2 class="anchored" data-anchor-id="software">Software</h2>
+<p>This is the software I regularly use or have tried.</p>
 <ul>
 <li><p><strong>RStudio</strong>: This is my go-to editor for writing reports and apps with Quarto and Shiny. The open-source community is really thriving and makes the R language very approachable. A big plus is the Vim motions as I use a weird combination of Vim motions and keyboard macros.</p></li>
-<li><p><strong>VS Code</strong>: I use this for miscellaneous code editing and any Python work. It is a good editor, but doesn’t fit into my usual workflow.</p>
+<li><p><strong>VS Code</strong>: I use this for miscellaneous code editing and any Python work. It gets the job done.</p>
 <ul>
 <li><strong>Positron</strong>: It’s a weird cross between RStudio and VS Code.</li>
-<li><strong>Windsurf</strong>: Basically VS Code with AI. The AI portion is kind of in the way. It is useful for file paths and tedious repetitive edits, but I don’t find it at all helpful for real analysis.</li>
+<li><strong>Windsurf</strong>: Basically VS Code with AI. The AI portion is kind of in the way. It is useful for file paths and tedious repetitive edits, but I don’t find it very useful for real work.</li>
 </ul></li>
-<li><p><strong>Power BI</strong>: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in a closed-source, paid ecosystem is a big negative. The documentation is severly lacking compared to that of the R community.</p>
+<li><p><strong>Power BI</strong>: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in a closed-source, paid ecosystem is a big negative. The documentation is severely lacking compared to that of the R community.</p>
 <ul>
 <li><strong>DAX</strong>: This is terrible. Just terrible.</li>
 <li><strong>SQL Server Analysis Server</strong>: It uses DAX. It’s okay.</li>
@@ -466,7 +535,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Tableau</strong>: Similar thoughts to Power BI, but I have generally had a better experience. However, I have used it very little.</p></li>
 <li><p><strong>ArcGIS</strong>: I only used this for a class. It was an alright experience, but I haven’t done any complex work to feel out the program yet. All of my mapping needs recently have been filled by <a href="https://plotly.com/r/maps/"><code>{plotly}</code></a> and <a href="https://ggplot2.tidyverse.org/reference/ggsf.html"><code>{ggplot2}</code></a>.</p></li>
 <li><p><strong>Obsidian</strong>: This is a good and adaptable notetaking software. I use it often on all my devices.</p></li>
-<li><p><a href="https://duckdb.org/"><strong>DuckDB</strong></a>: This is a good database software. I use it mainly for ETL into local data marts which are then used in Shiny applications or reporting with Quarto. For me this is superior to having a server-based warehouse as the data are fairly small in size and can be programmatically refreshed with an R script.</p></li>
+<li><p><a href="https://duckdb.org/"><strong>DuckDB</strong></a>: This is a good database software. I use it mainly for ETL into local data marts which are then used in Shiny applications or reporting with Quarto. For me this is superior to having a server-based warehouse as the data are fairly small in size and can be programmatically refreshed with an R script. The SQL dialect is very good in my opinion. It has very useful shorthands compared to standard SQL.</p></li>
 </ul>
 </section>
 </section>
@@ -477,8 +546,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="operating-system" class="level1">
 <h1>Operating System</h1>
-<p>Currently on my home system I have a dual boot Windows 10 and Linux Mint setup although I only use the Window installation. For what I do at home, Linux did not offer a signifcantly better experience.</p>
-<p>On a laptop I have <a href="https://kubuntu.org/">Kubuntu</a> (25.04) installed with <a href="https://github.com/baskerville/bspwm">bspwm</a> as the window manager. This is mainly to learn how that ecosystem works. I want to eventually back up my configuration to GitHub.</p>
+<p>Currently on my home system I have a dual boot Windows 10 and Linux Mint setup although I only use the Window installation. For what I do at home–listening to music and watching YouTube–Linux did not offer a significantly better experience.</p>
+<p>On a laptop I have <a href="https://kubuntu.org/">Kubuntu</a> (25.04) installed with <a href="https://github.com/baskerville/bspwm">bspwm</a> as the window manager. This is mainly to learn how that ecosystem works and to extend the useful life of the laptop as battery life is a scarce resource. I want to eventually back up my configuration to GitHub.</p>
 <p>At work I use Windows 11. I recently upgraded from Windows 10 to take advantage of the NPU in my work laptop (only compatible with Windows 11), but I have yet to try it out.</p>
 
 

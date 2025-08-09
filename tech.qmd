@@ -1,60 +1,111 @@
 ---
 title: "Technologies I Use"
-date-modified: 5/17/2025
+date-modified: 8/9/2025
 date-format: long
 format: html
 ---
 
-# Notetaking
+# Homelab
+
+I have a Raspberry Pi 5 which runs a handful of Docker containers.
+I don't make use of them very often, but it's a nice hobby.
+
+- [CasaOS](https://casaos.zimaspace.com/) for general management.
+- [Jellyfin](https://jellyfin.org/) for music.
+- [Gitea](https://about.gitea.com/) for local version control.
+- [Homepage](https://gethomepage.dev/) for a custom browser homepage.
+- [Memos](https://www.usememos.com/) for the local sharing of memes.
+    - Using v0.24.3 since I really don't like the UI changes in more recent versions.
+- [Open WebUI](https://openwebui.com/) to experiment with self-hosted AI models through [Ollama](https://ollama.com). 
+    - A Raspberry Pi 5 (8GB) is not capable of very much when it comes to AI (really only <3b parameters given the other things running).
+- [Crafty](https://craftycontrol.com/) for a highly neglected and currently broken Minecraft server.
+
+These are all wired up to subdomains for easy (local-only) access.
+
+# Notes
 
 For electronic notes I use [Obsidian](https://obsidian.md/).
 With my Bible notes I backup the Obsidian vault with git to a [Gitea](https://about.gitea.com/) instance attached to a Raspberry Pi on my local network.
 
-For physical notetaking I like to use a leatherbound notepad.
+For physical note-taking I like to use a leather bound notepad.
 Any notes I take from Bible studies I try to copy into the Obsidian vault.
+
+As I begin my Ph.D. I am developing a workflow to take notes by hand, translate them to Markdown, do assignments digitally with Typst and Quarto.
+This will all be backed up to Gitea and mirrored to GitHub for safety.
+I am going to try to write a blog post on how I did this in the near future (although it may end up waiting until December).
 
 # Programming
 
 The strong majority of my programming is with R and Markdown, I use [RStudio](https://posit.co/downloads/).
 If I do something in Python or SQL, I gravitate toward [VS Code](https://code.visualstudio.com/) for its better autocompletion and highlighting relative to RStudio for those languages.
 
+I am looking to move toward Neovim for my classwork.
+
 ## Languages
 
-Currently I use R and Markdown/Quarto primarily and Python when R can't do the job.
-In association with R and Python, I use SQL both directly and through [`{dplyr}` backends](https://dplyr.tidyverse.org/index.html#backends).
+### Programming
 
 | Language | Proficiency | Experience |
 | -------- | ----------- | ---------- |
 | R        | Strong      | 2.5 years  |
-| Markdown, Quarto | Strong | 2.5 years |
-| SQL      | Moderate    | 1 year     |
-| Python   | Moderate    | 1.5 years  |
-| LaTeX    | Moderate    | 1 year     |
+| Python   | Moderate    | 2 years    |
 | Java     | Basic       | 2 semesters |
-| HTML     | Basic       | Some       |
 | CSS      | Basic       | Some       |
-| DAX      | Basic       | Some       |
 | JavaScript | Near Zero | Next to none |
+
+### Query
+
+| Language | Proficiency | Experience |
+| -------- | ----------- | ---------- |
+| SQL      | Moderate    | 1.5 years  |
+| DAX      | Basic       | Some       |
+
+### Markup
+
+| Language | Proficiency | Experience |
+| -------- | ----------- | ---------- |
+| Markdown | Strong      | 2.5 years  |
+| Quarto   | Strong      | 2.5 years  |
+| LaTeX    | Moderate    | 1 year     |
+| HTML     | Basic       | Some       |
+| Typst    | Basic       | Some       |
+
 
 ## Software
 
-- **RStudio**: This is my go-to editor for writing reports and apps with Quarto and Shiny. The open-source community is really thriving and makes the R language very approachable. A big plus is the Vim motions as I use a weird combination of Vim motions and keyboard macros. 
+This is the software I regularly use or have tried.
 
-- **VS Code**: I use this for miscellaneous code editing and any Python work. It is a good editor, but doesn't fit into my usual workflow.
+- **RStudio**: This is my go-to editor for writing reports and apps with Quarto and Shiny. 
+  The open-source community is really thriving and makes the R language very approachable. 
+  A big plus is the Vim motions as I use a weird combination of Vim motions and keyboard macros. 
+
+- **VS Code**: I use this for miscellaneous code editing and any Python work. It gets the job done.
     - **Positron**: It's a weird cross between RStudio and VS Code.
-    - **Windsurf**: Basically VS Code with AI. The AI portion is kind of in the way. It is useful for file paths and tedious repetitive edits, but I don't find it at all helpful for real analysis.
+    - **Windsurf**: Basically VS Code with AI. 
+      The AI portion is kind of in the way. 
+      It is useful for file paths and tedious repetitive edits, but I don't find it very useful for real work.
 
-- **Power BI**: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in a closed-source, paid ecosystem is a big negative. The documentation is severly lacking compared to that of the R community.
+- **Power BI**: I am not a fan of any Microsoft data analysis software. 
+  It feels restrictive to do anything outside of basic charts and graphs. 
+  I always feel that I am fighting the program to get what I want. 
+  Being locked down in a closed-source, paid ecosystem is a big negative. 
+  The documentation is severely lacking compared to that of the R community.
     - **DAX**: This is terrible. Just terrible.
     - **SQL Server Analysis Server**: It uses DAX. It's okay.
 
 - **Tableau**: Similar thoughts to Power BI, but I have generally had a better experience. However, I have used it very little.
 
-- **ArcGIS**: I only used this for a class. It was an alright experience, but I haven't done any complex work to feel out the program yet. All of my mapping needs recently have been filled by [`{plotly}`](https://plotly.com/r/maps/) and [`{ggplot2}`](https://ggplot2.tidyverse.org/reference/ggsf.html).
+- **ArcGIS**: I only used this for a class. 
+  It was an alright experience, but I haven't done any complex work to feel out the program yet. 
+  All of my mapping needs recently have been filled by [`{plotly}`](https://plotly.com/r/maps/) and [`{ggplot2}`](https://ggplot2.tidyverse.org/reference/ggsf.html).
 
 - **Obsidian**: This is a good and adaptable notetaking software. I use it often on all my devices.
 
-- [**DuckDB**](https://duckdb.org/): This is a good database software. I use it mainly for ETL into local data marts which are then used in Shiny applications or reporting with Quarto. For me this is superior to having a server-based warehouse as the data are fairly small in size and can be programmatically refreshed with an R script.
+- [**DuckDB**](https://duckdb.org/): This is a good database software. 
+  I use it mainly for ETL into local data marts which are then used in Shiny applications or reporting with Quarto. 
+  For me this is superior to having a server-based warehouse as the data are fairly small in size and can be programmatically refreshed with an R script. 
+  The SQL dialect is very good in my opinion. 
+  It has very useful shorthands compared to standard SQL.
 
 # Keyboard
 
@@ -68,10 +119,10 @@ Since switching to the split, columnar layout of the Moonlander, my wrist pain h
 # Operating System
 
 Currently on my home system I have a dual boot Windows 10 and Linux Mint setup although I only use the Window installation.
-For what I do at home, Linux did not offer a signifcantly better experience.
+For what I do at home--listening to music and watching YouTube--Linux did not offer a significantly better experience.
 
 On a laptop I have [Kubuntu](https://kubuntu.org/) (25.04) installed with [bspwm](https://github.com/baskerville/bspwm) as the window manager.
-This is mainly to learn how that ecosystem works.
+This is mainly to learn how that ecosystem works and to extend the useful life of the laptop as battery life is a scarce resource.
 I want to eventually back up my configuration to GitHub.
 
 At work I use Windows 11.
