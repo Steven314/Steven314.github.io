@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 8/9/2025
+date-modified: 8/16/2025
 date-format: long
 echo: false
 ---
@@ -15,11 +15,11 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  221 / 365, # days
-  advr  =   21 / 25,  # chapters
-  lotr  = (692 - 403) / (725 - 403), # pages
-  wwwwg =  195 / 505, # pages
-  econ  =  220 / 634  # pages
+  bible =  228 / 365, # days
+  advr  =   24 / 25,  # chapters
+  # lotr  = (692 - 403) / (725 - 403), # pages
+  wwwwg =  206 / 505, # pages
+  econ  =  234 / 634  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -43,15 +43,6 @@ divs$bible
 ```{r}
 #| results: asis
 divs$advr
-```
-
----
-
-[*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
-
-```{r}
-#| results: asis
-divs$lotr
 ```
 
 ---
@@ -98,9 +89,17 @@ These are books which are next in line to read.
 
 My goal for this year is 12 books.
 
-<div class="progress"><div class="progress-bar" role="progressbar" style="width: 41.67%; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
+```{r}
+#| results: asis
+goal <- scales::label_percent(0.01)(6 / 12)
 
+glue::glue(
+    '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {goal}; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
+)
+```
 ---
+
+- [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
 
 - [*Start, Stop, or Grow?*](https://robertgrayatkins.com/book/) (2022) by [Robert Gray Atkins](https://robertgrayatkins.com/).
 
