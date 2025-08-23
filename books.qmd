@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 8/16/2025
+date-modified: 8/23/2025
 date-format: long
 echo: false
 ---
@@ -15,11 +15,10 @@ Centering around being better disciplined and having mental fortitude alongside 
 
 ```{r}
 divs <- c(
-  bible =  228 / 365, # days
-  advr  =   24 / 25,  # chapters
-  # lotr  = (692 - 403) / (725 - 403), # pages
-  wwwwg =  206 / 505, # pages
-  econ  =  234 / 634  # pages
+  bible = 235 / 365, # days
+  stl   = (209 - 183) / (296 - 183), # pages
+  wwwwg = 217 / 505, # pages
+  econ  = 269 / 634  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -38,11 +37,11 @@ divs$bible
 
 ---
 
-[*Advanced R*](https://adv-r.hadley.nz/index.html) (2019, 2nd edition) by Hadley Wickham.
+[*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
 ```{r}
 #| results: asis
-divs$advr
+divs$stl
 ```
 
 ---
@@ -69,11 +68,9 @@ divs$econ
 
 These are books which are next in line to read.
 
-1. [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
+1. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
 
-2. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
-
-3. [*The American Story: Building the Republic*](https://www.goodreads.com/book/show/208562415-the-american-story) (2024) by David and Tim Barton.
+2. [*The American Story: Building the Republic*](https://www.goodreads.com/book/show/208562415-the-american-story) (2024) by David and Tim Barton.
 
 # Podcasts/Lectures
 
@@ -91,13 +88,15 @@ My goal for this year is 12 books.
 
 ```{r}
 #| results: asis
-goal <- scales::label_percent(0.01)(6 / 12)
+goal <- scales::label_percent(0.01)(7 / 12)
 
 glue::glue(
     '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {goal}; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
 )
 ```
 ---
+
+- [*Advanced R*](https://adv-r.hadley.nz/index.html) (2019, 2nd edition) by Hadley Wickham.
 
 - [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
 
