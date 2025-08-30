@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 8/23/2025
+date-modified: 8/30/2025
 date-format: long
 echo: false
 ---
@@ -11,14 +11,16 @@ I have been focusing on reading important philosophical and psychological texts 
 I also listen to podcasts and lectures to center my mind on the important things in life.
 Centering around being better disciplined and having mental fortitude alongside physical strength and intelligence.
 
+During the academic year my reading frequency will probably slow to make room for assigned readings.
+
 # Currently Reading
 
 ```{r}
 divs <- c(
-  bible = 235 / 365, # days
-  stl   = (209 - 183) / (296 - 183), # pages
-  wwwwg = 217 / 505, # pages
-  econ  = 269 / 634  # pages
+  bible = 242 / 365, # days
+  stl   = (230 - 183) / (296 - 183), # pages
+  wwwwg = 222 / 505, # pages
+  econ  = 289 / 634  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
