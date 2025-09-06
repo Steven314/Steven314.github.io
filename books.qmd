@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 8/30/2025
+date-modified: 9/6/2025
 date-format: long
 echo: false
 ---
@@ -17,10 +17,11 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 242 / 365, # days
-  stl   = (230 - 183) / (296 - 183), # pages
-  wwwwg = 222 / 505, # pages
-  econ  = 289 / 634  # pages
+  bible = 249 / 365, # days
+  stl   = (251 - 183) / (296 - 183), # pages
+  wwwwg = 241 / 505, # pages
+  econ  = 302 / 634, # pages
+  geo   =  39 / 156  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -62,6 +63,15 @@ divs$wwwwg
 ```{r}
 #| results: asis
 divs$econ
+```
+
+---
+
+[*Philosophy and Human Geography*](https://archive.org/details/philosophyhumang00rjjo) (1986, 2nd edition) by [Ron Johnston](https://en.wikipedia.org/wiki/Ron_Johnston_(geographer)).
+
+```{r}
+#| results: asis
+divs$geo
 ```
 
 ---
