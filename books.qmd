@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 9/13/2025
+date-modified: 9/20/2025
 date-format: long
 echo: false
 ---
@@ -17,11 +17,11 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 258 / 365, # days
-  stl   = (269 - 183) / (296 - 183), # pages
-  wwwwg = 241 / 505, # pages
-  econ  = 310 / 634, # pages
-  geo   =  97 / 156  # pages
+  bible = 265 / 365, # days
+  wwwwg = 250 / 505, # pages
+  econ  = 323 / 634, # pages
+  geo   = 130 / 156, # pages
+  add   =  30 / 243
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -36,15 +36,6 @@ divs <- c(
 ```{r}
 #| results: asis
 divs$bible
-```
-
----
-
-[*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
-
-```{r}
-#| results: asis
-divs$stl
 ```
 
 ---
@@ -76,6 +67,15 @@ divs$geo
 
 ---
 
+[*Angels, Demons, and the Devil*](https://www.amazon.com/Angels-Demons-and-the-Devil/dp/0966006062) (2013) by F. LaGard Smith
+
+```{r}
+#| results: asis
+divs$add
+```
+
+---
+
 # Future Reading
 
 These are books which are next in line to read.
@@ -100,13 +100,15 @@ My goal for this year is 12 books.
 
 ```{r}
 #| results: asis
-goal <- scales::label_percent(0.01)(7 / 12)
+goal <- scales::label_percent(0.01)(8 / 12)
 
 glue::glue(
     '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {goal}; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
 )
 ```
 ---
+
+- [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
 - [*Advanced R*](https://adv-r.hadley.nz/index.html) (2019, 2nd edition) by Hadley Wickham.
 
