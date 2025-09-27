@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 9/20/2025
+date-modified: 9/27/2025
 date-format: long
 echo: false
 ---
@@ -17,11 +17,10 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 265 / 365, # days
+  bible = 272 / 365, # days
   wwwwg = 250 / 505, # pages
-  econ  = 323 / 634, # pages
-  geo   = 130 / 156, # pages
-  add   =  30 / 243
+  econ  = 328 / 634, # pages
+  add   =  48 / 243
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -54,15 +53,6 @@ divs$wwwwg
 ```{r}
 #| results: asis
 divs$econ
-```
-
----
-
-[*Philosophy and Human Geography*](https://archive.org/details/philosophyhumang00rjjo) (1986, 2nd edition) by [Ron Johnston](https://en.wikipedia.org/wiki/Ron_Johnston_(geographer)).
-
-```{r}
-#| results: asis
-divs$geo
 ```
 
 ---
@@ -100,13 +90,15 @@ My goal for this year is 12 books.
 
 ```{r}
 #| results: asis
-goal <- scales::label_percent(0.01)(8 / 12)
+goal <- scales::label_percent(0.01)(9 / 12)
 
 glue::glue(
     '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {goal}; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
 )
 ```
 ---
+
+- [*Philosophy and Human Geography*](https://archive.org/details/philosophyhumang00rjjo) (1986, 2nd edition) by [Ron Johnston](https://en.wikipedia.org/wiki/Ron_Johnston_(geographer)).
 
 - [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
