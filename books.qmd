@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 9/27/2025
+date-modified: 10/4/2025
 date-format: long
 echo: false
 ---
@@ -17,10 +17,10 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 272 / 365, # days
-  wwwwg = 250 / 505, # pages
-  econ  = 328 / 634, # pages
-  add   =  48 / 243
+  bible = 279 / 365, # days
+  wwwwg = 260 / 505, # pages
+  econ  = 345 / 634, # pages
+  add   =  57 / 243
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(

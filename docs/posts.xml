@@ -277,7 +277,7 @@ font-style: inherit;">teams</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -307,7 +307,7 @@ background-color: null;
 font-style: inherit;">)</span>,</span>
 <span>        <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/data.table/man/rbindlist.html">rbindlist</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdatatable.gitlab.io/data.table/reference/rbindlist.html">rbindlist</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -362,7 +362,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>            <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/data.table/man/setattr.html">setnames</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdatatable.gitlab.io/data.table/reference/setattr.html">setnames</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
