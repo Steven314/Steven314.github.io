@@ -10,7 +10,1376 @@
 <atom:link href="https://slcarter.com/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Thu, 06 Mar 2025 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 06 Oct 2025 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Distance Calculations Lab Using R</title>
+  <dc:creator>Steven Carter</dc:creator>
+  <link>https://slcarter.com/posts/2025-10-06-distance-lab/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>This lab walks through an example analysis using Lucas County housing data from the 1990s. It was presented on October 6, 2025 to the SISS7020 PhD class at the University of Toledo.</p>
+<section id="packages-and-data" class="level1">
+<h1>Packages and Data</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(spData) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># for the dataset</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(sf)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(geosphere)</span>
+<span id="cb1-5"></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The sp format is old and may not work right, so convert to modern format.</span></span>
+<span id="cb1-7">house_sf <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_as_sf</span>(house, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2834</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb1-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_transform</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">crs =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_crs</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"NAD83"</span>))</span></code></pre></div>
+</div>
+<p>If you were not able to install the <code>{spData}</code> package, download the <code>house</code> dataset as an <code>.rds</code> file from Blackboard.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Coordinate Systems">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Coordinate Systems
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Originally the <code>house</code> data is in a local coordinate system. It has units for latitude and longitude with which I was unfamiliar. For the sake of easier interpretation I’ve converted the coordinates to NAD83. It will be fine for what we are doing today.</p>
+</div>
+</div>
+</section>
+<section id="scatter-plot" class="level1">
+<h1>Scatter Plot</h1>
+<p>Just to make sure the data looks right and to get an idea of what we are working with, let’s plot the locations.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(house_sf) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> price), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_continuous</span>(</span>
+<span id="cb2-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">trans =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"log"</span>,</span>
+<span id="cb2-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_currency</span>(),</span>
+<span id="cb2-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1e4</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3e4</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1e5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5e5</span>)</span>
+<span id="cb2-8">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb2-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"House Sales in Lucas County, 1993 - 1998"</span>,</span>
+<span id="cb2-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Longitude"</span>,</span>
+<span id="cb2-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Latitude"</span>,</span>
+<span id="cb2-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sale Price"</span></span>
+<span id="cb2-14">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-lucas-scatter" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lucas-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-lucas-scatter-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: "><img src="https://slcarter.com/posts/2025-10-06-distance-lab/index_files/figure-html/fig-lucas-scatter-1.png" id="fig-lucas-scatter" class="img-fluid figure-img" width="576"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-lucas-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>There are also a couple methods to achieve an interactive visualization which will not be covered here.<sup>1</sup></p>
+</section>
+<section id="distance-to-city-center" class="level1">
+<h1>Distance to City Center</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">toledo_lat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">41.652778</span></span>
+<span id="cb3-2">toledo_lng <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">83.537778</span></span></code></pre></div>
+</div>
+<p>Wikipedia gives the center of Toledo as (41.652778, -83.537778).</p>
+<p>Let’s establish a few distance metrics and compare the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">euclidean <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(ref, new) {</span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sqrt</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowSums</span>((ref <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> new)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb4-3">    (pi <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">180</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># convert to radians</span></span>
+<span id="cb4-4">    <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6371</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># km, the radius of the earth</span></span>
+<span id="cb4-5">}</span>
+<span id="cb4-6"></span>
+<span id="cb4-7">manhattan <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(ref, new) {</span>
+<span id="cb4-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowSums</span>(</span>
+<span id="cb4-9">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(ref <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> new) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> </span>
+<span id="cb4-10">      (pi <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">180</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb4-11">      <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6371</span></span>
+<span id="cb4-12">  )</span>
+<span id="cb4-13">}</span>
+<span id="cb4-14"></span>
+<span id="cb4-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># and also Haversine from `{geosphere}`</span></span></code></pre></div>
+</div>
+<p>So now we can calculate the distance to the city center with Euclidean, Manhattan, and Haversine distances.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">house_sf_dist <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> house_sf <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb5-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">longitude =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_coordinates</span>(geometry)[, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>],</span>
+<span id="cb5-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">latitude =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_coordinates</span>(geometry)[, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>],</span>
+<span id="cb5-5">    toledo_lat, </span>
+<span id="cb5-6">    toledo_lng,</span>
+<span id="cb5-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># redefine age</span></span>
+<span id="cb5-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(syear)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> yrbuilt</span>
+<span id="cb5-9">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb5-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb5-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">distance_euclidean =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">euclidean</span>(</span>
+<span id="cb5-12">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(toledo_lat, toledo_lng), </span>
+<span id="cb5-13">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(latitude, longitude)</span>
+<span id="cb5-14">    ),</span>
+<span id="cb5-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">distance_manhattan =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">manhattan</span>(</span>
+<span id="cb5-16">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(toledo_lat, toledo_lng), </span>
+<span id="cb5-17">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(latitude, longitude)</span>
+<span id="cb5-18">    ),</span>
+<span id="cb5-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">distance_haversine =</span> geosphere<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distHaversine</span>(</span>
+<span id="cb5-20">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(toledo_lng, toledo_lat), </span>
+<span id="cb5-21">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(longitude, latitude)</span>
+<span id="cb5-22">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># convert meters to kilometers</span></span>
+<span id="cb5-23">  )</span></code></pre></div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(house_sf_dist) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(</span>
+<span id="cb6-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> distance_manhattan <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>), </span>
+<span id="cb6-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span></span>
+<span id="cb6-5">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate</span>(</span>
+<span id="cb6-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> toledo_lng, </span>
+<span id="cb6-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> toledo_lat, </span>
+<span id="cb6-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"point"</span>, </span>
+<span id="cb6-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, </span>
+<span id="cb6-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb6-12">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb6-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"House Sales in Lucas County, 1993 - 1998"</span>,</span>
+<span id="cb6-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Longitude"</span>,</span>
+<span id="cb6-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Latitude"</span>,</span>
+<span id="cb6-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Manhattan &gt; 15km"</span></span>
+<span id="cb6-19">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-lucas-center" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lucas-center-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-lucas-center-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: "><img src="https://slcarter.com/posts/2025-10-06-distance-lab/index_files/figure-html/fig-lucas-center-1.png" id="fig-lucas-center" class="img-fluid figure-img" width="576"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-lucas-center-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="housing-model" class="level1">
+<h1>Housing Model</h1>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(</span>
+<span id="cb7-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> house_sf_dist,</span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(</span>
+<span id="cb7-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> distance_haversine, </span>
+<span id="cb7-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> price</span>
+<span id="cb7-6">  )</span>
+<span id="cb7-7">) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_log10</span>(</span>
+<span id="cb7-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_currency</span>(</span>
+<span id="cb7-11">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale_cut =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut_short_scale</span>()</span>
+<span id="cb7-12">    )</span>
+<span id="cb7-13">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_log10</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb7-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Haversine Distance (km)"</span>,</span>
+<span id="cb7-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sale Price"</span>,</span>
+<span id="cb7-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Housing Sales in Lucas County, 1993-1998"</span></span>
+<span id="cb7-20">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-price-dist-scatter" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-price-dist-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-price-dist-scatter-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: "><img src="https://slcarter.com/posts/2025-10-06-distance-lab/index_files/figure-html/fig-price-dist-scatter-1.png" id="fig-price-dist-scatter" class="img-fluid figure-img" width="576"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-price-dist-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>With log-scales on both the <img src="https://latex.codecogs.com/png.latex?x"> and <img src="https://latex.codecogs.com/png.latex?y"> axes there seems to be a mostly linear relationship. That is convenient.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(</span>
+<span id="cb8-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> house_sf_dist,</span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(</span>
+<span id="cb8-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> distance_haversine, </span>
+<span id="cb8-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> price</span>
+<span id="cb8-6">  )</span>
+<span id="cb8-7">) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">formula =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y ~ x"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_log10</span>(</span>
+<span id="cb8-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_currency</span>(</span>
+<span id="cb8-12">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale_cut =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut_short_scale</span>()</span>
+<span id="cb8-13">    )</span>
+<span id="cb8-14">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_log10</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb8-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Haversine Distance (km)"</span>,</span>
+<span id="cb8-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sale Price"</span>,</span>
+<span id="cb8-20">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Housing Sales in Lucas County, 1993-1998"</span></span>
+<span id="cb8-21">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-price-dist-scatter-lm" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-price-dist-scatter-lm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-price-dist-scatter-lm-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: "><img src="https://slcarter.com/posts/2025-10-06-distance-lab/index_files/figure-html/fig-price-dist-scatter-lm-1.png" id="fig-price-dist-scatter-lm" class="img-fluid figure-img" width="576"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-price-dist-scatter-lm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>What about the other variables? How might housing prices vary for reasons other than distance? Or, how might distance to correlated with other variables?</p>
+<p>Here are the variables we have:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(house_sf_dist)</span>
+<span id="cb9-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Rows: 25,357</span></span>
+<span id="cb9-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Columns: 32</span></span>
+<span id="cb9-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ price              &lt;int&gt; 303000, 92000, 90000, 330000, 185000, 100000, 43065…</span></span>
+<span id="cb9-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ yrbuilt            &lt;int&gt; 1978, 1957, 1937, 1887, 1978, 1989, 1927, 1990, 187…</span></span>
+<span id="cb9-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ stories            &lt;fct&gt; one+half, one, two, one+half, two, one, one, one+ha…</span></span>
+<span id="cb9-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ TLA                &lt;int&gt; 3273, 920, 1956, 1430, 2208, 1232, 832, 3011, 1034,…</span></span>
+<span id="cb9-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ wall               &lt;fct&gt; partbrk, metlvnyl, stucdrvt, wood, partbrk, wood, w…</span></span>
+<span id="cb9-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ beds               &lt;dbl&gt; 4, 2, 3, 4, 3, 1, 2, 3, 3, 2, 4, 5, 4, 3, 3, 3, 3, …</span></span>
+<span id="cb9-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ baths              &lt;dbl&gt; 3, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, …</span></span>
+<span id="cb9-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ halfbaths          &lt;dbl&gt; 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, …</span></span>
+<span id="cb9-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ frontage           &lt;int&gt; 177, 100, 192, 200, 241, 154, 320, 362, 500, 220, 2…</span></span>
+<span id="cb9-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ depth              &lt;int&gt; 0, 0, 0, 217, 0, 1420, 0, 0, 990, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb9-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ garage             &lt;fct&gt; attached, detached, attached, no garage, attached, …</span></span>
+<span id="cb9-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ garagesqft         &lt;int&gt; 625, 308, 480, 0, 528, 1200, 360, 672, 624, 780, 61…</span></span>
+<span id="cb9-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ rooms              &lt;int&gt; 12, 4, 7, 7, 7, 5, 4, 6, 7, 6, 6, 10, 8, 5, 6, 6, 6…</span></span>
+<span id="cb9-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ lotsize            &lt;int&gt; 53496, 37900, 52900, 43560, 225800, 214100, 23500, …</span></span>
+<span id="cb9-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ sdate              &lt;int&gt; 960423, 970421, 931101, 971223, 950807, 931101, 951…</span></span>
+<span id="cb9-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ avalue             &lt;int&gt; 306514, 84628, 126514, 199228, 192514, 107914, 4902…</span></span>
+<span id="cb9-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ s1993              &lt;int&gt; 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, …</span></span>
+<span id="cb9-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ s1994              &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span></span>
+<span id="cb9-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ s1995              &lt;int&gt; 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span></span>
+<span id="cb9-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ s1996              &lt;int&gt; 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, …</span></span>
+<span id="cb9-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ s1997              &lt;int&gt; 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, …</span></span>
+<span id="cb9-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ s1998              &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, …</span></span>
+<span id="cb9-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ syear              &lt;fct&gt; 1996, 1997, 1993, 1997, 1995, 1993, 1995, 1993, 199…</span></span>
+<span id="cb9-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ age                &lt;dbl&gt; 18, 40, 56, 110, 17, 4, 68, 3, 119, 60, 41, 29, 0, …</span></span>
+<span id="cb9-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ geometry           &lt;POINT [°]&gt; POINT (-83.87964 41.4169), POINT (-83.87716 4…</span></span>
+<span id="cb9-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ longitude          &lt;dbl&gt; -83.87964, -83.87716, -83.87271, -83.86670, -83.838…</span></span>
+<span id="cb9-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ latitude           &lt;dbl&gt; 41.41690, 41.41720, 41.41773, 41.42522, 41.42928, 4…</span></span>
+<span id="cb9-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ toledo_lat         &lt;dbl&gt; 41.65278, 41.65278, 41.65278, 41.65278, 41.65278, 4…</span></span>
+<span id="cb9-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ toledo_lng         &lt;dbl&gt; -83.53778, -83.53778, -83.53778, -83.53778, -83.537…</span></span>
+<span id="cb9-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ distance_euclidean &lt;dbl&gt; 46.18378, 45.93799, 45.49884, 44.47400, 41.63927, 4…</span></span>
+<span id="cb9-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ distance_manhattan &lt;dbl&gt; 64.24187, 63.93241, 63.37922, 61.87764, 58.26169, 6…</span></span>
+<span id="cb9-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; $ distance_haversine &lt;dbl&gt; 38.74246, 38.56770, 38.25653, 37.32047, 35.29493, 3…</span></span></code></pre></div>
+</div>
+<p>Information about each variable can be found in the associated help file. It can be opened by typing <code>?house</code> in the console. Although it is not the most thorough explanations of each variable, it is still helpful.</p>
+<p>We can make a list of relationships to consider. In these there are plenty of hypotheses.</p>
+<ul>
+<li>As you move toward the city center, lots get smaller, thus prices go down. The converse also being the case.</li>
+<li>Having more bedrooms, bathrooms, or stories would increase price.
+<ul>
+<li>This may be correlated with lot size.</li>
+</ul></li>
+<li>The city center may be older and perhaps older houses have lower prices.</li>
+</ul>
+<p>All of those are statements we can test.</p>
+<p>We can also come up with statements we can’t test with the data currently at hand.</p>
+<ul>
+<li>Houses close to highways have lower value.</li>
+<li>Proximity to amenities, such as schools, parks, and entertainment, can contribute to changes in housing prices.</li>
+<li>A house of poor quality would have lower value.</li>
+</ul>
+<section id="spatial-variation" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-variation">Spatial Variation</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Spatial variance is something I would expect us to cover in an upcoming spatial statistics class. For now, I’ll cover how some variables are correlated with distance from the city center and price.</p>
+</div>
+</div>
+<section id="age" class="level4">
+<h4 class="anchored" data-anchor-id="age">Age</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(</span>
+<span id="cb10-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> house_sf_dist,</span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(</span>
+<span id="cb10-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> yrbuilt,</span>
+<span id="cb10-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> price</span>
+<span id="cb10-6">  )</span>
+<span id="cb10-7">) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb10-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_log10</span>(</span>
+<span id="cb10-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_currency</span>(</span>
+<span id="cb10-11">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale_cut =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut_short_scale</span>()</span>
+<span id="cb10-12">    )</span>
+<span id="cb10-13">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb10-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Year Build"</span>,</span>
+<span id="cb10-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sale Price"</span></span>
+<span id="cb10-18">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-price-age" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-price-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-price-age-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: "><img src="https://slcarter.com/posts/2025-10-06-distance-lab/index_files/figure-html/fig-price-age-1.png" id="fig-price-age" class="img-fluid figure-img" width="576"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-price-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Look at the final years. Something weird seems to be happening with houses built and sold at the end of the dataset. There houses would have a very young age. (Some houses even have a negative age.) Perhaps this means the sale price is reflecting the price of an empty lot and not the price of a house. This could be a reason to exclude houses with an age less than some threshold, say 2 years.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(</span>
+<span id="cb11-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> house_sf_dist,</span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(</span>
+<span id="cb11-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> distance_haversine,</span>
+<span id="cb11-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> yrbuilt</span>
+<span id="cb11-6">  )</span>
+<span id="cb11-7">) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_log10</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb11-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distance to City Center (km)"</span>,</span>
+<span id="cb11-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Year Built"</span></span>
+<span id="cb11-14">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-age-dist" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-age-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-age-dist-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: "><img src="https://slcarter.com/posts/2025-10-06-distance-lab/index_files/figure-html/fig-age-dist-1.png" id="fig-age-dist" class="img-fluid figure-img" width="576"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-age-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Question">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What might have caused those two bands where there are no houses being build (or at least sold)?</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="linear-model" class="level2">
+<h2 class="anchored" data-anchor-id="linear-model">Linear Model</h2>
+<p>The <code>lm()</code> function can be used for a linear model. It takes a dataset for training and a formula.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Splitting Data">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Splitting Data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When training a model to be used for predicting new data you should split into training and testing (and potentially validation) sets. When there is a spatial component you may also want to consider the spatial relationships.</p>
+<ul>
+<li><a href="https://r-spatial.org/book"><em>Spatial Data Science</em></a> seems like a good resource for more info on this. I have yet to read it, but it is on the list for the future.</li>
+<li><a href="https://www.tmwr.org/splitting"><em>Tidy Modeling with R</em>, chapter 5</a> is also a good resource for information on training a model. I have read this whole book and can recommend it.</li>
+<li><a href="https://spatialsample.tidymodels.org"><code>{spatialsample}</code></a> is a package in the <code>tidymodels</code> and <code>tidyverse</code> ecosystem that can perform spatial sampling. I haven’t used it yet, but likely will within the next year.</li>
+</ul>
+</div>
+</div>
+<p>First let’s try a simple model with just distance and taking logs of distance and price.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">simple_model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(</span>
+<span id="cb12-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> house_sf_dist,</span>
+<span id="cb12-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">formula =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log</span>(price) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log</span>(distance_haversine)</span>
+<span id="cb12-4">)</span>
+<span id="cb12-5"></span>
+<span id="cb12-6">simple_model <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb12-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>()</span>
+<span id="cb12-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb12-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Call:</span></span>
+<span id="cb12-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; lm(formula = log(price) ~ log(distance_haversine), data = house_sf_dist)</span></span>
+<span id="cb12-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb12-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Residuals:</span></span>
+<span id="cb12-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb12-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; -3.6031 -0.2995  0.0568  0.3500  2.4195 </span></span>
+<span id="cb12-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb12-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Coefficients:</span></span>
+<span id="cb12-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;                         Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb12-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; (Intercept)             9.248718   0.012482   740.9   &lt;2e-16 ***</span></span>
+<span id="cb12-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; log(distance_haversine) 0.881602   0.005961   147.9   &lt;2e-16 ***</span></span>
+<span id="cb12-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; ---</span></span>
+<span id="cb12-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb12-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb12-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Residual standard error: 0.559 on 25355 degrees of freedom</span></span>
+<span id="cb12-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Multiple R-squared:  0.4631, Adjusted R-squared:  0.4631 </span></span>
+<span id="cb12-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; F-statistic: 2.187e+04 on 1 and 25355 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+</div>
+<p>This has a decent <img src="https://latex.codecogs.com/png.latex?R%5E2"> value. However, we can’t trust the model coefficients. Using only distance isn’t a very good model.</p>
+<p>Why?</p>
+<p>Other factors have spatial variance. Distance isn’t the only thing changing between observations. We have an endogeneity issue or omitted variable bias. That should sound familiar from an econometrics class. If not, you should be covering that soon.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">big_model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(</span>
+<span id="cb13-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> house_sf_dist,</span>
+<span id="cb13-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">formula =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log</span>(price) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log</span>(distance_haversine) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-4">    lotsize <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-5">    beds <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-6">    baths <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-7">    halfbaths <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-8">    stories <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-9">    garage <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-10">    TLA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-11">    age <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-12">    syear</span>
+<span id="cb13-13">)</span>
+<span id="cb13-14"></span>
+<span id="cb13-15">big_model <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb13-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>()</span>
+<span id="cb13-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb13-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Call:</span></span>
+<span id="cb13-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; lm(formula = log(price) ~ log(distance_haversine) + lotsize + </span></span>
+<span id="cb13-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;     beds + baths + halfbaths + stories + garage + TLA + age + </span></span>
+<span id="cb13-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;     syear, data = house_sf_dist)</span></span>
+<span id="cb13-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb13-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Residuals:</span></span>
+<span id="cb13-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb13-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; -2.88571 -0.15787  0.05206  0.23625  2.58261 </span></span>
+<span id="cb13-26"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb13-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Coefficients:</span></span>
+<span id="cb13-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;                           Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb13-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; (Intercept)              9.481e+00  2.368e-02 400.384  &lt; 2e-16 ***</span></span>
+<span id="cb13-30"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; log(distance_haversine)  4.309e-01  6.338e-03  67.986  &lt; 2e-16 ***</span></span>
+<span id="cb13-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; lotsize                 -4.381e-07  9.750e-08  -4.493 7.05e-06 ***</span></span>
+<span id="cb13-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; beds                     1.989e-02  4.745e-03   4.191 2.79e-05 ***</span></span>
+<span id="cb13-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; baths                   -3.952e-02  8.022e-03  -4.927 8.42e-07 ***</span></span>
+<span id="cb13-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; halfbaths                7.278e-02  6.622e-03  10.991  &lt; 2e-16 ***</span></span>
+<span id="cb13-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; storiesbilevel          -1.842e-01  1.873e-02  -9.832  &lt; 2e-16 ***</span></span>
+<span id="cb13-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; storiesmultilvl         -7.237e-02  1.579e-02  -4.582 4.63e-06 ***</span></span>
+<span id="cb13-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; storiesone+half         -3.144e-02  8.927e-03  -3.522 0.000429 ***</span></span>
+<span id="cb13-38"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; storiestwo               9.575e-02  6.928e-03  13.820  &lt; 2e-16 ***</span></span>
+<span id="cb13-39"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; storiestwo+half          1.671e-01  2.857e-01   0.585 0.558637    </span></span>
+<span id="cb13-40"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; storiesthree            -6.321e-02  2.861e-01  -0.221 0.825137    </span></span>
+<span id="cb13-41"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; garagebasement           5.417e-01  4.653e-02  11.641  &lt; 2e-16 ***</span></span>
+<span id="cb13-42"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; garageattached           4.064e-01  9.997e-03  40.648  &lt; 2e-16 ***</span></span>
+<span id="cb13-43"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; garagedetached           4.054e-01  7.841e-03  51.703  &lt; 2e-16 ***</span></span>
+<span id="cb13-44"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; garagecarport            3.094e-01  2.837e-02  10.907  &lt; 2e-16 ***</span></span>
+<span id="cb13-45"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; TLA                      3.803e-04  7.851e-06  48.443  &lt; 2e-16 ***</span></span>
+<span id="cb13-46"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; age                     -7.909e-03  1.496e-04 -52.866  &lt; 2e-16 ***</span></span>
+<span id="cb13-47"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; syear1994                5.699e-02  9.693e-03   5.879 4.18e-09 ***</span></span>
+<span id="cb13-48"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; syear1995                9.373e-02  9.468e-03   9.899  &lt; 2e-16 ***</span></span>
+<span id="cb13-49"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; syear1996                1.061e-01  9.162e-03  11.581  &lt; 2e-16 ***</span></span>
+<span id="cb13-50"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; syear1997                1.566e-01  9.099e-03  17.213  &lt; 2e-16 ***</span></span>
+<span id="cb13-51"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; syear1998                2.397e-01  9.370e-03  25.582  &lt; 2e-16 ***</span></span>
+<span id="cb13-52"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; ---</span></span>
+<span id="cb13-53"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb13-54"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; </span></span>
+<span id="cb13-55"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Residual standard error: 0.4039 on 25334 degrees of freedom</span></span>
+<span id="cb13-56"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Multiple R-squared:   0.72,  Adjusted R-squared:  0.7198 </span></span>
+<span id="cb13-57"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; F-statistic:  2961 on 22 and 25334 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+</div>
+<p>This model improves the <img src="https://latex.codecogs.com/png.latex?R%5E2"> value. Compare the coefficiencts for <img src="https://latex.codecogs.com/png.latex?%5Clog(d_%5Ctext%7Bhaversine%7D)">. The coefficient in the second model is only half of that in the first model.</p>
+<p>This means that some of the variation in price is better explained by the other variables we included.</p>
+</section>
+<section id="model-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="model-conclusion">Model Conclusion</h2>
+<p>If we are happy with the reasoning for our model (i.e.&nbsp;we don’t expect any omitted variable bias or other statistical issues), we could attempt to claim a causal effect of distance on housing prices.</p>
+<p>The predictions can be found with the <code>predict()</code> function.</p>
+<p>Notice how we have to use <code>exp()</code> wrapping <code>predict</code>. This is because we used <code>log(price)</code>. We need to reverse the logarithm.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">house_sf_dist <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb14-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">price_hat =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(</span>
+<span id="cb14-5">      big_model, </span>
+<span id="cb14-6">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> house_sf_dist</span>
+<span id="cb14-7">    ))</span>
+<span id="cb14-8">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(price, price_hat)</span>
+<span id="cb14-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; # A tibble: 25,357 × 2</span></span>
+<span id="cb14-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;     price price_hat</span></span>
+<span id="cb14-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;     &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb14-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  1 303000   311781.</span></span>
+<span id="cb14-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  2  92000   112826.</span></span>
+<span id="cb14-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  3  90000   140216.</span></span>
+<span id="cb14-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  4 330000    52063.</span></span>
+<span id="cb14-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  5 185000   213576.</span></span>
+<span id="cb14-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  6 100000   128987.</span></span>
+<span id="cb14-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  7  43065    79742.</span></span>
+<span id="cb14-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  8 305000   246901.</span></span>
+<span id="cb14-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  9  56493    52171.</span></span>
+<span id="cb14-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; 10  50000    89339.</span></span>
+<span id="cb14-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; # ℹ 25,347 more rows</span></span></code></pre></div>
+</div>
+</section>
+<section id="more-complicated-models" class="level2">
+<h2 class="anchored" data-anchor-id="more-complicated-models">More Complicated Models</h2>
+<p>The actual model technique may not necessarily be more complicated, but the feature engineering (<a href="https://www.tmwr.org/recipes">TMwR chapter 8</a>) is fancier.</p>
+<ul>
+<li>If a house in the same neighborhood (or at least nearby) sold the previous year, the housing prices in the neighborhood may be influenced. The proximity with a recently sold house and how similar (also distance, but in non-spatial dimensions) could affect how strong that influence is.
+<ul>
+<li>I couldn’t find a paper that covered this, but I didn’t look for very long.</li>
+</ul></li>
+<li>Proximity to other points-of-interest, such as schools, parks, entertainment, or highway access, can be considered.
+<ul>
+<li><a href="https://www.tandfonline.com/doi/abs/10.1080/10835547.2015.12091876">Measuring Highway Impacts on House Prices Using Spatial Regression</a></li>
+</ul></li>
+<li>Using travel time instead of straight line distance.
+<ul>
+<li><a href="https://www.tandfonline.com/doi/full/10.1080/10095020.2018.1503775">Road distance and travel time for an improved house price Kriging predictor</a></li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Leaflet and Plotly each have R and Python interfaces to their JavaScript libraries. If you see a interactive map on a website, there is a good chance it was made with one of those libraries.↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>Distance</category>
+  <category>R</category>
+  <category>Spatial</category>
+  <guid>https://slcarter.com/posts/2025-10-06-distance-lab/</guid>
+  <pubDate>Mon, 06 Oct 2025 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Different Methods for Extracting JSON with R</title>
   <dc:creator>Steven Carter</dc:creator>
