@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 10/4/2025
+date-modified: 10/18/2025
 date-format: long
 echo: false
 ---
@@ -17,10 +17,10 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 279 / 365, # days
-  wwwwg = 260 / 505, # pages
-  econ  = 345 / 634, # pages
-  add   =  57 / 243
+  bible = 291 / 365, # days
+  wwwwg = 271 / 505, # pages
+  econ  = 355 / 634, # pages
+  add   =  64 / 243
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -73,6 +73,20 @@ These are books which are next in line to read.
 1. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
 
 2. [*The American Story: Building the Republic*](https://www.goodreads.com/book/show/208562415-the-american-story) (2024) by David and Tim Barton.
+
+3. Mostly Harmless Econometrics (2009) by Joshua D. Angrist & Jörn-Steffen Pischke.
+
+4. The Wealth of Nations by Adam Smith.
+
+5. [A Little History of Economics](https://www.niallkishtainy.com/little-history) by Niall Kishtainy.
+
+6. [Miracles](https://en.wikipedia.org/wiki/Miracles_(book)) (1960) by C. S. Lewis.
+
+7. Energy Economics (2023, 2nd edition) by Peter M. Schwartz.
+
+8. [An Introduction fo Machine Learning](https://link.springer.com/book/10.1007/978-3-030-81935-4) (2021, 3rd edition) by Miroslav Kubat.
+
+9. Public Finance and Public Policy (2019, 3rd edition) by Arye. L. Hillman.
 
 # Podcasts/Lectures
 
