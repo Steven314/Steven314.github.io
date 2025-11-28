@@ -90,7 +90,7 @@ BS in [Data Science](https://www.utoledo.edu/Programs/undergrad/Data-Science/) |
 
 ## Publications {#sec-publications}
 
-For the 2024 and 2025 articles, I was a major contributer to the software used to perform the transient photovoltage/photocurrent experiments as well as developing scripts to automate initial analysis.
+For the 2024 and 2025 articles, I was a major contributor to the software used to perform the transient photovoltage/photocurrent experiments as well as developing scripts to automate initial analysis.
 For the 2023 article, contributed a Python script to automate a basic analysis of some data; a relatively small part of the project.
 
 ### 2025
