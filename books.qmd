@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 12/13/2025
+date-modified: 12/25/2025
 date-format: long
 echo: false
 ---
@@ -17,10 +17,10 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 347 / 365, # days
+  bible = 359 / 365, # days
   wwwwg = 280 / 505, # pages
-  econ  = 423 / 634, # pages
-  add   =  82 / 243
+  add   =  82 / 243, # pages
+  lotr  = (788 - 731) / (1008 - 731) # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -48,16 +48,7 @@ divs$wwwwg
 
 ---
 
-[*Basic Economics*](https://en.wikipedia.org/wiki/Basic_Economics) (2000, 5th edition) by [Thomas Sowell](https://en.wikipedia.org/wiki/Thomas_Sowell).
-
-```{r}
-#| results: asis
-divs$econ
-```
-
----
-
-[*Angels, Demons, and the Devil*](https://www.amazon.com/Angels-Demons-and-the-Devil/dp/0966006062) (2013) by F. LaGard Smith
+[*Angels, Demons, and the Devil*](https://www.amazon.com/Angels-Demons-and-the-Devil/dp/0966006062) (2013) by F. LaGard Smith.
 
 ```{r}
 #| results: asis
@@ -66,27 +57,36 @@ divs$add
 
 ---
 
+[*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
+
+```{r}
+#| results: asis
+divs$lotr
+```
+
+--- 
+
 # Future Reading
 
 These are books which are next in line to read.
 
-1. [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
+1. [*The American Story: Building the Republic*](https://www.goodreads.com/book/show/208562415-the-american-story) (2024) by David and Tim Barton.
 
-2. [*The American Story: Building the Republic*](https://www.goodreads.com/book/show/208562415-the-american-story) (2024) by David and Tim Barton.
+2. [*Mostly Harmless Econometrics*](https://www.mostlyharmlesseconometrics.com/) (2009) by Joshua D. Angrist & Jörn-Steffen Pischke.
 
-3. Mostly Harmless Econometrics (2009) by Joshua D. Angrist & Jörn-Steffen Pischke.
+3. [*The Wealth of Nations*](https://en.wikipedia.org/wiki/The_Wealth_of_Nations) by [Adam Smith](https://en.wikipedia.org/wiki/Adam_Smith).
 
-4. The Wealth of Nations by Adam Smith.
+4. [*A Little History of Economics*](https://www.niallkishtainy.com/little-history) by Niall Kishtainy.
 
-5. [A Little History of Economics](https://www.niallkishtainy.com/little-history) by Niall Kishtainy.
+5. [*Miracles*](https://en.wikipedia.org/wiki/Miracles_(book)) (1960) by C. S. Lewis.
 
-6. [Miracles](https://en.wikipedia.org/wiki/Miracles_(book)) (1960) by C. S. Lewis.
+6. [*A Hobbit, a Wardrobe, and a Great War*](https://www.josephloconte.com/books/a-hobbit-a-wardrobe-and-a-great-war/) (2015) by [Joseph Loconte](https://www.josephloconte.com/).
 
-7. Energy Economics (2023, 2nd edition) by Peter M. Schwartz.
+7. *Energy Economics* (2023, 2nd edition) by Peter M. Schwartz.
 
-8. [An Introduction fo Machine Learning](https://link.springer.com/book/10.1007/978-3-030-81935-4) (2021, 3rd edition) by Miroslav Kubat.
+8. [*An Introduction to Machine Learning*](https://link.springer.com/book/10.1007/978-3-030-81935-4) (2021, 3rd edition) by Miroslav Kubat.
 
-9. Public Finance and Public Policy (2019, 3rd edition) by Arye L. Hillman.
+9. *Public Finance and Public Policy* (2019, 3rd edition) by Arye L. Hillman.
 
 # Podcasts/Lectures
 
@@ -104,7 +104,7 @@ My goal for this year is 12 books.
 
 ```{r}
 #| results: asis
-goal <- scales::label_percent(0.01)(9 / 12)
+goal <- scales::label_percent(0.01)(10 / 12)
 
 glue::glue(
     '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {goal}; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
@@ -112,21 +112,36 @@ glue::glue(
 ```
 ---
 
-- [*Philosophy and Human Geography*](https://archive.org/details/philosophyhumang00rjjo) (1986, 2nd edition) by [Ron Johnston](https://en.wikipedia.org/wiki/Ron_Johnston_(geographer)).
-
-- [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
-
-- [*Advanced R*](https://adv-r.hadley.nz/index.html) (2019, 2nd edition) by Hadley Wickham.
-
-- [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
+### Business
 
 - [*Start, Stop, or Grow?*](https://robertgrayatkins.com/book/) (2022) by [Robert Gray Atkins](https://robertgrayatkins.com/).
 
-- [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
+### Economics
+
+- [*Basic Economics*](https://en.wikipedia.org/wiki/Basic_Economics) (2000, 5th edition) by [Thomas Sowell](https://en.wikipedia.org/wiki/Thomas_Sowell).
+
+### Fictional
 
 - [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
 
+- [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
+
+### Philosophy
+
+- [*Philosophy and Human Geography*](https://archive.org/details/philosophyhumang00rjjo) (1986, 2nd edition) by [Ron Johnston](https://en.wikipedia.org/wiki/Ron_Johnston_(geographer)).
+
+### Programming
+
+- [*Advanced R*](https://adv-r.hadley.nz/index.html) (2019, 2nd edition) by Hadley Wickham.
+
+- [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
+
 - [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
+
+
+### Spirituality
+
+- [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 
 - [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
 
