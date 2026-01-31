@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 12/25/2025
+date-modified: 1/31/2025
 date-format: long
 echo: false
 ---
@@ -17,10 +17,9 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 359 / 365, # days
-  wwwwg = 280 / 505, # pages
-  add   =  82 / 243, # pages
-  lotr  = (788 - 731) / (1008 - 731) # pages
+  bible =  31 / 365, # days
+  wwwwg = 438 / 505, # pages
+  add   =  82 / 243  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -57,15 +56,6 @@ divs$add
 
 ---
 
-[*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
-
-```{r}
-#| results: asis
-divs$lotr
-```
-
---- 
-
 # Future Reading
 
 These are books which are next in line to read.
@@ -100,16 +90,18 @@ These are books which are next in line to read.
 
 ## 2025
 
-My goal for this year is 12 books.
+My goal was 12 books.
+I chose some pretty long books and with additional reading for classes I didn't have the mental energy to complete the longest books.
 
 ```{r}
 #| results: asis
-goal <- scales::label_percent(0.01)(10 / 12)
+goal <- scales::label_percent(0.01)(11 / 12)
 
 glue::glue(
     '<div class="progress"><div class="progress-bar" role="progressbar" style="width: {goal}; background-color:#d9534f;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>'
 )
 ```
+
 ---
 
 ### Business
@@ -126,6 +118,8 @@ glue::glue(
 
 - [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
 
+- [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
+
 ### Philosophy
 
 - [*Philosophy and Human Geography*](https://archive.org/details/philosophyhumang00rjjo) (1986, 2nd edition) by [Ron Johnston](https://en.wikipedia.org/wiki/Ron_Johnston_(geographer)).
@@ -138,8 +132,9 @@ glue::glue(
 
 - [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
-
 ### Spirituality
+
+- *The Bible* (ESV, 2016) - Read chronologically.
 
 - [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
 

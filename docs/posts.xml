@@ -9,7 +9,7 @@
 <link>https://slcarter.com/posts.html</link>
 <atom:link href="https://slcarter.com/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.7.31</generator>
+<generator>quarto-1.8.27</generator>
 <lastBuildDate>Mon, 06 Oct 2025 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Distance Calculations Lab Using R</title>
@@ -26,7 +26,7 @@
 <section id="packages-and-data" class="level1">
 <h1>Packages and Data</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -61,7 +61,7 @@ font-style: inherit;">crs =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">st_crs</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"NAD83"</span>))</span></code></pre></div>
+font-style: inherit;">"NAD83"</span>))</span></code></pre></div></div>
 </div>
 <p>If you were not able to install the <code>{spData}</code> package, download the <code>house</code> dataset as an <code>.rds</code> file from Blackboard.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Coordinate Systems">
@@ -70,7 +70,7 @@ font-style: inherit;">"NAD83"</span>))</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Coordinate Systems
+<span class="screen-reader-only">Note</span>Coordinate Systems
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -84,7 +84,7 @@ Coordinate Systems
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(house_sf) <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -161,7 +161,7 @@ background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sale Price"</span></span>
-<span id="cb2-14">  )</span></code></pre></div>
+<span id="cb2-14">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-lucas-scatter" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
@@ -181,7 +181,7 @@ Figure&nbsp;1
 <section id="distance-to-city-center" class="level1">
 <h1>Distance to City Center</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">toledo_lat <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">toledo_lat <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
 background-color: null;
@@ -192,12 +192,12 @@ font-style: inherit;">&lt;-</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">83.537778</span></span></code></pre></div>
+font-style: inherit;">83.537778</span></span></code></pre></div></div>
 </div>
 <p>Wikipedia gives the center of Toledo as (41.652778, -83.537778).</p>
 <p>Let’s establish a few distance metrics and compare the results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">euclidean <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">euclidean <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -263,11 +263,11 @@ font-style: inherit;">6371</span></span>
 <span id="cb4-14"></span>
 <span id="cb4-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># and also Haversine from `{geosphere}`</span></span></code></pre></div>
+font-style: inherit;"># and also Haversine from `{geosphere}`</span></span></code></pre></div></div>
 </div>
 <p>So now we can calculate the distance to the city center with Euclidean, Manhattan, and Haversine distances.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">house_sf_dist <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">house_sf_dist <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> house_sf <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -353,12 +353,12 @@ background-color: null;
 font-style: inherit;">1000</span> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># convert meters to kilometers</span></span>
-<span id="cb5-23">  )</span></code></pre></div>
+<span id="cb5-23">  )</span></code></pre></div></div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(house_sf_dist) <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -438,7 +438,7 @@ background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Manhattan &gt; 15km"</span></span>
-<span id="cb6-19">  )</span></code></pre></div>
+<span id="cb6-19">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-lucas-center" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
@@ -461,7 +461,7 @@ Figure&nbsp;2
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(</span>
 <span id="cb7-2">  <span class="at" style="color: #657422;
@@ -538,7 +538,7 @@ background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Housing Sales in Lucas County, 1993-1998"</span></span>
-<span id="cb7-20">  )</span></code></pre></div>
+<span id="cb7-20">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-price-dist-scatter" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
@@ -557,7 +557,7 @@ Figure&nbsp;3
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(</span>
 <span id="cb8-2">  <span class="at" style="color: #657422;
@@ -651,7 +651,7 @@ background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Housing Sales in Lucas County, 1993-1998"</span></span>
-<span id="cb8-21">  )</span></code></pre></div>
+<span id="cb8-21">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-price-dist-scatter-lm" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
@@ -669,7 +669,7 @@ Figure&nbsp;4
 <p>What about the other variables? How might housing prices vary for reasons other than distance? Or, how might distance to correlated with other variables?</p>
 <p>Here are the variables we have:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glimpse</span>(house_sf_dist)</span>
 <span id="cb9-2"><span class="co" style="color: #5E5E5E;
@@ -773,7 +773,7 @@ background-color: null;
 font-style: inherit;">#&gt; $ distance_manhattan &lt;dbl&gt; 64.24187, 63.93241, 63.37922, 61.87764, 58.26169, 6…</span></span>
 <span id="cb9-35"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; $ distance_haversine &lt;dbl&gt; 38.74246, 38.56770, 38.25653, 37.32047, 35.29493, 3…</span></span></code></pre></div>
+font-style: inherit;">#&gt; $ distance_haversine &lt;dbl&gt; 38.74246, 38.56770, 38.25653, 37.32047, 35.29493, 3…</span></span></code></pre></div></div>
 </div>
 <p>Information about each variable can be found in the associated help file. It can be opened by typing <code>?house</code> in the console. Although it is not the most thorough explanations of each variable, it is still helpful.</p>
 <p>We can make a list of relationships to consider. In these there are plenty of hypotheses.</p>
@@ -812,7 +812,7 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(</span>
 <span id="cb10-2">  <span class="at" style="color: #657422;
@@ -879,7 +879,7 @@ background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sale Price"</span></span>
-<span id="cb10-18">  )</span></code></pre></div>
+<span id="cb10-18">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-price-age" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
@@ -898,7 +898,7 @@ Figure&nbsp;5
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(</span>
 <span id="cb11-2">  <span class="at" style="color: #657422;
@@ -949,7 +949,7 @@ background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Year Built"</span></span>
-<span id="cb11-14">  )</span></code></pre></div>
+<span id="cb11-14">  )</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-age-dist" class="quarto-float quarto-figure quarto-figure-center anchored" width="576">
@@ -970,7 +970,7 @@ Figure&nbsp;6
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question
+<span class="screen-reader-only">Caution</span>Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -989,7 +989,7 @@ Question
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Splitting Data
+<span class="screen-reader-only">Important</span>Splitting Data
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1003,7 +1003,7 @@ Splitting Data
 </div>
 <p>First let’s try a simple model with just distance and taking logs of distance and price.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">simple_model <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">simple_model <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1081,13 +1081,13 @@ background-color: null;
 font-style: inherit;">#&gt; Multiple R-squared:  0.4631, Adjusted R-squared:  0.4631 </span></span>
 <span id="cb12-25"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; F-statistic: 2.187e+04 on 1 and 25355 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+font-style: inherit;">#&gt; F-statistic: 2.187e+04 on 1 and 25355 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div></div>
 </div>
 <p>This has a decent <img src="https://latex.codecogs.com/png.latex?R%5E2"> value. However, we can’t trust the model coefficients. Using only distance isn’t a very good model.</p>
 <p>Why?</p>
 <p>Other factors have spatial variance. Distance isn’t the only thing changing between observations. We have an endogeneity issue or omitted variable bias. That should sound familiar from an econometrics class. If not, you should be covering that soon.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">big_model <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">big_model <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1261,7 +1261,7 @@ background-color: null;
 font-style: inherit;">#&gt; Multiple R-squared:   0.72,  Adjusted R-squared:  0.7198 </span></span>
 <span id="cb13-57"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; F-statistic:  2961 on 22 and 25334 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+font-style: inherit;">#&gt; F-statistic:  2961 on 22 and 25334 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div></div>
 </div>
 <p>This model improves the <img src="https://latex.codecogs.com/png.latex?R%5E2"> value. Compare the coefficiencts for <img src="https://latex.codecogs.com/png.latex?%5Clog(d_%5Ctext%7Bhaversine%7D)">. The coefficient in the second model is only half of that in the first model.</p>
 <p>This means that some of the variation in price is better explained by the other variables we included.</p>
@@ -1272,7 +1272,7 @@ font-style: inherit;">#&gt; F-statistic:  2961 on 22 and 25334 DF,  p-value: &lt
 <p>The predictions can be found with the <code>predict()</code> function.</p>
 <p>Notice how we have to use <code>exp()</code> wrapping <code>predict</code>. This is because we used <code>log(price)</code>. We need to reverse the logarithm.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">house_sf_dist <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">house_sf_dist <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb14-2">  <span class="fu" style="color: #4758AB;
@@ -1342,7 +1342,7 @@ background-color: null;
 font-style: inherit;">#&gt; 10  50000    89339.</span></span>
 <span id="cb14-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; # ℹ 25,347 more rows</span></span></code></pre></div>
+font-style: inherit;">#&gt; # ℹ 25,347 more rows</span></span></code></pre></div></div>
 </div>
 </section>
 <section id="more-complicated-models" class="level2">
@@ -1388,7 +1388,7 @@ font-style: inherit;">#&gt; # ℹ 25,347 more rows</span></span></code></pre></d
 <p>I was reading up on other methods and came across a <a href="https://mtmorgan.github.io/software/update/2024/01/25/rjsoncons-ndjson-performance.html">post</a> from <a href="https://mtmorgan.github.io/">Martin Morgan</a>. He is the author of <a href="https://mtmorgan.github.io/rjsoncons/">rjsoncons</a>. His post covered the use of <a href="https://duckdb.org/docs/stable/data/json/overview.html">DuckDB for reading JSON</a> which was quite performant.</p>
 <p>While sick today I went through the same operation with each approach.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -1427,11 +1427,11 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>The JSON file I’ll be using is from a NCAA basketball game and is located <a href="https://data.ncaa.com/casablanca/game/6351263/boxscore.json">here</a>. I’m not sure how the performance of these different approaches will vary depending on the structure of the JSON file.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> <span class="op" style="color: #5E5E5E;
@@ -1469,13 +1469,13 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <section id="tidyverse-approach" class="level1"><h1>
 <code>{tidyverse}</code> Approach</h1>
 <p>This is the easiest to understand method in my opinion. It simply reads the JSON file using <a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a>, pulls out some metadata about the teams, pulls out some player statistics, and joins them together. It returns a <a href="https://tibble.tidyverse.org/">tibble</a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">tidyverse_style</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1606,13 +1606,13 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 </section><section id="data.table-approach" class="level1"><h1>
 <code>{data.table}</code> Approach</h1>
 <p>The process here is essentially the same as above. This however returns a <code>data.frame</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">data.table_style</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1646,7 +1646,7 @@ font-style: inherit;">teams</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdrr.io/pkg/data.table/man/data.table.html">data.table</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -1676,7 +1676,7 @@ background-color: null;
 font-style: inherit;">)</span>,</span>
 <span>        <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdatatable.gitlab.io/data.table/reference/rbindlist.html">rbindlist</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdrr.io/pkg/data.table/man/rbindlist.html">rbindlist</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -1731,7 +1731,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>            <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdatatable.gitlab.io/data.table/reference/setattr.html">setnames</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdrr.io/pkg/data.table/man/setattr.html">setnames</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -1745,23 +1745,23 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 </section><section id="duckdb-approach" class="level1"><h1>DuckDB Approach</h1>
 <p>For DuckDB we need to load up an in-memory database. Also, we have to install and load the JSON extension for DuckDB.</p>
 <p>This also returns a <code>data.frame</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">con</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">dbConnect</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">duckdb</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1771,7 +1771,7 @@ font-style: inherit;">)</span></span>
 <span></span>
 <span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://dbi.r-dbi.org/reference/dbExecute.html">dbExecute</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">dbExecute</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -1782,7 +1782,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://dbi.r-dbi.org/reference/dbExecute.html">dbExecute</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">dbExecute</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -1790,10 +1790,10 @@ font-style: inherit;">con</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"LOAD json"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">duck_style</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1809,7 +1809,7 @@ background-color: null;
 font-style: inherit;">{</span></span>
 <span>    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">dbGetQuery</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span></span>
 <span>        <span class="va" style="color: #111111;
@@ -1862,11 +1862,11 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 </section><section id="benchmark" class="level1"><h1>Benchmark</h1>
 <div class="cell">
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">results</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1876,7 +1876,7 @@ font-style: inherit;">microbenchmark</span><span class="fu" style="color: #4758A
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">microbenchmark</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span></span>
 <span>  duck  <span class="op" style="color: #5E5E5E;
@@ -1913,7 +1913,7 @@ background-color: null;
 font-style: inherit;">100</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2037,7 +2037,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Opinion
+<span class="screen-reader-only">Note</span>Opinion
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2090,7 +2090,7 @@ Opinion
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Opinion
+<span class="screen-reader-only">Note</span>Opinion
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2127,7 +2127,7 @@ Opinion
 <p>The objective was to neither over- or underestimate the number of positive cases. Another way of saying that is that I need to have the same number of Type I (false positive) and Type II (false negative) errors.</p>
 <p>Looking at a confusion matrix (Figure&nbsp;1), taking Class 1 as our positive class, we have the number of Type I errors in the top-right and the number of Type II errors in the bottom-left.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -2157,7 +2157,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://yardstick.tidymodels.org/reference/conf_mat.html">conf_mat</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">conf_mat</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -2204,7 +2204,7 @@ font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/coord_fix
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div id="fig-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2231,7 +2231,7 @@ Figure&nbsp;1: A confusion matrix displaying the results from the <code>two_clas
 <p>Now that we know what we want to achieve, we have to write the code to do it.</p>
 <p>Using <a href="https://yardstick.tidymodels.org/reference/pr_curve.html"><code>pr_curve</code></a>, we will shortcut a search of the possible threshold values ranging from zero to one.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -2262,7 +2262,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://yardstick.tidymodels.org/reference/pr_curve.html">pr_curve</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">pr_curve</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -2307,11 +2307,11 @@ background-color: null;
 font-style: inherit;">#&gt; 5       1.00 0.0155          1</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6       1.00 0.0194          1</span></span></code></pre></div>
+font-style: inherit;">#&gt; 6       1.00 0.0194          1</span></span></code></pre></div></div>
 </div>
 <p>We can plot the curve to find the point where precision and recall are equal.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2344,7 +2344,7 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"dashed"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div id="fig-pr-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pr-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2358,7 +2358,7 @@ Figure&nbsp;2: A PR curve for the <code>two_class_example</code> dataset.
 </div>
 <p>We see that precision and recall are equal along the dashed line and this meets the PR curve at about (0.85, 0.85). The exact point would be available in <code>pr</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">pr_diff</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2465,11 +2465,11 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">.threshold</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>This tells us that a threshold of 0.61 will provide us with a balanced number of positive cases. We can check this my looking at the confusion matrix when we use 0.61 as the threshold.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">two_class_adjusted</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2536,7 +2536,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://yardstick.tidymodels.org/reference/conf_mat.html">conf_mat</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">conf_mat</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -2583,7 +2583,7 @@ font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/coord_fix
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div id="fig-adjusted-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-adjusted-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2598,7 +2598,7 @@ Figure&nbsp;3: The confusion matrix with the adjusted threshold value.
 <p>Notice how now the lower-left and upper-right quadrants have equal values. This means that the number of observations classified as Class 1 matches the amount in the training data.</p>
 <p>However, this can come at the cost of reduced accuracy. Funnily enough this is not the case for this particular dataset, but it was for the dataset I was using.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -2700,7 +2700,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://yardstick.tidymodels.org/reference/accuracy.html">accuracy</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">accuracy</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -2738,7 +2738,7 @@ background-color: null;
 font-style: inherit;">#&gt; 1     0.5      0.838</span></span>
 <span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2     0.610    0.86</span></span></code></pre></div>
+font-style: inherit;">#&gt; 2     0.610    0.86</span></span></code></pre></div></div>
 </div>
 <p>Of course, in reality you would want to find the best threshold for each training set and average them to apply to the test set.</p>
 
