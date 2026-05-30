@@ -1,25 +1,21 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 1/31/2025
+date-modified: 5/30/2026
 date-format: long
 echo: false
 ---
 
 I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning, and data science.
-
-I also listen to podcasts and lectures to center my mind on the important things in life.
-Centering around being better disciplined and having mental fortitude alongside physical strength and intelligence.
-
 During the academic year my reading frequency will probably slow to make room for assigned readings.
 
 # Currently Reading
 
 ```{r}
 divs <- c(
-  bible =  31 / 365, # days
-  wwwwg = 438 / 505, # pages
-  add   =  82 / 243  # pages
+  bible = 150 / 365, # days
+  add   =  82 / 243, # pages
+  siss  = 109 / 445  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -38,15 +34,6 @@ divs$bible
 
 ---
 
-[*We Who Wrestle With God: Perceptions of the Divine*](https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/) (2024) by Jordan Peterson.
-
-```{r}
-#| results: asis
-divs$wwwwg
-```
-
----
-
 [*Angels, Demons, and the Devil*](https://www.amazon.com/Angels-Demons-and-the-Devil/dp/0966006062) (2013) by F. LaGard Smith.
 
 ```{r}
@@ -56,37 +43,33 @@ divs$add
 
 ---
 
+Spatially Integrated Social Science (2004) edited by Michael F. Goodchild & Donald G. Janelle.
+
+```{r}
+#| results: asis
+divs$siss
+```
+
 # Future Reading
 
 These are books which are next in line to read.
 
 1. [*The American Story: Building the Republic*](https://www.goodreads.com/book/show/208562415-the-american-story) (2024) by David and Tim Barton.
-
 2. [*Mostly Harmless Econometrics*](https://www.mostlyharmlesseconometrics.com/) (2009) by Joshua D. Angrist & Jörn-Steffen Pischke.
-
 3. [*The Wealth of Nations*](https://en.wikipedia.org/wiki/The_Wealth_of_Nations) by [Adam Smith](https://en.wikipedia.org/wiki/Adam_Smith).
-
 4. [*A Little History of Economics*](https://www.niallkishtainy.com/little-history) by Niall Kishtainy.
-
 5. [*Miracles*](https://en.wikipedia.org/wiki/Miracles_(book)) (1960) by C. S. Lewis.
-
 6. [*A Hobbit, a Wardrobe, and a Great War*](https://www.josephloconte.com/books/a-hobbit-a-wardrobe-and-a-great-war/) (2015) by [Joseph Loconte](https://www.josephloconte.com/).
-
 7. *Energy Economics* (2023, 2nd edition) by Peter M. Schwartz.
-
 8. [*An Introduction to Machine Learning*](https://link.springer.com/book/10.1007/978-3-030-81935-4) (2021, 3rd edition) by Miroslav Kubat.
-
 9. *Public Finance and Public Policy* (2019, 3rd edition) by Arye L. Hillman.
 
-# Podcasts/Lectures
-
-- [*The Jordan B. Peterson Podcast*](https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN?si=fd1d1b72d8464e06) by [Jordan Peterson](https://www.jordanbpeterson.com/).
-
-- [*The Impossible Life*](https://open.spotify.com/show/3McmSdhO7OR6GB97Nqq69I?si=344f35bad6284a28) by [Garrett Unclebach & Nick Surface](https://www.theimpossible.life/).
-
-- [*Huberman Lab*](https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P?si=ba510b7eac074442) by Andrew Huberman.
-
 # History
+
+## 2026
+
+- [*We Who Wrestle With God: Perceptions of the Divine*](https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/) (2024) by Jordan Peterson.
+- Statistical Analysis of Geographic Information with ArcView GIS and ArcGIS (2005) by David W. S. Wong & Jay Lee.
 
 ## 2025
 
@@ -115,9 +98,7 @@ glue::glue(
 ### Fictional
 
 - [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
-
 - [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.
-
 - [*The Return of the King*](https://en.wikipedia.org/wiki/The_Return_of_the_King) (1994 edition) by J. R. R. Tolkien.
 
 ### Philosophy
@@ -127,17 +108,13 @@ glue::glue(
 ### Programming
 
 - [*Advanced R*](https://adv-r.hadley.nz/index.html) (2019, 2nd edition) by Hadley Wickham.
-
 - [*Tidy Modeling with R*](https://www.tmwr.org/) (2023) by Max Kuhn and Julia Silge.
-
 - [*Hands-On Machine Learning with R*](https://bradleyboehmke.github.io/HOML/) (2020) by Bradley Boehmke and Brandon Greenwell.
 
 ### Spirituality
 
 - *The Bible* (ESV, 2016) - Read chronologically.
-
 - [*The Screwtape Letters*](https://en.wikipedia.org/wiki/The_Screwtape_Letters) (1942) by C. S. Lewis.
-
 - [*Mere Christianity*](https://en.wikipedia.org/wiki/Mere_Christianity) (1952) by [C. S. Lewis](https://en.wikipedia.org/wiki/C._S._Lewis).
 
 ## 2024
@@ -145,15 +122,10 @@ glue::glue(
 I started reading more deliberately in the fall.
 
 - *The Bible* - Most of the Old Testament I read in the NIV, but the rest I read in the ESV.
-
 - [*Awesome Encounters with God: The Miracles of Jesus*](https://www.thriftbooks.com/w/awesome-encounters-with-god---the-miracles-of-jesus_dr-russell-bone/52477651/#edition=71087318) (2003) by Dr. Russel Bone.
-
 - [*ggplot2: Elegant Graphics for Data Analysis*](https://ggplot2-book.org/) (3rd edition) by Wickham, Navarro and Pedersen.
-
 - [*Hillbilly Elegy*](https://en.wikipedia.org/wiki/Hillbilly_Elegy) (2016) by Vice President [J. D. Vance](https://en.wikipedia.org/wiki/JD_Vance).
-
 - [*R for Data Science*](https://r4ds.hadley.nz/) (2017, 2nd edition) by [Hadley Wickham](https://github.com/hadley).
-
 - [*The American Story: The Beginnings*](https://www.google.com/books/edition/The_American_Story/r3GVzQEACAAJ?hl=en) (2020) by David and Tim Barton.
-
 - [*The Hobbit*](https://en.wikipedia.org/wiki/The_Hobbit) (1995 edition) by J. R. R. Tolkien.
+
