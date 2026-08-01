@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 5/30/2026
+date-modified: 8/1/2026
 date-format: long
 echo: false
 ---
@@ -13,9 +13,9 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 150 / 365, # days
+  bible = 213 / 365, # days
   add   =  82 / 243, # pages
-  siss  = 109 / 445  # pages
+  siss  = 145 / 445  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -70,6 +70,7 @@ These are books which are next in line to read.
 
 - [*We Who Wrestle With God: Perceptions of the Divine*](https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/) (2024) by Jordan Peterson.
 - Statistical Analysis of Geographic Information with ArcView GIS and ArcGIS (2005) by David W. S. Wong & Jay Lee.
+- [*The Accidental Theorist*](https://www.google.com/books/edition/_/Uz6hQgAACAAJ?hl=en&sa=X&ved=2ahUKEwi6yOzQ-f-VAxXY6skDHcP1Jl0Q8fIDegQIBBAZ) (1998) by [Paul Krugman](https://en.wikipedia.org/wiki/Paul_Krugman).
 
 ## 2025
 
@@ -95,7 +96,7 @@ glue::glue(
 
 - [*Basic Economics*](https://en.wikipedia.org/wiki/Basic_Economics) (2000, 5th edition) by [Thomas Sowell](https://en.wikipedia.org/wiki/Thomas_Sowell).
 
-### Fictional
+### Fiction
 
 - [*The Fellowship of the Ring*](https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring) (1994 edition) by [J. R. R. Tolkien](https://en.wikipedia.org/wiki/J._R._R._Tolkien).
 - [*The Two Towers*](https://en.wikipedia.org/wiki/The_Two_Towers) (1994 edition) by J. R. R. Tolkien.

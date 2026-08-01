@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,14 +43,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-afc01ff60241ac3d65852e1d76551d99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-59b980a7778c38dc405aae7b494af7b0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-afc01ff60241ac3d65852e1d76551d99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b70cd12912da0f95e9fbfa55e7c171e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ec50ce3c765479f666be964190ae5d74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b70cd12912da0f95e9fbfa55e7c171e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -345,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#business" id="toc-business" class="nav-link" data-scroll-target="#business">Business</a></li>
   <li><a href="#economics" id="toc-economics" class="nav-link" data-scroll-target="#economics">Economics</a></li>
-  <li><a href="#fictional" id="toc-fictional" class="nav-link" data-scroll-target="#fictional">Fictional</a></li>
+  <li><a href="#fiction" id="toc-fiction" class="nav-link" data-scroll-target="#fiction">Fiction</a></li>
   <li><a href="#philosophy" id="toc-philosophy" class="nav-link" data-scroll-target="#philosophy">Philosophy</a></li>
   <li><a href="#programming" id="toc-programming" class="nav-link" data-scroll-target="#programming">Programming</a></li>
   <li><a href="#spirituality" id="toc-spirituality" class="nav-link" data-scroll-target="#spirituality">Spirituality</a></li>
@@ -378,7 +381,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">May 30, 2026</p>
+      <p class="date-modified">August 1, 2026</p>
     </div>
   </div>
     
@@ -394,7 +397,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Currently Reading</h1>
 <p><em>The Bible</em> (ESV, 2016) - Read chronologically.</p>
 <div class="progress">
-<div class="progress-bar" role="progressbar" style="width: 41.10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+<div class="progress-bar" role="progressbar" style="width: 58.36%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
 
 </div>
 </div>
@@ -408,7 +411,7 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <p>Spatially Integrated Social Science (2004) edited by Michael F. Goodchild &amp; Donald G. Janelle.</p>
 <div class="progress">
-<div class="progress-bar" role="progressbar" style="width: 24.49%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+<div class="progress-bar" role="progressbar" style="width: 32.58%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
 
 </div>
 </div>
@@ -435,6 +438,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><a href="https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/"><em>We Who Wrestle With God: Perceptions of the Divine</em></a> (2024) by Jordan Peterson.</li>
 <li>Statistical Analysis of Geographic Information with ArcView GIS and ArcGIS (2005) by David W. S. Wong &amp; Jay Lee.</li>
+<li><a href="https://www.google.com/books/edition/_/Uz6hQgAACAAJ?hl=en&amp;sa=X&amp;ved=2ahUKEwi6yOzQ-f-VAxXY6skDHcP1Jl0Q8fIDegQIBBAZ"><em>The Accidental Theorist</em></a> (1998) by <a href="https://en.wikipedia.org/wiki/Paul_Krugman">Paul Krugman</a>.</li>
 </ul>
 </section>
 <section id="section-1" class="level2">
@@ -458,8 +462,8 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://en.wikipedia.org/wiki/Basic_Economics"><em>Basic Economics</em></a> (2000, 5th edition) by <a href="https://en.wikipedia.org/wiki/Thomas_Sowell">Thomas Sowell</a>.</li>
 </ul>
 </section>
-<section id="fictional" class="level3">
-<h3 class="anchored" data-anchor-id="fictional">Fictional</h3>
+<section id="fiction" class="level3">
+<h3 class="anchored" data-anchor-id="fiction">Fiction</h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring"><em>The Fellowship of the Ring</em></a> (1994 edition) by <a href="https://en.wikipedia.org/wiki/J._R._R._Tolkien">J. R. R. Tolkien</a>.</li>
 <li><a href="https://en.wikipedia.org/wiki/The_Two_Towers"><em>The Two Towers</em></a> (1994 edition) by J. R. R. Tolkien.</li>

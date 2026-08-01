@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta charset="UTF-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Steven Carter">
 <meta name="dcterms.date" content="2024-11-29">
@@ -10,10 +10,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -72,14 +75,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-afc01ff60241ac3d65852e1d76551d99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-59b980a7778c38dc405aae7b494af7b0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-afc01ff60241ac3d65852e1d76551d99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b70cd12912da0f95e9fbfa55e7c171e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ec50ce3c765479f666be964190ae5d74.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b70cd12912da0f95e9fbfa55e7c171e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -110,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -466,9 +469,9 @@ p(x_i) &lt; t, &amp;\text{then } 0
 <span></span>
 <span><span class="va">two_class_example</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">conf_mat</span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">autoplot</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"heatmap"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_fill_gradient</span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_equal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"heatmap"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -519,7 +522,7 @@ TP \cdot \left(\frac{1}{\text{Recall}} - 1\right) &amp;= TP \cdot \left(\frac{1}
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">pr</span> <span class="op">&lt;-</span> <span class="va">two_class_example</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">pr_curve</span><span class="op">(</span><span class="va">truth</span>, <span class="va">Class1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pr</span><span class="op">)</span></span>
@@ -535,8 +538,8 @@ TP \cdot \left(\frac{1}{\text{Recall}} - 1\right) &amp;= TP \cdot \left(\frac{1}
 </div>
 <p>We can plot the curve to find the point where precision and recall are equal.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">autoplot</span><span class="op">(</span><span class="va">pr</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_abline</span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">1</span>, intercept <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"grey"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">pr</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">1</span>, intercept <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"grey"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-pr-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pr-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -551,8 +554,8 @@ Figure&nbsp;2: A PR curve for the <code>two_class_example</code> dataset.
 <p>We see that precision and recall are equal along the dashed line and this meets the PR curve at about (0.85, 0.85). The exact point would be available in <code>pr</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pr_diff</span> <span class="op">&lt;-</span> <span class="va">pr</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>diff <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">precision</span> <span class="op">-</span> <span class="va">recall</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">diff</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>diff <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">precision</span> <span class="op">-</span> <span class="va">recall</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diff</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pr_diff</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
@@ -566,24 +569,24 @@ Figure&nbsp;2: A PR curve for the <code>two_class_example</code> dataset.
 <span><span class="co">#&gt; 6      0.590  0.868     0.858 0.00998</span></span>
 <span></span>
 <span><span class="va">threshold</span> <span class="op">&lt;-</span> <span class="va">pr_diff</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">pull</span><span class="op">(</span><span class="va">.threshold</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">.threshold</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This tells us that a threshold of 0.61 will provide us with a balanced number of positive cases. We can check this my looking at the confusion matrix when we use 0.61 as the threshold.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">two_class_adjusted</span> <span class="op">&lt;-</span> <span class="va">two_class_example</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    predicted_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
-<span>      <span class="fu">if_else</span><span class="op">(</span><span class="va">Class1</span> <span class="op">&gt;=</span> <span class="va">threshold</span>, <span class="st">"Class1"</span>, <span class="st">"Class2"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">Class1</span> <span class="op">&gt;=</span> <span class="va">threshold</span>, <span class="st">"Class1"</span>, <span class="st">"Class2"</span><span class="op">)</span>,</span>
 <span>      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">two_class_example</span><span class="op">$</span><span class="va">truth</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">two_class_adjusted</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">conf_mat</span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted_threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">autoplot</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"heatmap"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_fill_gradient</span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_equal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"heatmap"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-adjusted-conf-mat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-adjusted-conf-mat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -601,16 +604,16 @@ Figure&nbsp;3: The confusion matrix with the adjusted threshold value.
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">two_class_adjusted</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted</span>, <span class="va">predicted_threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">pivot_longer</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted</span>, <span class="va">predicted_threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols            <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">predicted</span>, <span class="va">predicted_threshold</span><span class="op">)</span>,</span>
 <span>    names_to        <span class="op">=</span> <span class="st">"threshold"</span>,</span>
 <span>    values_to       <span class="op">=</span> <span class="st">"predicted"</span>,</span>
 <span>    names_transform <span class="op">=</span> \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="st">"predicted"</span>, <span class="fl">0.5</span>, <span class="va">threshold</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">threshold</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">accuracy</span><span class="op">(</span><span class="va">truth</span>, <span class="va">predicted</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">threshold</span>, accuracy <span class="op">=</span> <span class="va">.estimate</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">threshold</span>, accuracy <span class="op">=</span> <span class="va">.estimate</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
 <span><span class="co">#&gt;   threshold accuracy</span></span>
 <span><span class="co">#&gt;       &lt;dbl&gt;    &lt;dbl&gt;</span></span>

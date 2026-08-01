@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "books.html",
+    "href": "books.html",
+    "title": "Reading Log",
+    "section": "",
+    "text": "I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning, and data science. During the academic year my reading frequency will probably slow to make room for assigned readings."
+  },
+  {
+    "objectID": "books.html#section",
+    "href": "books.html#section",
+    "title": "Reading Log",
+    "section": "2026",
+    "text": "2026\n\nWe Who Wrestle With God: Perceptions of the Divine (2024) by Jordan Peterson.\nStatistical Analysis of Geographic Information with ArcView GIS and ArcGIS (2005) by David W. S. Wong & Jay Lee.\nThe Accidental Theorist (1998) by Paul Krugman."
+  },
+  {
+    "objectID": "books.html#section-1",
+    "href": "books.html#section-1",
+    "title": "Reading Log",
+    "section": "2025",
+    "text": "2025\nMy goal was 12 books. I chose some pretty long books and with additional reading for classes I didn’t have the mental energy to complete the longest books.\n\n\n\n\n\n\n\nBusiness\n\nStart, Stop, or Grow? (2022) by Robert Gray Atkins.\n\n\n\nEconomics\n\nBasic Economics (2000, 5th edition) by Thomas Sowell.\n\n\n\nFiction\n\nThe Fellowship of the Ring (1994 edition) by J. R. R. Tolkien.\nThe Two Towers (1994 edition) by J. R. R. Tolkien.\nThe Return of the King (1994 edition) by J. R. R. Tolkien.\n\n\n\nPhilosophy\n\nPhilosophy and Human Geography (1986, 2nd edition) by Ron Johnston.\n\n\n\nProgramming\n\nAdvanced R (2019, 2nd edition) by Hadley Wickham.\nTidy Modeling with R (2023) by Max Kuhn and Julia Silge.\nHands-On Machine Learning with R (2020) by Bradley Boehmke and Brandon Greenwell.\n\n\n\nSpirituality\n\nThe Bible (ESV, 2016) - Read chronologically.\nThe Screwtape Letters (1942) by C. S. Lewis.\nMere Christianity (1952) by C. S. Lewis."
+  },
+  {
+    "objectID": "books.html#section-2",
+    "href": "books.html#section-2",
+    "title": "Reading Log",
+    "section": "2024",
+    "text": "2024\nI started reading more deliberately in the fall.\n\nThe Bible - Most of the Old Testament I read in the NIV, but the rest I read in the ESV.\nAwesome Encounters with God: The Miracles of Jesus (2003) by Dr. Russel Bone.\nggplot2: Elegant Graphics for Data Analysis (3rd edition) by Wickham, Navarro and Pedersen.\nHillbilly Elegy (2016) by Vice President J. D. Vance.\nR for Data Science (2017, 2nd edition) by Hadley Wickham.\nThe American Story: The Beginnings (2020) by David and Tim Barton.\nThe Hobbit (1995 edition) by J. R. R. Tolkien."
+  },
+  {
     "objectID": "posts/2025-03-01-data-sci-advice/index.html",
     "href": "posts/2025-03-01-data-sci-advice/index.html",
     "title": "Advice for Incoming Data Science Students",
@@ -42,13 +70,6 @@
     "text": "Other Cool Stuff\n\nDuckDB - A fairly new and handy DBMS that integrates nicely with R, Python, and others.\nObsidian - A good notetaking software that uses Markdown formatting. I used this for my last two years in college.\nLinux - If you want to broaden your computer skills, learn about Linux. Buy a Raspberry Pi (or mini computer) and start tinkering. Or, if you have an old laptop, install Mint or Pop!_OS (I have used both). Windows 10 is reaching end of support in October 2025. It may be time to jump ship and embrace the penguin.\nDocker - This can help deploy apps locally or on remote servers. I use this with my Raspberry Pi and at work."
   },
   {
-    "objectID": "posts/2025-03-06-json-extraction/index.html",
-    "href": "posts/2025-03-06-json-extraction/index.html",
-    "title": "Different Methods for Extracting JSON with R",
-    "section": "",
-    "text": "For the past month or so I have been working with nested JSON data. I wanted to find the fastest strategy for data extraction. My initial attempt was using the tidyverse. I was put off by the time this took to run. Next, I tried using data.table which I am fairly unfamiliar with.\nI was reading up on other methods and came across a post from Martin Morgan. He is the author of rjsoncons. His post covered the use of DuckDB for reading JSON which was quite performant.\nWhile sick today I went through the same operation with each approach.\n\nlibrary(tidyverse)\nlibrary(duckdb)\nlibrary(data.table)\nlibrary(jsonlite)\n\nThe JSON file I’ll be using is from a NCAA basketball game and is located here. I’m not sure how the performance of these different approaches will vary depending on the structure of the JSON file.\n\nif (!file.exists(\"boxscore.json\")) {\n    download.file(\n        \"https://data.ncaa.com/casablanca/game/6351263/boxscore.json\", \n        destfile = \"boxscore.json\"\n    )\n}\n\n\n{tidyverse} Approach\nThis is the easiest to understand method in my opinion. It simply reads the JSON file using jsonlite, pulls out some metadata about the teams, pulls out some player statistics, and joins them together. It returns a tibble.\n\ntidyverse_style &lt;- function() {\n    j &lt;- fromJSON(\"boxscore.json\")\n\n    stats &lt;- j$teams |&gt; \n        tibble() |&gt; \n        select(teamId, playerStats) |&gt; \n        unnest(playerStats) |&gt; \n        mutate(teamId = as.character(teamId))\n  \n    full_join(\n        j$meta$teams, \n        stats, \n        by = join_by(id == teamId)\n    )\n}\n\n\n{data.table} Approach\nThe process here is essentially the same as above. This however returns a data.frame.\n\ndata.table_style &lt;- function() {\n    j &lt;- fromJSON(\"boxscore.json\")\n\n    teams &lt;- data.table(j$teams)[, .(\n        teamId = as.character(teamId),\n        rbindlist(playerStats)\n    )]\n  \n    return(\n        merge(\n            j$meta$teams,\n            teams, \n            by.x = \"id\",\n            by.y = \"teamId\"\n        ) |&gt; \n            setnames(\"id\", \"teamId\")\n    )\n}\n\nDuckDB Approach\nFor DuckDB we need to load up an in-memory database. Also, we have to install and load the JSON extension for DuckDB.\nThis also returns a data.frame.\n\ncon &lt;- dbConnect(duckdb())\n\ndbExecute(con, \"INSTALL json\")\ndbExecute(con, \"LOAD json\")\n\n\nduck_style &lt;- function() {\n    dbGetQuery(\n        con, \n        \"\n        with raw as (select meta, teams from 'boxscore.json'),\n        meta as (select unnest(meta.teams, recursive := true) from raw),\n        teams_large as (select unnest(teams) as team from raw),\n        teams as (\n            select\n                team.teamId::VARCHAR as teamId,\n                unnest(team.playerStats, recursive := true)\n            from teams_large\n        )\n        select * exclude meta.id\n        from meta, teams\n        where meta.id = teams.teamId\n        \"\n    )\n}\n\nBenchmark\n\nresults &lt;- microbenchmark::microbenchmark(\n  duck  = duck_style(),\n  tidy  = tidyverse_style(),\n  dt    = data.table_style(),\n  times = 100\n)\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn my testing with a standard R script, DuckDB came out about 7ms faster than the tidy approach. I’m not sure what the difference is.\n\n\nWe see that data.table is the clear winner here with times below 10ms. DuckDB looks to be the most consistent.\nThere are probably some more optimizations that I am not seeing, but this is what I can up with in a few hours.\n\n\n Back to top"
-  },
-  {
     "objectID": "posts/2024-11-28-classification-errors/index.html",
     "href": "posts/2024-11-28-classification-errors/index.html",
     "title": "Balancing Classification Errors for Aggregate Consistency",
@@ -68,90 +89,6 @@
     "title": "Balancing Classification Errors for Aggregate Consistency",
     "section": "PR Curve",
     "text": "PR Curve\nNow that we know what we want to achieve, we have to write the code to do it.\nUsing pr_curve, we will shortcut a search of the possible threshold values ranging from zero to one.\n\nlibrary(dplyr)\n\npr &lt;- two_class_example |&gt; \n  as_tibble() |&gt; \n  pr_curve(truth, Class1)\n\nhead(pr)\n#&gt; # A tibble: 6 × 3\n#&gt;   .threshold  recall precision\n#&gt;        &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1     Inf    0               1\n#&gt; 2       1.00 0.00388         1\n#&gt; 3       1.00 0.00775         1\n#&gt; 4       1.00 0.0116          1\n#&gt; 5       1.00 0.0155          1\n#&gt; 6       1.00 0.0194          1\n\nWe can plot the curve to find the point where precision and recall are equal.\n\nautoplot(pr) +\n  geom_abline(slope = 1, intercept = 0, color = \"grey\", linetype = \"dashed\")\n\n\n\n\n\n\nFigure 2: A PR curve for the two_class_example dataset.\n\n\n\n\nWe see that precision and recall are equal along the dashed line and this meets the PR curve at about (0.85, 0.85). The exact point would be available in pr.\n\npr_diff &lt;- pr |&gt; \n  mutate(diff = abs(precision - recall)) |&gt; \n  arrange(diff)\n\nhead(pr_diff)\n#&gt; # A tibble: 6 × 4\n#&gt;   .threshold recall precision    diff\n#&gt;        &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n#&gt; 1      0.610  0.864     0.864 0      \n#&gt; 2      0.618  0.860     0.864 0.00335\n#&gt; 3      0.602  0.868     0.865 0.00335\n#&gt; 4      0.601  0.868     0.862 0.00668\n#&gt; 5      0.618  0.857     0.863 0.00669\n#&gt; 6      0.590  0.868     0.858 0.00998\n\nthreshold &lt;- pr_diff |&gt; \n  slice(1) |&gt; \n  pull(.threshold)\n\nThis tells us that a threshold of 0.61 will provide us with a balanced number of positive cases. We can check this my looking at the confusion matrix when we use 0.61 as the threshold.\n\ntwo_class_adjusted &lt;- two_class_example |&gt; \n  mutate(\n    predicted_threshold = factor(\n      if_else(Class1 &gt;= threshold, \"Class1\", \"Class2\"),\n      levels = levels(two_class_example$truth)\n    )\n  )\n\ntwo_class_adjusted |&gt; \n  conf_mat(truth, predicted_threshold) |&gt; \n  autoplot(type = \"heatmap\") +\n  scale_fill_gradient(low = \"white\", high = \"lightblue\") +\n  coord_equal()\n\n\n\n\n\n\nFigure 3: The confusion matrix with the adjusted threshold value.\n\n\n\n\nNotice how now the lower-left and upper-right quadrants have equal values. This means that the number of observations classified as Class 1 matches the amount in the training data.\nHowever, this can come at the cost of reduced accuracy. Funnily enough this is not the case for this particular dataset, but it was for the dataset I was using.\n\nlibrary(tidyr)\n\ntwo_class_adjusted |&gt; \n  select(truth, predicted, predicted_threshold) |&gt; \n  pivot_longer(\n    cols            = c(predicted, predicted_threshold),\n    names_to        = \"threshold\",\n    values_to       = \"predicted\",\n    names_transform = \\(x) ifelse(x == \"predicted\", 0.5, threshold)\n  ) |&gt; \n  group_by(threshold) |&gt; \n  accuracy(truth, predicted) |&gt; \n  select(threshold, accuracy = .estimate)\n#&gt; # A tibble: 2 × 2\n#&gt;   threshold accuracy\n#&gt;       &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1     0.5      0.838\n#&gt; 2     0.610    0.86\n\nOf course, in reality you would want to find the best threshold for each training set and average them to apply to the test set."
-  },
-  {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "Posts",
-    "section": "",
-    "text": "Distance Calculations Lab Using R\n\n\n\nDistance\n\nR\n\nSpatial\n\n\n\n\n\n\n\nSteven Carter\n\n\nOct 6, 2025\n\n\n\n\n\n\n\n\n\n\n\nDifferent Methods for Extracting JSON with R\n\n\n\nR\n\nJSON\n\n\n\n\n\n\n\nSteven Carter\n\n\nMar 6, 2025\n\n\n\n\n\n\n\n\n\n\n\nAdvice for Incoming Data Science Students\n\n\n\nEducation\n\n\n\n\n\n\n\nSteven Carter\n\n\nMar 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBalancing Classification Errors for Aggregate Consistency\n\n\n\nClassification\n\nR\n\nLogistic Regression\n\n\n\n\n\n\n\nSteven Carter\n\n\nNov 29, 2024\n\n\n\n\n\n\nNo matching items\n Back to top"
-  },
-  {
-    "objectID": "books.html",
-    "href": "books.html",
-    "title": "Reading Log",
-    "section": "",
-    "text": "I have been focusing on reading important philosophical and psychological texts as well as textbooks pertaining to R, machine learning, and data science. During the academic year my reading frequency will probably slow to make room for assigned readings."
-  },
-  {
-    "objectID": "books.html#section",
-    "href": "books.html#section",
-    "title": "Reading Log",
-    "section": "2026",
-    "text": "2026\n\nWe Who Wrestle With God: Perceptions of the Divine (2024) by Jordan Peterson.\nStatistical Analysis of Geographic Information with ArcView GIS and ArcGIS (2005) by David W. S. Wong & Jay Lee."
-  },
-  {
-    "objectID": "books.html#section-1",
-    "href": "books.html#section-1",
-    "title": "Reading Log",
-    "section": "2025",
-    "text": "2025\nMy goal was 12 books. I chose some pretty long books and with additional reading for classes I didn’t have the mental energy to complete the longest books.\n\n\n\n\n\n\n\nBusiness\n\nStart, Stop, or Grow? (2022) by Robert Gray Atkins.\n\n\n\nEconomics\n\nBasic Economics (2000, 5th edition) by Thomas Sowell.\n\n\n\nFictional\n\nThe Fellowship of the Ring (1994 edition) by J. R. R. Tolkien.\nThe Two Towers (1994 edition) by J. R. R. Tolkien.\nThe Return of the King (1994 edition) by J. R. R. Tolkien.\n\n\n\nPhilosophy\n\nPhilosophy and Human Geography (1986, 2nd edition) by Ron Johnston.\n\n\n\nProgramming\n\nAdvanced R (2019, 2nd edition) by Hadley Wickham.\nTidy Modeling with R (2023) by Max Kuhn and Julia Silge.\nHands-On Machine Learning with R (2020) by Bradley Boehmke and Brandon Greenwell.\n\n\n\nSpirituality\n\nThe Bible (ESV, 2016) - Read chronologically.\nThe Screwtape Letters (1942) by C. S. Lewis.\nMere Christianity (1952) by C. S. Lewis."
-  },
-  {
-    "objectID": "books.html#section-2",
-    "href": "books.html#section-2",
-    "title": "Reading Log",
-    "section": "2024",
-    "text": "2024\nI started reading more deliberately in the fall.\n\nThe Bible - Most of the Old Testament I read in the NIV, but the rest I read in the ESV.\nAwesome Encounters with God: The Miracles of Jesus (2003) by Dr. Russel Bone.\nggplot2: Elegant Graphics for Data Analysis (3rd edition) by Wickham, Navarro and Pedersen.\nHillbilly Elegy (2016) by Vice President J. D. Vance.\nR for Data Science (2017, 2nd edition) by Hadley Wickham.\nThe American Story: The Beginnings (2020) by David and Tim Barton.\nThe Hobbit (1995 edition) by J. R. R. Tolkien."
-  },
-  {
-    "objectID": "tech.html",
-    "href": "tech.html",
-    "title": "Technologies I Use",
-    "section": "",
-    "text": "I have a Raspberry Pi 5 which runs a handful of Docker containers. I don’t make use of them very often, but it’s a nice hobby.\n\nCasaOS for general management.\nJellyfin for music.\nGitea for local version control.\nHomepage for a custom browser homepage.\nMemos for the local sharing of memes.\n\nUsing v0.24.3 since I really don’t like the UI changes in more recent versions.\n\nOpen WebUI to experiment with self-hosted AI models through Ollama.\n\nA Raspberry Pi 5 (8GB) is not capable of very much when it comes to AI (really only &lt;3b parameters given the other things running).\n\nCrafty for a highly neglected and currently broken Minecraft server.\n\nThese are all wired up to subdomains for easy (local-only) access."
-  },
-  {
-    "objectID": "tech.html#languages",
-    "href": "tech.html#languages",
-    "title": "Technologies I Use",
-    "section": "Languages",
-    "text": "Languages\n\nProgramming\n\n\n\nLanguage\nProficiency\nExperience\n\n\n\n\nR\nStrong\n2.5 years\n\n\nPython\nModerate\n2 years\n\n\nJava\nBasic\n2 semesters\n\n\nCSS\nBasic\nSome\n\n\nJavaScript\nNear Zero\nNext to none\n\n\n\n\n\nQuery\n\n\n\nLanguage\nProficiency\nExperience\n\n\n\n\nSQL\nModerate\n1.5 years\n\n\nDAX\nBasic\nSome\n\n\n\n\n\nMarkup\n\n\n\nLanguage\nProficiency\nExperience\n\n\n\n\nMarkdown\nStrong\n2.5 years\n\n\nQuarto\nStrong\n2.5 years\n\n\nLaTeX\nModerate\n1 year\n\n\nHTML\nBasic\nSome\n\n\nTypst\nBasic\nSome"
-  },
-  {
-    "objectID": "tech.html#software",
-    "href": "tech.html#software",
-    "title": "Technologies I Use",
-    "section": "Software",
-    "text": "Software\nThis is the software I regularly use or have tried.\n\nRStudio: This is my go-to editor for writing reports and apps with Quarto and Shiny. The open-source community is really thriving and makes the R language very approachable. A big plus is the Vim motions as I use a weird combination of Vim motions and keyboard macros.\nVS Code: I use this for miscellaneous code editing and any Python work. It gets the job done.\n\nPositron: It’s a weird cross between RStudio and VS Code.\nWindsurf: Basically VS Code with AI. The AI portion is kind of in the way. It is useful for file paths and tedious repetitive edits, but I don’t find it very useful for real work.\n\nPower BI: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in a closed-source, paid ecosystem is a big negative. The documentation is severely lacking compared to that of the R community.\n\nDAX: This is terrible. Just terrible.\nSQL Server Analysis Server: It uses DAX. It’s okay.\n\nTableau: Similar thoughts to Power BI, but I have generally had a better experience. However, I have used it very little.\nArcGIS: I only used this for a class. It was an alright experience, but I haven’t done any complex work to feel out the program yet. All of my mapping needs recently have been filled by {plotly} and {ggplot2}.\nObsidian: This is a good and adaptable notetaking software. I use it often on all my devices.\nDuckDB: This is a good database software. I use it mainly for ETL into local data marts which are then used in Shiny applications or reporting with Quarto. For me this is superior to having a server-based warehouse as the data are fairly small in size and can be programmatically refreshed with an R script. The SQL dialect is very good in my opinion. It has very useful shorthands compared to standard SQL."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "S. L. Carter",
-    "section": "",
-    "text": "University of Toledo | Toledo, Ohio\nPhD in Spatially Integrated Social Science | August 2025 - Present (expected graduation: 2030)\nMA in Economics | May 2024\nCertificate of Data Analytics in Economics | May 2024\nBS in Data Science | May 2023"
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "S. L. Carter",
-    "section": "",
-    "text": "University of Toledo | Toledo, Ohio\nPhD in Spatially Integrated Social Science | August 2025 - Present (expected graduation: 2030)\nMA in Economics | May 2024\nCertificate of Data Analytics in Economics | May 2024\nBS in Data Science | May 2023"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "S. L. Carter",
-    "section": "Experience",
-    "text": "Experience\n\nUniversity of Toledo | Toledo, Ohio\n\n\n\n\n\n\nNoteBusiness Insights Analyst | May 2024 - Present\n\n\n\n\n\n\nProjects\n\nAnalyzed enrollment and admissions data to develop a detailed simulation and forecast of university enrollment.\nBuilt several Shiny applications for streamlining data analysis and visualization to better inform decision-makers in a dynamic and intuitive manner.\nDesigned a number of webscraping and data acquisition tools to ensure straightforward data sharing and analysis.\nProduced streamlined processes to download and transform data into language agnostic formats.\nDeveloped a check to search for unusual work history and flag for review.\n\n\n\nSpecialties\n\nR\n\ntidyverse, tidymodels, and fpp3 primarily, in addition to others.\n\nShiny for R and Python\nQuarto and RMarkdown\nSQL\nPython\n\n\n\n\n\n\n\n\n\n\n\nNoteGraduate Assistant | Aug 2023 - May 2024\n\n\n\n\n\nSpecialties\n\nR\nShiny for R\nRMarkdown\n\n\n\n\n\n\n\n\n\n\nNoteUndergraduate Research Assistant | Oct 2022 - Aug 2023\n\n\n\n\n\n\nProjects\n\nDeveloped software for performing high quality electrical measurements with efficiency and precision. Improved experimental speed and consistency through software improvements and advances to the physical experimentation system.\nDeveloped workflows to improve quality and consistency for analyzing experimental data output.\nPerformed electrical and optical photovoltaic measurements.\nSee below for papers in which the software I largely developed was utilized, even beyond my time of employment.\n\n\n\nSpecialties\n\nPython\n\nNumPy, scikit-learn, and pandas."
-  },
-  {
-    "objectID": "index.html#sec-publications",
-    "href": "index.html#sec-publications",
-    "title": "S. L. Carter",
-    "section": "Publications",
-    "text": "Publications\nFor the 2024 and 2025 articles, I was a major contributor to the software used to perform the transient photovoltage/photocurrent experiments as well as developing scripts to automate initial analysis. For the 2023 article, contributed a Python script to automate a basic analysis of some data; a relatively small part of the project.\n\n2025\n\nAbasi Abudulimu, Sheng Fu, Nadeesha Katakumbura, Nannan Sun, Steven Carter, Tyler Brau, Lei Chen, Manoj Rajakaruna, Jared Friedl, Zhaoning Song, Adam B. Phillips, Michael J. Heben, Yanfa Yan and Randy J. Ellingson. 2025. “Enchancing Understanding of Recombination Mechanisms in High-Performance Tin-Lead Perovskite Solar Cells.” Cell Reports Physical Science 6 (1). https://doi.org/10.1016/j.xcrp.2024.102349.\n\n\n\n2024\n\nAbudulimu, Abasi, Adam Phillips, Steven Carter, Sabin Neupane, Deng-Bing Li, Tyler Brau, Jared Friedl, Yanfa Yan, Michael Heben, and Randy Ellingson. 2024. “Transient Photovoltage as a Tool for Probing Carrier Dynamics in CdTe-Based Solar Cells.” In 2024 IEEE 52nd Photovoltaic Specialist Conference (PVSC), 1220–20. IEEE. https://doi.org/10.1109/pvsc57443.2024.10749335.\nAbudulimu, Abasi, Steven Carter, Adam B. Phillips, Deng‐Bing Li, Sabin Neupane, Tyler Brau, Jared Friedl, et al. 2024. “Comprehensive Study of Carrier Recombination in High‐efficiency CdTe Solar Cells Using Transient Photovoltage.” Solar RRL 8 (10). https://doi.org/10.1002/solr.202400131.\n\n\n\n2023\n\nPhillips, Adam B., Jared D. Friedl, Philip Ottinger, Steven L. Carter, Zhaoning Song, Abasi Abudulimu, Ebin Bastola, et al. 2023. “Understanding and Advancing Bifacial Thin Film Solar Cells Under Dual Illumination.” Solar RRL 7 (21). https://doi.org/10.1002/solr.202300545."
   },
   {
     "objectID": "posts/2025-10-06-distance-lab/index.html",
@@ -194,5 +131,68 @@
     "title": "Distance Calculations Lab Using R",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nLeaflet and Plotly each have R and Python interfaces to their JavaScript libraries. If you see a interactive map on a website, there is a good chance it was made with one of those libraries.↩︎"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "S. L. Carter",
+    "section": "",
+    "text": "University of Toledo | Toledo, Ohio\nPhD in Spatially Integrated Social Science | August 2025 - Present (expected graduation: 2030)\nMA in Economics | May 2024\nCertificate of Data Analytics in Economics | May 2024\nBS in Data Science | May 2023"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "S. L. Carter",
+    "section": "",
+    "text": "University of Toledo | Toledo, Ohio\nPhD in Spatially Integrated Social Science | August 2025 - Present (expected graduation: 2030)\nMA in Economics | May 2024\nCertificate of Data Analytics in Economics | May 2024\nBS in Data Science | May 2023"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "S. L. Carter",
+    "section": "Experience",
+    "text": "Experience\n\nUniversity of Toledo | Toledo, Ohio\n\n\n\n\n\n\nNoteBusiness Insights Analyst | May 2024 - Present\n\n\n\n\n\n\nProjects\n\nAnalyzed enrollment and admissions data to develop a detailed simulation and forecast of university enrollment.\nBuilt several Shiny applications for streamlining data analysis and visualization to better inform decision-makers in a dynamic and intuitive manner.\nDesigned a number of webscraping and data acquisition tools to ensure straightforward data sharing and analysis.\nProduced streamlined processes to download and transform data into language agnostic formats.\nDeveloped a check to search for unusual work history and flag for review.\n\n\n\nSpecialties\n\nR\n\ntidyverse, tidymodels, and fpp3 primarily, in addition to others.\n\nShiny for R and Python\nQuarto and RMarkdown\nSQL\nPython\n\n\n\n\n\n\n\n\n\n\n\nNoteGraduate Assistant | Aug 2023 - May 2024\n\n\n\n\n\nSpecialties\n\nR\nShiny for R\nRMarkdown\n\n\n\n\n\n\n\n\n\n\nNoteUndergraduate Research Assistant | Oct 2022 - Aug 2023\n\n\n\n\n\n\nProjects\n\nDeveloped software for performing high quality electrical measurements with efficiency and precision. Improved experimental speed and consistency through software improvements and advances to the physical experimentation system.\nDeveloped workflows to improve quality and consistency for analyzing experimental data output.\nPerformed electrical and optical photovoltaic measurements.\nSee below for papers in which the software I largely developed was utilized, even beyond my time of employment.\n\n\n\nSpecialties\n\nPython\n\nNumPy, scikit-learn, and pandas."
+  },
+  {
+    "objectID": "index.html#sec-publications",
+    "href": "index.html#sec-publications",
+    "title": "S. L. Carter",
+    "section": "Publications",
+    "text": "Publications\nFor the 2024 and 2025 articles, I was a major contributor to the software used to perform the transient photovoltage/photocurrent experiments as well as developing scripts to automate initial analysis. For the 2023 article, contributed a Python script to automate a basic analysis of some data; a relatively small part of the project.\n\n2025\n\nAbasi Abudulimu, Sheng Fu, Nadeesha Katakumbura, Nannan Sun, Steven Carter, Tyler Brau, Lei Chen, Manoj Rajakaruna, Jared Friedl, Zhaoning Song, Adam B. Phillips, Michael J. Heben, Yanfa Yan and Randy J. Ellingson. 2025. “Enchancing Understanding of Recombination Mechanisms in High-Performance Tin-Lead Perovskite Solar Cells.” Cell Reports Physical Science 6 (1). https://doi.org/10.1016/j.xcrp.2024.102349.\n\n\n\n2024\n\nAbudulimu, Abasi, Adam Phillips, Steven Carter, Sabin Neupane, Deng-Bing Li, Tyler Brau, Jared Friedl, Yanfa Yan, Michael Heben, and Randy Ellingson. 2024. “Transient Photovoltage as a Tool for Probing Carrier Dynamics in CdTe-Based Solar Cells.” In 2024 IEEE 52nd Photovoltaic Specialist Conference (PVSC), 1220–20. IEEE. https://doi.org/10.1109/pvsc57443.2024.10749335.\nAbudulimu, Abasi, Steven Carter, Adam B. Phillips, Deng‐Bing Li, Sabin Neupane, Tyler Brau, Jared Friedl, et al. 2024. “Comprehensive Study of Carrier Recombination in High‐efficiency CdTe Solar Cells Using Transient Photovoltage.” Solar RRL 8 (10). https://doi.org/10.1002/solr.202400131.\n\n\n\n2023\n\nPhillips, Adam B., Jared D. Friedl, Philip Ottinger, Steven L. Carter, Zhaoning Song, Abasi Abudulimu, Ebin Bastola, et al. 2023. “Understanding and Advancing Bifacial Thin Film Solar Cells Under Dual Illumination.” Solar RRL 7 (21). https://doi.org/10.1002/solr.202300545."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Distance Calculations Lab Using R\n\n\n\nDistance\n\nR\n\nSpatial\n\n\n\n\n\n\n\nSteven Carter\n\n\nOct 6, 2025\n\n\n\n\n\n\n\n\n\n\n\nDifferent Methods for Extracting JSON with R\n\n\n\nR\n\nJSON\n\n\n\n\n\n\n\nSteven Carter\n\n\nMar 6, 2025\n\n\n\n\n\n\n\n\n\n\n\nAdvice for Incoming Data Science Students\n\n\n\nEducation\n\n\n\n\n\n\n\nSteven Carter\n\n\nMar 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBalancing Classification Errors for Aggregate Consistency\n\n\n\nClassification\n\nR\n\nLogistic Regression\n\n\n\n\n\n\n\nSteven Carter\n\n\nNov 29, 2024\n\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "posts/2025-03-06-json-extraction/index.html",
+    "href": "posts/2025-03-06-json-extraction/index.html",
+    "title": "Different Methods for Extracting JSON with R",
+    "section": "",
+    "text": "For the past month or so I have been working with nested JSON data. I wanted to find the fastest strategy for data extraction. My initial attempt was using the tidyverse. I was put off by the time this took to run. Next, I tried using data.table which I am fairly unfamiliar with.\nI was reading up on other methods and came across a post from Martin Morgan. He is the author of rjsoncons. His post covered the use of DuckDB for reading JSON which was quite performant.\nWhile sick today I went through the same operation with each approach.\n\nlibrary(tidyverse)\nlibrary(duckdb)\nlibrary(data.table)\nlibrary(jsonlite)\n\nThe JSON file I’ll be using is from a NCAA basketball game and is located here. I’m not sure how the performance of these different approaches will vary depending on the structure of the JSON file.\n\nif (!file.exists(\"boxscore.json\")) {\n    download.file(\n        \"https://data.ncaa.com/casablanca/game/6351263/boxscore.json\", \n        destfile = \"boxscore.json\"\n    )\n}\n\n\n{tidyverse} Approach\nThis is the easiest to understand method in my opinion. It simply reads the JSON file using jsonlite, pulls out some metadata about the teams, pulls out some player statistics, and joins them together. It returns a tibble.\n\ntidyverse_style &lt;- function() {\n    j &lt;- fromJSON(\"boxscore.json\")\n\n    stats &lt;- j$teams |&gt; \n        tibble() |&gt; \n        select(teamId, playerStats) |&gt; \n        unnest(playerStats) |&gt; \n        mutate(teamId = as.character(teamId))\n  \n    full_join(\n        j$meta$teams, \n        stats, \n        by = join_by(id == teamId)\n    )\n}\n\n\n{data.table} Approach\nThe process here is essentially the same as above. This however returns a data.frame.\n\ndata.table_style &lt;- function() {\n    j &lt;- fromJSON(\"boxscore.json\")\n\n    teams &lt;- data.table(j$teams)[, .(\n        teamId = as.character(teamId),\n        rbindlist(playerStats)\n    )]\n  \n    return(\n        merge(\n            j$meta$teams,\n            teams, \n            by.x = \"id\",\n            by.y = \"teamId\"\n        ) |&gt; \n            setnames(\"id\", \"teamId\")\n    )\n}\n\nDuckDB Approach\nFor DuckDB we need to load up an in-memory database. Also, we have to install and load the JSON extension for DuckDB.\nThis also returns a data.frame.\n\ncon &lt;- dbConnect(duckdb())\n\ndbExecute(con, \"INSTALL json\")\ndbExecute(con, \"LOAD json\")\n\n\nduck_style &lt;- function() {\n    dbGetQuery(\n        con, \n        \"\n        with raw as (select meta, teams from 'boxscore.json'),\n        meta as (select unnest(meta.teams, recursive := true) from raw),\n        teams_large as (select unnest(teams) as team from raw),\n        teams as (\n            select\n                team.teamId::VARCHAR as teamId,\n                unnest(team.playerStats, recursive := true)\n            from teams_large\n        )\n        select * exclude meta.id\n        from meta, teams\n        where meta.id = teams.teamId\n        \"\n    )\n}\n\nBenchmark\n\nresults &lt;- microbenchmark::microbenchmark(\n  duck  = duck_style(),\n  tidy  = tidyverse_style(),\n  dt    = data.table_style(),\n  times = 100\n)\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn my testing with a standard R script, DuckDB came out about 7ms faster than the tidy approach. I’m not sure what the difference is.\n\n\nWe see that data.table is the clear winner here with times below 10ms. DuckDB looks to be the most consistent.\nThere are probably some more optimizations that I am not seeing, but this is what I can up with in a few hours.\n\n\n Back to top"
+  },
+  {
+    "objectID": "tech.html",
+    "href": "tech.html",
+    "title": "Technologies I Use",
+    "section": "",
+    "text": "I have a Raspberry Pi 5 which runs a handful of Docker containers. I don’t make use of them very often, but it’s a nice hobby.\n\nCasaOS for general management.\nJellyfin for music.\nGitea for local version control.\nHomepage for a custom browser homepage.\nMemos for the local sharing of memes.\n\nUsing v0.24.3 since I really don’t like the UI changes in more recent versions.\n\nOpen WebUI to experiment with self-hosted AI models through Ollama.\n\nA Raspberry Pi 5 (8GB) is not capable of very much when it comes to AI (really only &lt;3b parameters given the other things running).\n\nCrafty for a highly neglected and currently broken Minecraft server.\n\nThese are all wired up to subdomains for easy (local-only) access."
+  },
+  {
+    "objectID": "tech.html#languages",
+    "href": "tech.html#languages",
+    "title": "Technologies I Use",
+    "section": "Languages",
+    "text": "Languages\n\nProgramming\n\n\n\nLanguage\nProficiency\nExperience\n\n\n\n\nR\nStrong\n2.5 years\n\n\nPython\nModerate\n2 years\n\n\nJava\nBasic\n2 semesters\n\n\nCSS\nBasic\nSome\n\n\nJavaScript\nNear Zero\nNext to none\n\n\n\n\n\nQuery\n\n\n\nLanguage\nProficiency\nExperience\n\n\n\n\nSQL\nModerate\n1.5 years\n\n\nDAX\nBasic\nSome\n\n\n\n\n\nMarkup\n\n\n\nLanguage\nProficiency\nExperience\n\n\n\n\nMarkdown\nStrong\n2.5 years\n\n\nQuarto\nStrong\n2.5 years\n\n\nLaTeX\nModerate\n1 year\n\n\nHTML\nBasic\nSome\n\n\nTypst\nBasic\nSome"
+  },
+  {
+    "objectID": "tech.html#software",
+    "href": "tech.html#software",
+    "title": "Technologies I Use",
+    "section": "Software",
+    "text": "Software\nThis is the software I regularly use or have tried.\n\nRStudio: This is my go-to editor for writing reports and apps with Quarto and Shiny. The open-source community is really thriving and makes the R language very approachable. A big plus is the Vim motions as I use a weird combination of Vim motions and keyboard macros.\nVS Code: I use this for miscellaneous code editing and any Python work. It gets the job done.\n\nPositron: It’s a weird cross between RStudio and VS Code.\nWindsurf: Basically VS Code with AI. The AI portion is kind of in the way. It is useful for file paths and tedious repetitive edits, but I don’t find it very useful for real work.\n\nPower BI: I am not a fan of any Microsoft data analysis software. It feels restrictive to do anything outside of basic charts and graphs. I always feel that I am fighting the program to get what I want. Being locked down in a closed-source, paid ecosystem is a big negative. The documentation is severely lacking compared to that of the R community.\n\nDAX: This is terrible. Just terrible.\nSQL Server Analysis Server: It uses DAX. It’s okay.\n\nTableau: Similar thoughts to Power BI, but I have generally had a better experience. However, I have used it very little.\nArcGIS: I only used this for a class. It was an alright experience, but I haven’t done any complex work to feel out the program yet. All of my mapping needs recently have been filled by {plotly} and {ggplot2}.\nObsidian: This is a good and adaptable notetaking software. I use it often on all my devices.\nDuckDB: This is a good database software. I use it mainly for ETL into local data marts which are then used in Shiny applications or reporting with Quarto. For me this is superior to having a server-based warehouse as the data are fairly small in size and can be programmatically refreshed with an R script. The SQL dialect is very good in my opinion. It has very useful shorthands compared to standard SQL."
   }
 ]
