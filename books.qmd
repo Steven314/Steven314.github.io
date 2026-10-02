@@ -1,7 +1,7 @@
 ---
 title: "Reading Log"
 subtitle: "A list of what I am currently reading, have read, and plan to read."
-date-modified: 8/1/2026
+date-modified: 10/2/2026
 date-format: long
 echo: false
 ---
@@ -13,9 +13,9 @@ During the academic year my reading frequency will probably slow to make room fo
 
 ```{r}
 divs <- c(
-  bible = 213 / 365, # days
+  bible = 275 / 365, # days
   add   =  82 / 243, # pages
-  siss  = 145 / 445  # pages
+  siss  = 256 / 445  # pages
 ) |> 
   scales::label_percent(0.01)() |> 
   purrr::map(
@@ -71,6 +71,7 @@ These are books which are next in line to read.
 - [*We Who Wrestle With God: Perceptions of the Divine*](https://www.penguinrandomhouse.com/books/714076/we-who-wrestle-with-god-by-jordan-b-peterson/) (2024) by Jordan Peterson.
 - Statistical Analysis of Geographic Information with ArcView GIS and ArcGIS (2005) by David W. S. Wong & Jay Lee.
 - [*The Accidental Theorist*](https://www.google.com/books/edition/_/Uz6hQgAACAAJ?hl=en&sa=X&ved=2ahUKEwi6yOzQ-f-VAxXY6skDHcP1Jl0Q8fIDegQIBBAZ) (1998) by [Paul Krugman](https://en.wikipedia.org/wiki/Paul_Krugman).
+- [*A Hobbit, a Wardrobe, and a Great War*](https://www.josephloconte.com/books/a-hobbit-a-wardrobe-and-a-great-war/) (2015) by [Joseph Loconte](https://www.josephloconte.com/).
 
 ## 2025
 
