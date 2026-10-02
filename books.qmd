@@ -59,10 +59,9 @@ These are books which are next in line to read.
 3. [*The Wealth of Nations*](https://en.wikipedia.org/wiki/The_Wealth_of_Nations) by [Adam Smith](https://en.wikipedia.org/wiki/Adam_Smith).
 4. [*A Little History of Economics*](https://www.niallkishtainy.com/little-history) by Niall Kishtainy.
 5. [*Miracles*](https://en.wikipedia.org/wiki/Miracles_(book)) (1960) by C. S. Lewis.
-6. [*A Hobbit, a Wardrobe, and a Great War*](https://www.josephloconte.com/books/a-hobbit-a-wardrobe-and-a-great-war/) (2015) by [Joseph Loconte](https://www.josephloconte.com/).
-7. *Energy Economics* (2023, 2nd edition) by Peter M. Schwartz.
-8. [*An Introduction to Machine Learning*](https://link.springer.com/book/10.1007/978-3-030-81935-4) (2021, 3rd edition) by Miroslav Kubat.
-9. *Public Finance and Public Policy* (2019, 3rd edition) by Arye L. Hillman.
+6. *Energy Economics* (2023, 2nd edition) by Peter M. Schwartz.
+7. [*An Introduction to Machine Learning*](https://link.springer.com/book/10.1007/978-3-030-81935-4) (2021, 3rd edition) by Miroslav Kubat.
+8. *Public Finance and Public Policy* (2019, 3rd edition) by Arye L. Hillman.
 
 # History
 
